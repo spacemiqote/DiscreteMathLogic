@@ -1,0 +1,4814 @@
+Equality Laws
+		Substitution
+E
+=====
+E[v:=F]
+
+		Reflexivity
+x=x
+
+		Symmetry
+(x=y)=(y=x)
+
+		Transitivity
+X=Y,Y=Z
+======
+X=Z
+
+		Leibniz
+X=Y
+============
+E[z:=X]=E[z:=Y]
+
+Propositional Calculus Inference Rules
+		Substitution
+P
+=====
+P[r:=Q]
+
+		Transitivity
+P=Q,Q=R
+=======
+P=R
+
+		Leibniz
+P=Q
+============
+E[r:=P]=E[r:=Q]
+
+ARSENAL:
+1.1 Substitution: LOOKUP
+1.2 Reflexivity: LOOKUP
+1.3 Symmetry: LOOKUP
+1.4 Transitivity: LOOKUP
+1.5 Leibniz: LOOKUP
+1.6 g(z) = 3•z+6
+1.7 g.z: E
+1.8 Leibniz: \frac{X=Y}{g.X=g.Y}
+1.9 2•x/2=x
+1.10 x:=E
+1.11 {P}S{Q}
+1.12 Definition of assignment: {R[x:=E]}x:=E{R}
+2.1 Satisfiability,Validity Definition. A boolean expression P is satisfied in 
+a state 
+	  if its value is true in that state; P is satisfiable if there is a state 
+in which it is satisfied;
+	  and P is valid if it is satisfied in every state. A valid boolean 
+expression is called a tautology.
+2.2 Duality Definition. The dual PD of a boolean expression P is constructed 
+from P by interchanging
+	  occurrences of
+			1. true and false,
+			2. ∧ and ∨,
+			3. ≡ and ≢,
+			4. → and ⇍, and
+			5. ⇐ and ⇏
+2.3 Metatheorem Duality
+	  1. P is valid iff ¬PD is valid.
+	  2. P ≡ Q is valid iff PD ≡ QD is valid.
+2.4 Henry VIII had one son and Cleopatra had two.
+	  p: Henry VIII had one son and Cleopatra had two
+		  A boolean variable that can denote a proposition is sometimes called 
+a  propositional variable,
+		  but we will stick to the term boolean variable.
+			  x: Henry VIII had one son,
+			  y: Cleopatra had two (sons),
+		  English statement: x and y
+		  Boolean expression: x ∧ y
+2.5 Translation into a boolean expression.
+	  To translate proposition p into a boolean expression:
+		  1. Introduce boolean variable to denote subpropositions.
+		  2. Replace these subpropositions by their corresponding boolean 
+variables.
+		  3. Translate the result of step 2 into a boolean expression, using 
+“obvious” translation 
+			  of the English wordsinto oeprators.
+			  | it is not the case that | ¬ |
+			  | if p then q | p→q |
+			  | and, but | ∧ |
+			  | or | ∨ |
+			  | not | ¬ |
+2.4 Follow up
+	  x: Henry VIII had one son,
+	  y: Cleopatra had two (sons),
+	  z: I’ll eat my hat,
+	  w: 1 is prime.
+		  | proposition | translation |
+		  | Henry VIII had one son or I’ll eat my hat. | x∨z |
+		  | Henry VIII had one son and 1 is not prime. | x∧¬w |
+		  | If 1 is prime and Cleopatra had two sons, I’ll eat my hat. | w∧y→z |
+3.1 Axiom, Associativity of ≡: ((p ≡ q) ≡ r) ≡ ( p ≡ (q ≡ r))
+3.2 Axiom, Symmetry of ≡: p ≡ q ≡ q ≡ p
+3.3 Axiom, Identity of≡: true ≡ q ≡ q
+3.4 True
+	=    <Identity of ≡(3.3), with q:=true>
+		true ≡ true
+	=    <Identity of ≡(3.3) —replace the second true>
+		true ≡ q ≡ q
+3.5 Reflexivity of ≡: p ≡ p
+	p ≡ p
+	=    <Symmetry of ≡(3.2), with q:=p —replace p≡p by p≡q≡q≡p>
+		p ≡ q ≡ q ≡ p —Symmetry of ≡(3.2)
+3.6 Proof method. To prove that P ≡ Q is a theorem, transform P to Q or Q to P 
+using Leibniz.
+3.7 Metatheorem. Any two theorems are equivalent.
+3.8 Axiom, Definition of false: false ≡ ¬true
+3.9 Axiom, Distributivity of ¬ over ≡ : ¬(p ≡ q) ≡ ¬p ≡ q
+3.10 Axiom, Definition of ≢ : (p ≢ q) ≡ ¬(p ≡ q)
+3.11 ¬p ≡ q ≡ p ≡ ¬q
+	 =    <(3.9), ¬(p ≡ q) ≡ ¬p ≡ q>
+		¬(p ≡ q) ≡ p ≡ ¬q
+	 =    <(3.9), with p,q:=q,p    —i.e. ¬(q ≡ p) ≡ ¬q ≡ p>
+		¬(p ≡ q) ≡ ¬(p ≡ q)    —Reflexivity of ≡ (3.5)
+3.12 Double negation: ¬¬p ≡ p
+3.13 Negation of false: ¬false ≡ true
+3.14 (p ≢ q) ≡ ¬p ≡ q
+3.15 ¬p ≡ p ≡ false
+3.16 Symmetry of ≢: (p ≢ q) ≡ (q ≢ p)
+	p ≢ q
+	=    <Def. of ≢ (3.10)>
+		¬(p ≡ q)
+	=    <Symmetry of ≡ (3.2)>
+		¬(q ≡ p)
+	=    <Def. of ≢ (3.10), with p,q:=q,p>
+		q ≢ p
+3.17 Associativity of ≢: ((p ≢ q) ≢ r) ≡ (p ≢ (q ≢ r))
+3.18 Mutual associativity: ((p ≢ q) ≡ r) ≡ (p ≢ (q ≡ r))
+3.19 Mutual interchangeability: p ≢ q ≡ r ≡ p ≡ q ≢ r
+3.20 Heuristic. Identify applicable theorems by matching the structure of 
+expressions or subexpressions.
+		The operators that appear in a boolean expression and the shape of its 
+subexpressions can focus the
+		choice of theorems to be used in manipulating it.
+3.21 P0 ≡ P1 ≡ … ≡ Pn is true exactly when an even number of the Pi are false.
+3.22 Principle: Structure proofs to avoid repeating the same subexpression on 
+many lines.
+3.23 Heuristic of Definition Elimination: To prove a theorem concerning an 
+operator o that is defined in 
+		terms of another, say •, expand the definition of o to arrive at a 
+formula that contains •;
+		exploit properties of • to manipulate the formula; and then (possibly) 
+reintroduce o using its definition.
+3.24 Axiom, Symmetry of ∨: p ∨ q ≡ q ∨ p
+3.25 Axiom, Associativity of ∨: (p ∨ q) ∨ r ≡ p ∨ (q ∨ r)
+3.26 Axiom, Idempotency of ∨: p ∨ p ≡ p
+3.27 Axiom, Distributivity of ∨ over ≡: p ∨ (q ≡ r)  ≡ p ∨ q ≡ p ∨ r
+		p ∨ (q ≡ r)  ≡ p ∨ q ≡ p ∨ r
+		Replacing LHS by the RHS called “multiplying out”.
+		Replacing RHS by the LHS called “factoring”.
+3.28 Axiom, Excluded middle: p ∨ ¬p
+		Axiom Excluded middle can be interpreted to mean that in any state 
+either p or ¬p is true;
+		there is no middle ground.
+3.29 Zero of ∨: p ∨ true ≡ true
+	 Z is a zero of a binary operation o if x o Z = Z o x = Z, for all x.
+	 Z is a left zero if Z o x = Z, for all x. Z is a right zero if x o Z = Z, for all x.
+	 The term zero comes from the fact that 0 is the zero of •.
+	 p ∨ true
+	 =    <Identity of ≡(3.3), with q:=p —replace true by p≡p>
+		p ∨ (p ≡ p)
+	 =    <Distributivity of ∨ over ≡(3.27), with q,r:=p,p —replace p∨(p≡p) by p∨p≡p∨p>
+		p ∨ p ≡ p ∨ p
+	 =    <Identity of ≡(3.3), with q:=p∨p —replace p∨p≡p∨p by true>
+		true
+3.30 Identity of ∨: p ∨ false ≡ p
+	true
+	=    <Identity of ≡(3.3), with q:=true —replace true by true≡true>
+		true ≡ true
+	=    <Identity of ≡(3.3) with q:=p —replace true by p≡p>
+		true ≡ p ≡ p
+	=    <Idempotency of ∨(3.26) —replace p by p∨p>
+		true ≡ p ∨ p ≡ p
+	=    <Excluded middle(3.28) —replace true by p∨¬p>
+		p ∨ ¬p ≡ p ∨ p ≡ p
+	=    <Distributivity of ∨ over ≡(3.27), with q:=p
+		  —replace p∨¬p≡p∨p≡p by p∨(¬p≡p)>
+		p ∨ (¬p ≡ p) ≡ p
+	=    <Distributivity of ¬ over ≡(3.9), with q:=p —replace (¬p≡p) by ¬(p≡p)>
+		p ∨ ¬(p ≡ p) ≡ p
+	=    <Reflexivity of ≡(3.5) —replace p≡p by true>
+		p ∨ ¬true ≡ p
+	=    <Def. of false(3.8) —replace ¬true by false>
+		p ∨ false ≡ p
+3.31 Distributivity of ∨ over ∨: p ∨ (q ∨ r) ≡ (p ∨ q) ∨ (p ∨ r)
+3.32 p ∨ q ≡ p ∨ ¬q ≡ p
+	p ∨ q ≡ p ∨ ¬q
+	=    <Distributivity of ∨ over ≡(3.27), with r:=¬q>
+		p ∨ (q ≡ ¬q)
+	=    <Symmetry of ≡(3.2), with p,q:=q,¬q>
+		p ∨ (¬q ≡ q)
+	=    <Distributivity of ¬ over ≡(3.9), with p:=q>
+		p ∨ ¬(q ≡ q)
+	=    <Identity of ≡(3.3)>
+		p ∨ ¬(true)
+	=    <Def. of false(3.8)>
+		p ∨ false —theorem(3.30)
+3.33 Heuristic: To prove P ≡ Q, transform the expression with the most 
+structure (either P or Q) into the other.
+3.34 Principle: Structure proofs to minimize the number of rabbits pulled out 
+of a hat —make each
+		step obvious, based on the structure of the expression and the goal of 
+the manipulation.
+3.35 Axiom, Golden rule: p ∧ q ≡ p ≡ q ≡ p ∨ q
+		It can also be rewritten as (p ≡ q) ≡ (p ∧ q  ≡ p ∨ q)
+3.36 Symmetry of ∧: p ∧ q ≡ q ∧ p
+3.37 Associativity of ∧: (p ∧ q) ∧ r ≡ p ∧ (q ∧ r)
+	(p ∧ q) ∧ r ≡ p ∧ (q ∧ r)
+		(p ∧ q) ∧ r
+		=    <Golden rule(3.35), —replace p∧q with (p≡q≡p∨q)>
+			(p ≡ q ≡ p ∨ q) ∧ r
+		=    <Golden rule(3.35) with p,q:=p≡q≡p∨q,r —replace (p≡q≡p∨q)∧r by
+			  p≡q≡p∨q≡r≡(p≡q≡p∨q)∨r>
+			p ≡ q ≡ p ∨ q ≡ r ≡ (p ≡ q ≡ p ∨ q) ∨ r
+		=    <Symmetry of ∨(3.24), with p,q:=(p≡q≡p∨q),r —replace (p≡q≡p∨q)∨r
+			  by r∨(p≡q≡p∨q)>
+			p ≡ q ≡ p ∨ q ≡ r ≡ r ∨ (p ≡ q ≡ p ∨ q)
+		=    <Distributivity of ∨ over ≡(3.27), with p,q,r:=r,p≡q,p∨q —replace
+			  r∨(p≡q≡p∨q) by r∨(p≡q)≡r∨(p∨q)>
+			p ≡ q ≡ p ∨ q ≡ r ≡ r ∨ (p ≡ q) ≡ r ∨ (p ∨ q)
+		=    <Distributivity of ∨ over ≡(3.27), with p,q,r:=r,p,q —replace
+			  r∨(p≡q) by r ∨ p ≡ r ∨ q>
+			p ≡ q ≡ p ∨ q ≡ r ≡ r ∨ p ≡ r ∨ q ≡ r ∨ (p ∨ q)
+		=    <Distributivity of ∨ over ∨(3.31), with p,q,r:=r,p,q —replace
+			  r∨(p∨q) by r∨p∨r∨q)
+			p ≡ q ≡ p ∨ q ≡ r ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ r ∨ q
+		=    <Symmetry and associativity of ≡ and ∨>
+			p ≡ q ≡ r ≡ p ∨ q ≡ q ∨ r ≡ r ∨ p ≡ p ∨ q ∨ r
+			p ≡ q ≡ q ∨ r ≡ r ∨ p ≡ (p ∨ q) ∧ r
+		p ∧ (q ∧ r)
+		=    <Symmetry of ∧ (3.36)>
+			(q ∧ r) ∧ p
+		=    <(3.55), with p,q,r:=q,r,p>
+			q ≡ r ≡ p ≡ q ∨ r ≡ r ∨ p ≡ p ∨ q ≡ q ∨ r ∨ v
+		=    <Symmetry and associativity of ≡ and ∨>
+			p ≡ q ≡ p ∨ q ≡ r ≡ p ∨ r≡ q ∨ r ≡ p ∨ q ∨ r
+		=    <(3.55)>
+			(p ∧ q) ∧ r
+3.38 Idempotency of ∧: p ∧ p ≡ p
+3.39 Identity of ∧: p ∧ true ≡ p
+	 p ∧ true ≡ p
+	 =    <Golden rule(3.35) with q:=true —replace two equivalents>
+		p ∨ true ≡ true
+3.40 Zero of ∧: p ∧ false ≡ false
+3.41 Distributivity of ∧ over ∧: p ∧ (q ∧ r) ≡ (p ∧ q) ∧ (p ∧ r)
+3.42 Contradiction: p ∧ ¬p ≡ false
+3.43 Absorption:
+		1. p ∧ (p ∨ q) ≡ p
+		2. p ∨ (p ∧ q) ≡ p
+3.44 Absorption:
+		1. p ∧ (¬p ∨ q) ≡ p ∧ q
+		   p ∧ (¬p ∨ q)
+		   =    <Golden rule(3.35), with q:=¬p∨q>
+			   p ≡ ¬p ∨ q ≡ p ∧ ¬p ∨ q
+		   =    <Excluded middle(3.28)>
+			   p ≡ ¬p ∨ q ≡ true ∨ q
+		   =    <(3.29), true ∨ p ≡ true>
+		2. p ∨ (¬p ∧ q) ≡ p ∨ q
+3.45 Distributivity of ∨ over ∧:p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)
+3.46 Distributivity of ∧ over ∨: p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)
+3.47 De Morgan:
+		1. ¬(p ∧ q) ≡ ¬p ∨ ¬q
+		2. ¬(p ∨ q) ≡ ¬p ∧ ¬q
+3.48 p ∧ q ≡ p ∧ ¬q ≡ ¬p
+3.49 p ∧ (q ≡ r) ≡ p ∧ q ≡ p ∧ r ≡ p
+	 p ∧ (q ≡ r) ≡ p
+	 =    <Golden rule, with q:=q≡r —replace two equivalents>
+		p ∨ (q ≡ r) ≡ q ≡ r
+	 =    <Distributivity of ∨ over ≡(3.27)>
+		p ∨ q ≡ p ∨ r ≡ q ≡ r
+	 =    <Symmetry of ≡(3.2)>
+		p ∨ q ≡ q ≡ p ∨ r ≡ r
+	 =    <Golden rule, twice —replace p∨q≡q and p∨r≡r>
+		p ∧ q ≡ p ≡ p ∧ r ≡ p
+	 =    <Symmetry of ≡(3.2), with q:=p∨q≡p∨r>
+		p ∧ q ≡ p ∧ r
+3.50 p ∧ (q ≡ p) ≡ p ∧ q
+3.51 Replacement: (p ≡ q) ∧ (r ≡ p) ≡ (p ≡ q) ∧ (r ≡ q)
+3.52 Definition of ≡: p ≡ q ≡ (p ∧ q) ∨ (¬p ∧ ¬q)
+3.53 Exclusive or: p ≢ q ≡ (¬p ∧ q) ∨ (p ∧ ¬q)
+3.54 Principle: Lemmas can provide structure, bring to light interesting facts, and ultimately shorten a proof.
+3.55 (p ∧ q) ∧ r ≡ p ≡ q ≡ r ≡ p ∨ q ≡ q ∨ r ≡ r ∨ p ≡ p ∨ q ∨ r
+3.56 Heuristic: Exploit the ability to parse theorems like the Golden rule in many different ways.
+3.57 Axiom, Definition of Implication:
+	 p → q ≡ p ∨ q ≡ q
+3.58 Axiom, Consequence:
+	 p ⇐ q ≡ q → p
+3.59 Definition of Implication: p → q ≡ ¬p ∨ q
+3.60 Definition of Implication: p → q ≡ p ∧ q ≡ p
+3.61 Contrapositive: p → q ≡ ¬q → ¬p
+3.62 p → (q ≡ r) ≡ p ∧ q ≡ p ∧ r
+	 p → (q ≡ r)
+	 =   <Definition of implication(3.60)>
+		p ∧ (q ≡ r) ≡ p
+	 =   <(3.49), p ∧ (q ≡ r) ≡ p ∧ q ≡ p ∧ r ≡ p>
+		p ∧ q ≡ p ∧ r
+3.63 Distributivity of → over ≡: p → (q ≡ r) ≡ p → q ≡ p → r
+3.64 p → (q → r) ≡ (p → q) → (p → r)
+3.65 Currying: p ∧ q → r ≡ p → (q → r)
+3.66 p ∧ (p → q) ≡ p ∧ q
+3.67 p ∧ (q → p) ≡ p
+3.68 p ∨ (p → q) ≡ true
+3.69 p ∨ (q → p) ≡ q → p
+3.70 p ∨ q → p ∧ q ≡ p ≡ q
+3.71 Reflexivity of →: p → p ≡ true
+3.72 Right zero of →: p → true ≡ true
+3.73 Left identity of →: true → p ≡ p
+3.74 p → false ≡ ¬p
+3.75 false → p ≡ true
+3.76 Weakening/strengthening:
+	(a) p → p ∨ q Weakening
+	(b) p ∧ q → p Weakening
+	(c) p ∧ q → p ∨ q Weakening
+	(d) p ∨ (q ∧ r) → p ∨ q Weakening
+	(e) p ∧ q → p ∧ (q ∨ r) Weakening
+The more rows in the truth table that are labeled as "false," the stronger it becomes.
+3.77 Modus ponens: p ∧ (p → q) → q
+3.78 (p → r) ∧ (q → r) ≡ (p ∨ q → r)
+3.79 (p → r) ∧ (¬p → r) ≡ r
+3.80 Mutual implication: (p → q) ∧ (q → p) ≡ p ≡ q
+	(p → q) ∧ (q → p)
+	=    <Definition of implication(3.59), twice>
+		(¬p ∨ q) ∧ (¬q ∨ p)
+	=    <Distributivity of ∧ over ∨(3.46), twice>
+		(¬p ∧ ¬q) ∨ (¬p ∧ p) ∨ (q ∧ ¬q) ∨ (q ∧ p)
+	=    <Contradiction(3.42), twice; Identity of ∨(3.30), twice>
+		(¬p ∧ ¬q) ∨ (q ∧ p)
+	=    <Alternative definition of ≡(3.52)>
+		p ≡ q
+3.81 Antisymmetry: (p → q) ∧ (q → p) → (p ≡ q)
+3.82 Transitivity:
+	(a) (p → q) ∧ (q → r) → (p → r)
+	=    <Currying(3.65), with p,q:=(p → q) ∧ (q → r),p —to shunt the p in the consequent to the antecedent>
+	p ∧ (p → q) ∧ (q → r) → r
+	=    <(3.66) —replace first two conjuncts>
+	p ∧ q ∧ (q → r) → r
+	=    <3.66 —again, to replace second and third conjuncts —with p,q:=q,r>
+	p ∧ q ∧ r → r —Strengthening(3.76b)
+	(b) (p ≡ q) ∧ (q → r) → (p → r)
+	(c) (p → q) ∧ (q ≡ r) → (p → r)
+3.83 Axiom, Leibniz: (e = f) → (E[z:=e]=E[z:=f]) (E any expression)
+	Inference rule Leibniz: "if X = Y is valid, i.e. true in all states, then so is E[z:=X] = E[z:=Y]".
+	Axiom(3.83): "if e = f is true in a state, then E[z:=e] = E[z:=f] is true in that state.".
+		diff: E=false∧z,e=true,f=false
+			E[z:=e]=E[z:=f] is true but e = f is false.
+3.84 Substitution:
+	(a) (e = f) ∧ E[z:=e] ≡ (e = f) ∧ E[z:=f]
+	(b) (e = f) → E[z:=e] ≡ (e = f) → E[z:=f]
+	(c) q ∧ (e = f) → E[z:=e] ≡ q ∧ (e = f) → E[z:=f]
+3.85 Replace by true:
+	(a) p → E[z:=p] ≡ p → E[z:=true]
+	(b) q ∧ p → E[z:=p] ≡ q ∧ p → E[z:=true]
+3.86 Replace by false:
+	(a) E[z:=p] → p ≡ E[z:=false] → p
+	(b) E[z:=p] → p ∨ q ≡ E[z:=false] → p ∨ q
+3.87 Replace by true: p ∧ E[z:=p] ≡ p ∧ E[z:=true]
+3.88 Replace by false: p ∨ E[z:=p] ≡ p ∨ E[z:=false]
+3.89 Shannon: E[z:=p] ≡ (p ∧ E[z:=true]) ∨ (¬p ∧ E[z:=false])
+3.1 We have defined ≡ using three axioms. Assuming that the symbol true is identified
+	with the symbol true of the previous chapter on boolean expressions, do the axioms
+	uniquely identify operator ≡? Answer the question by seeing which of the 16 possible
+	binary operators o (say) given in the truth table on page 26 satisfy ((p o q) o r) o (p o (q o r)),
+	p o q q o p, and true o q q. (For example, the operator given by the last column does not
+	satisfy true o q o q, since the operator always yields f.)
+		Answer: The axioms indeed uniquely determine the operator ≡.
+3.2 Use truth tables to show that axiom (3.1), (3.2), and (3.3) are valid (true in every state).
+	Answer:
+		|p|q|r|3-1|3-2|3-3|
+		|t|t|t| t | t | t |
+		|f|f|f| t | t | t |
+		|t|f|f| t | t | t |
+		|f|t|t| t | t | t |
+		|f|t|f| t | t | t |
+		|t|f|t| t | t | t |
+		|f|f|t| t | t | t |
+		|t|t|f| t | t | t |
+		Based on the truth table analysis, it is confirmed that
+		axioms (3.1), (3.2), and (3.3) hold true in every state,
+		as their corresponding logical expressions consistently
+		evaluate to true across all possible combinations of truth values.
+3.3 Prove Reflexivity of ≡(3.5), p ≡ p.
+	Answer:
+		p ≡ p
+		=    <Symmetry of  ≡(3.2) —replace first p by p≡q≡q>
+				P:p
+				Q:p≡q≡q
+				E:r≡p
+			p ≡ q ≡ q ≡ p —Symmetry of ≡(3.2)
+3.4 Prove the following metatheorm. Q ≡ true is a theorem iff Q is a theorem.
+	Answer:
+		|Q|true|Q ≡ true|
+		|t|   t|       t|
+		|f|   t|       f|
+		By examining the truth table for the given metatheorem, we can
+		conclude that the statement "Q ≡ true is a theorem iff Q is a
+		theorem" is indeed valid.
+3.5 Prove the following metatheorem. Any two theorems are equivalent.
+	Answer:
+		true ≡ true
+		=    <Identity of ≡(3.3) —replace second true by q=q>
+				P:true
+				Q:q≡q
+				E:true≡r
+			true ≡ q ≡ q —Identity of ≡(3.3)
+3.6 Assume that operator ≡ is identified with operator ≡ of Sec. 2.1
+	(see Exercise 3.1) and true is identified with the symbol true of Sec. 2.1.
+	Prove that axioms (3.8) and (3.9) uniquely define operator ¬.
+	That is, determine which of the four prefix operators o defined in the
+	truth table on page 26 satisfy false ≡ otrue and o(p ≡ q) ≡ op ≡ q.
+	Answer:
+		|0|1|2|3|4|false≡¬true|¬(p≡q)≡¬p≡q|
+		|t|t|t|f|f|     t     |     t     |
+		|f|t|f|t|f|     t     |     t     |
+		Through an analysis of the truth table for the four prefix operators,
+		it becomes evident that column number 1 distinctly determines the operator ¬.
+3.7 Prove theorem (3.11) in three different ways: start with ¬p ≡ q and transform
+	it to p ≡ ¬q, start with ¬p ≡ p and transform it into q ≡ ¬q, and start with
+	¬p and transform it into q ≡ p ≡ ¬q. Compare these three proofs and the one
+	given on page 47. Which is simpler or shorter?
+	Answer: The first one is simpler and shorter as shown below.
+		¬p ≡ q
+	=   <Distributivity of ¬ over ≡(3.9)>
+		¬(q ≡ p)
+	=   <Distributivity of ¬ over ≡(3.9)>
+		p ≡ ¬q
+
+		¬p ≡ p
+	=    <Distributivity of ¬ over ≡(3.9)>
+		¬(p ≡ p)
+	=    <Reflexivity of ≡(3.5)>
+		¬true
+	=    <Identity of ≡(3.3)>
+		¬(q ≡ q)
+	=    <Distributivity of ¬ over ≡(3.9)>
+		q ≡ ¬q
+
+		¬p
+	=    <Symmetry of ≡(3.2) —replace p by p≡q≡q>
+		¬(p≡q≡q)
+	=    <Distributivity of ¬ over ≡(3.9)>
+		q ≡ p ≡ ¬q
+3.8 Prove double negation (3.12), ¬¬p≡p
+	Answer:
+		¬¬p ≡ p
+		=    <Distributivity of ¬ over ≡(3.9), with p,q:=¬p,p —replace ¬¬p≡p
+			  by ¬(¬p≡p)>
+			¬(¬p ≡ p)
+		=    <Symmetry of ≡(3.2), with p,q:=¬p,p —replace ¬p≡p by p≡¬p>
+			¬(p ≡ ¬p)
+		=    <Distributivity of ¬ over ≡(3.9), with p,q:=p,¬p —replace ¬(p≡¬p)
+			  by ¬p≡¬p>
+			¬p ≡ ¬p
+		=    <Reflexivity of ≡(3.5), with p:=¬p —replace ¬p≡¬p by p≡p>
+			p ≡ p
+3.9 Prove Negation of false (3.13), ¬false ≡ true
+	Answer:
+		¬false ≡ true
+		=    <Distributivity of ¬ over ≡(3.9), with p,q:=false,true>
+			¬(false ≡ true)
+		=    <Symmetry of ≡(3.2), with p,q:=false,true>
+			¬(true ≡ false)
+		=    <Distributivity of ¬ over ≡(3.9), with p,q:=true,false>
+			¬true ≡ false
+		=    <Def. of false(3.8) —replace ¬true by false>
+			false ≡ false
+		=    <Metatheorem(3.7), Reflexivity of ≡(3.5), with p:= false and 
+			  true(3.4) —replace false≡false by true
+			true
+3.10 Prove theorem (3.14), (p ≢ q) ≡ ¬p ≡ q
+	 Answer:
+		(p ≢ q)
+		=    <Def. of ≢(3.10)>
+			¬(p ≡ q)
+		=    <Distributivity of ¬ over ≡(3.9)>
+			¬p ≡ q
+3.11 Prove theorem (3.15) by transforming ¬p ≡ p ≡ false to true using (3.11).
+	 The proof should require only two uses of Leibniz.
+	 Answer:
+	 ¬p ≡ p ≡ false
+	 =   <Def. of false(3.8) —replace false by ¬true>
+		¬p ≡ p ≡ ¬true
+	 =   <Identity of true(3.3) —replace true by q≡q>
+		¬p ≡ p ≡ ¬(q ≡ q)
+	 =   <Distributivity of ¬ over ≡(3.9)>
+		¬p ≡ p ≡ ¬q ≡ q
+	 =   <Symmetry of ≡(3.2), with p,q:=p≡¬q,q —replace p≡¬q≡q by q≡p≡¬q>
+		¬p ≡ q ≡ p ≡ ¬q —theorem(3.11)
+
+3.12 Prove Associativity of ≢(3.17), ((p ≢ q) ≢ r) ≡ (p ≢ (q ≢ r)), using the heuristic
+	 of Definition elimination (3.23) —by eliminating ≢, using a property of ≡,
+	 and introducing ≢.
+	 Answer:
+		((p ≢ q) ≢ r) ≡ (p ≢ (q ≢ r))
+		=    <Def. of ≢(3.10) —replace (p≢q) by ¬(p≡q)>
+			(¬(p ≡ q)≢ r) ≡ (p ≢ (q ≢ r))
+		=    <Def. of ≢(3.10) with p,q:=q,r —replace (q≢r) by ¬(q≡r)>
+			(¬(p ≡ q)≢ r) ≡ (p ≢ ¬(q ≡ r))
+		=    <Def. of ≢(3.10) with p,q:¬(p≡q),r —replace ¬(p≡q)≢r by ¬(¬(p≡q)≡r)>
+			¬(¬(p ≡ q) ≡ r) ≡ (p ≢ ¬(q ≡ r))
+		=    <Def. of ≢(3.10) with q:¬(q≡r) —replace p≢¬(q≡r) by ¬(p≡¬(q≡r))>
+			¬(¬(p ≡ q) ≡ r) ≡ ¬(p ≡ ¬(q ≡ r))
+		=    <Symmetry of ≡(3.2), with p,q:=¬(¬(p≡q)≡r),¬(p≡¬(q≡r))>
+			¬(p ≡ ¬(q ≡ r)) ≡ ¬(¬(p ≡ q) ≡ r)
+		=    <Def. of ≢(3.10), with q:=¬(r≡q)>
+			p ≢ ¬(q ≡ r) ≡ ¬(¬(p ≡ q) ≡ r)
+		=    <Def. of ≢(3.10), with p,q:=¬(¬(q≡p),r>
+			p ≢ ¬(q ≡ r) ≡ ¬(p ≡ q) ≢ r
+		=    <Def. of ≢(3.10), with p,q:=q,r —replace ¬(q≡r) by q≢r>
+			p ≢ q ≢ r ≡ ¬(p ≡ q) ≢ r
+		=    <Def. of ≢(3.10), —replace ¬(p≡q) by p≢q>
+			(p ≢ (q ≢ r)) ≡ ((p ≢ q) ≢ r)
+3.13 Prove Mutual associativity (3.18), ((p ≢ q) ≡ r)≡(p ≢ (q ≡ r)), using the heuristic of
+	 Definition elimination(3.23) —by eliminating ≢, using a property of ≡, and
+	 reintroducing ≢.
+	 Answer:
+		((p ≢ q) ≡ r) ≡ (p ≢ (q ≡ r))
+		=    <Def. of ≢(3.10) —replace (p≢q) by ¬(p≡q)>
+			(¬(p ≡ q) ≡ r) ≡ (p ≢ (q ≡ r))
+		=    <Def. of ≢(3.10) with q:=(q ≡ r) —replace p≢(q≡r) by ¬(p≡(q≡r))>
+			(¬(p ≡ q) ≡ r) ≡ ¬(p ≡ (q ≡ r))
+		=    <Symmetry of ≡(3.2), with p,q:=(¬(p≡q)≡r),¬(p≡(q≡r))>
+			¬(p ≡ (q ≡ r)) ≡ (¬(p ≡ q) ≡ r)
+		=    <Def. of ≢(3.10) with q:=(q ≡ r) —replace ¬(p ≡ (q ≡ r)) by p≢(q≡r)>
+			p ≢ (q ≡ r) ≡ (¬(p ≡ q) ≡ r)
+		=    <Def. of ≢(3.10) with p:=¬(p≡q) —replace ¬(p≡q) by p≢q>
+			p ≢ (q ≡ r) ≡ p ≢ q ≡ r
+3.14 Prove Mutual interchangeability(3.19), p ≢ q ≡ r ≡ p ≡ q ≢ r, using the heuristic
+	 of Definition elimination(3.23) —by eliminating ≢, using a property of ≡, and
+	 reintroducing ≢.
+	 Answer:
+		p ≢ q ≡ r ≡ p ≡ q ≢ r
+		=    <Def. of ≢(3.10) —replace p≢q by ¬(p≡q)>
+			¬(p ≡ q) ≡ r ≡ p ≡ q ≢ r
+		=    <Def. of ≢(3.10), with p,q:=q,r —replace q≢r by ¬(q≡r)>
+			¬(p ≡ q) ≡ r ≡ p ≡ ¬(q ≡ r)
+		=    <Symmetry of ≡(3.2), with p,q:=¬(p≡q)≡r,p≡¬(q≡r)>
+			p ≡ ¬(q ≡ r) ≡ ¬(p ≡ q) ≡ r
+		=    <Def. of ≢(3.10) —replace ¬(q≡r) by q≢r>
+			p ≡ q ≢ r ≡ ¬(p ≡ q) ≡ r
+		=    <Def. of ≢(3.10) —replace ¬(p≡q) by p≢q>
+			p ≡ q ≢ r ≡ p ≢ q ≡ r
+3.15 Assume that ≡, ¬, true, and false have meanings as given in Sec. 2.1.
+	 Show that axioms (3.24)-(3.28) uniquely determine operator ∨ —only one of the
+	 operators of the truth table for binary operators on page 26 can be assigned to it.
+	 Answer:
+		OP = |T,T,T|F,F,F|T,F,F|F,T,T|F,T,F|T,F,T|F,F,T|T,T,F|
+		|3-24|  T  |     |     |     |     |     |     |     |p=q≡q=p
+		|3-25|  T  |     |     |     |     |     |     |     |(p=q)=r≡p=(q=r)
+		|3-26|  T  |     |     |     |     |     |     |     |p=p≡p
+		|3-27|  T  |     |     |     |     |     |     |     |p=(q≡r)≡p=q≡p=r
+		|3-28|  F  |     |     |     |     |     |     |     |p=¬p
+		------------------------------------------------------
+		OP ≠ |T,T,T|F,F,F|T,F,F|F,T,T|F,T,F|T,F,T|F,F,T|T,T,F|
+		|3-24|  F  |     |     |     |     |     |     |     |p≠q≡q≠p
+		|3-25|     |     |     |     |     |     |     |     |(p≠q)≠r≡p≠(q≠r)
+		|3-26|     |     |     |     |     |     |     |     |p≠p≡p
+		|3-27|     |     |     |     |     |     |     |     |p≠(q≡r)≡p≠q≡p≠r
+		|3-28|     |     |     |     |     |     |     |     |p≠¬p
+		------------------------------------------------------
+		OP ∨ |T,T,T|F,F,F|T,F,F|F,T,T|F,T,F|T,F,T|F,F,T|T,T,F|
+		|3-24|  T  |  T  |  T  |  T  |  T  |  T  |  T  |  T  |p∨q≡q∨p
+		|3-25|  T  |  T  |  T  |  T  |  T  |  T  |  T  |  T  |(p∨q)∨r≡p∨(q∨r)
+		|3-26|  T  |  T  |  T  |  T  |  T  |  T  |  T  |  T  |p∨p≡p
+		|3-27|  T  |  T  |  T  |  T  |  T  |  T  |  T  |  T  |p∨(q≡r)≡p∨q≡p∨r
+		|3-28|  T  |  T  |  T  |  T  |  T  |  T  |  T  |  T  |p∨¬p
+		------------------------------------------------------
+		OP ∧ |T,T,T|F,F,F|T,F,F|F,T,T|F,T,F|T,F,T|F,F,T|T,T,F|
+		|3-24|  T  |     |     |     |     |     |     |     |p∧q≡q∧p
+		|3-25|  T  |     |     |     |     |     |     |     |(p∧q)∧r≡p∧(q∧r)
+		|3-26|  T  |     |     |     |     |     |     |     |p∧p≡p
+		|3-27|  T  |     |     |     |     |     |     |     |p∧(q≡r)≡p∧q≡p∧r
+		|3-28|  F  |     |     |     |     |     |     |     |p∧¬p
+		------------------------------------------------------
+		OP → |T,T,T|F,F,F|T,F,F|F,T,T|F,T,F|T,F,T|F,F,T|T,T,F|
+		|3-24|  T  |     |     |     |     |     |     |     |p→q≡q→p
+		|3-25|  T  |     |     |     |     |     |     |     |(p→q)→r≡p→(q→r)
+		|3-26|  T  |     |     |     |     |     |     |     |p→p≡p
+		|3-27|  T  |     |     |     |     |     |     |     |p→(q≡r)≡p→q≡p→r
+		|3-28|  F  |     |     |     |     |     |     |     |p→¬p
+		------------------------------------------------------
+		OP ⇐ |T,T,T|F,F,F|T,F,F|F,T,T|F,T,F|T,F,T|F,F,T|T,T,F|
+		|3-24|  T  |  T  |     |     |     |     |     |     |p⇐q≡q⇐p
+		|3-25|  T  |  F  |     |     |     |     |     |     |(p⇐q)⇐r≡p⇐(q⇐r)
+		|3-26|  T  |     |     |     |     |     |     |     |p⇐p≡p
+		|3-27|  T  |     |     |     |     |     |     |     |p⇐(q≡r)≡p⇐q≡p⇐r
+		|3-28|  T  |     |     |     |     |     |     |     |p⇐¬p
+		------------------------------------------------------
+3.16 Prove that the zero of a binary operator ⊕ is unique. (An object is unique
+	 if, when we assume that two of them B and C exist, we can prove B=C.)
+	 Answer:
+		p ≢ q ≡ (¬p ∧ q) ∨ (p ∧ ¬q)
+			|t|t|f|
+			|f|f|f|
+			|t|f|t|
+			|f|t|t| No zero
+3.17 Prove Identity of ∨(3.30), p ∨ false ≡ p, by transforming its more structured
+	 side into its simpler side. Theorem (3.15) may be a suitable way to introduce
+	 an equivalence.
+	 Answer:
+		 p ∨ false
+		 =    <Def. of false(3.8) —replace false by ¬true>
+			p ∨ ¬true
+		 =    <Identity of ≡(3.3), with q:=p —replace true by p≡p>
+			p ∨ ¬(p ≡ p)
+		 =    <Axiom, Distributivity of ¬ over ≡(3.9) and ∨ over ≡(3.27), with q:=p>
+			p ∨ ¬p ≡ p ∨ p
+		 =    <Excluded Middle(3.28) —replace p∨¬p by true>
+			true ≡ p ∨ p
+		 =    <Idempotency of ∨(3.26) —replace p∨p by p>
+			true ≡ p
+		 =    <Identity of ≡(3.3), with q:=p —replace true by p≡p>
+			p ≡ p ≡ p
+		 =    <Symmetry of ≡(3.2) with q:=p —replace p≡q≡q by p>
+			p
+		true
+		=    <Identity of ≡(3.3), with q:=true —replace true by true≡true>
+			true ≡ true
+		=    <Identity of ≡(3.3) with q:=p —replace true by p≡p>
+			true ≡ p ≡ p
+		=    <Idempotency of ∨(3.26) —replace p by p∨p>
+			true ≡ p ∨ p ≡ p
+		=    <Excluded middle(3.28) —replace true by p∨¬p>
+			p ∨ ¬p ≡ p ∨ p ≡ p
+		=    <Distributivity of ∨ over ≡(3.27), with q:=p
+			  —replace p∨¬p≡p∨p≡p by p∨(¬p≡p)>
+			p ∨ (¬p ≡ p) ≡ p
+		=    <Distributivity of ¬ over ≡(3.9), with q:=p —replace (¬p≡p) by ¬(p≡p)>
+			p ∨ ¬(p ≡ p) ≡ p
+		=    <Reflexivity of ≡(3.5) —replace p≡p by true>
+			p ∨ ¬true ≡ p
+		=    <Def. of false(3.8) —replace ¬true by false>
+			p ∨ false ≡ p
+3.18 Prove distributivity of ∨ over ∨(3.31), p ∨ (q ∨ r) ≡ (p ∨ q) ∨ (p ∨ r)
+	 This proof requires only the symmetry, associativity, and idempotency of ∨.
+	 Answer:
+		(p ∨ q) ∨ (p ∨ r)
+		=    <Symmetry of ∨(3.24) —replace p∨q by q∨p>
+			(q ∨ p) ∨ (p ∨ r)
+		=    <Associativity of ∨(3.25), with p,q:=(q ∨ p),p>
+			(q ∨ (p ∨ r)) ∨ p
+		=    <Symmetry of ∨(3.24), with q:=r —replace p∨r by r∨p>
+			(q ∨ (r ∨ p)) ∨ p
+		=    <Associativity of ∨(3.25), with p,q,r:=q,r,p>
+			((q ∨ r) ∨ p) ∨ p
+		=    <Associativity of ∨(3.25), with p,q,r:=(q ∨ r),p,p>
+			(q ∨ r) ∨ (p ∨ p)
+		=    <Symmetry of ∨(3.24) ,with p,q:=(q∨r),(p∨p) —replace (q∨r)∨(p∨p) by (p∨p)∨(q∨r)>
+			(p ∨ p) ∨ (q ∨ r)
+		=    <Idempotency of ∨(3.26) —replace (p∨p) by p>
+			p ∨ (q ∨ r)
+3.19 Prove theorem(3.32), p ∨ q ≡ p ∨ ¬q ≡ p. Note that the pattern p ∨ q ≡ p ∨ ¬q
+	 matches the RHS of distributivity axiom(3.27), with r:=¬q,
+	 so consider transforming p ∨ q ≡ p ∨ ¬q to p.
+	 Answer:
+		p ∨ q ≡ p ∨ ¬q
+		=    <Distributivity of ∨ over ≡(3.27), with r:=¬q>
+			p ∨ (q ≡ ¬q)
+		=    <Symmetry of ≡(3.2), with p,q:=q,¬q>
+			p ∨ (¬q ≡ q)
+		=    <Distributivity of ¬ over ≡(3.9), with p:=q>
+			p ∨ ¬(q ≡ q)
+		=    <Identity of≡(3.3) —replace q≡q by true>
+			p ∨ ¬true
+		=    <Def. of false(3.8) —replace ¬true by false>
+			p ∨ false
+		=    <Identity of ∨(3.30) —replace p∨false by p>
+			p
+3.20 Show the validity of the Golden rule, (3.35), by constructing a truth table for it.
+	 Answer:
+		|p|q|p∧q|p∨q|(p≡q)≡(p∧q≡p∨q)|
+		|t|t| t | t |       t       |
+		|f|f| f | f |       t       |
+		|t|f| f | t |       t       |
+		|f|t| f | t |       t       |
+3.21 Prove that the only distinct formulas (up to interchanging p and q) involving
+	 variables p, q, ≡, and ∨ are: p, p ≡ p, p ≡ q, p ∨ q, p ∨ q ≡ q, and p ≡ q ≡ p ∨ q.
+	 Answer:
+		SKIP
+3.22 Prove Symmetry of ∧(3.36), p ∧ q ≡ q ∧ p, using the heuristic of Definition
+	 Elimination(3.23) —eliminate ∧ (using its definition, the Golden rule),
+	 manipulate, and then reintroduce ∧.
+	 Answer:
+		p ∧ q ≡ q ∧ p
+		=    <Golden rule(3.35) —replace p∧q by p≡q≡p∨q>
+			p ≡ q ≡ p ∨ q ≡ q ∧ p
+		=    <Golden rule(3.35) with p,q:=q,p —replace q∧p by q≡p≡q∨p>
+			p ≡ q ≡ p ∨ q ≡ q ≡ p ≡ q ∨ p
+		=    <Symmetry of ≡(3.2) with p,q:=p≡q≡p∨q,q≡p≡q∨p
+			  —replace p≡q≡p∨q≡q≡p≡q∨p by q≡p≡q∨p≡p≡q≡p∨q>
+			q ≡ p ≡ q ∨ p ≡ p ≡ q ≡ p ∨ q
+		=    <Golden rule(3.35) with p,q:=q,p —replace q≡p≡q∨p by q∧p>
+			q ∧ p ≡ p ≡ q ≡ p ∨ q
+		=    <Golden rule(3.35) with —replace p≡q≡p∨q by p∧q>
+			q ∧ p ≡ p ∧ q
+3.23 Prove Idempotency of ∧(3.38), p ∧ p ≡ p, using the heuristic of Definition
+	 elimination (3.23) —eliminate ∧ (using its definition, the Golden rule) and manipulate.
+	 Answer:
+		p ∧ p
+		=    <Golden rule(3.38), with q:=p —replace p∧p by p≡p≡p∨p>
+			p ≡ p ≡ p ∨ p
+		=    <Idempotency of ∨(3.26) —replace p∨p by p>
+			p ≡ p ≡ p
+		=    <Symmetry of ≡(3.2) with q:=p —replace p≡q≡q by p>
+			p
+3.24 Prove Zero of ∧(3.40), p ∧ false ≡ false, using the heuristic of definition
+	 elimination(3.23) —eliminate ∧ (using its definition, the Golden rule) and
+	 manipulate.
+	 Answer:
+		p ∧ false
+		=    <Golden rule(3.35) with q:=false —replace p∧false by p≡false≡p∨false>
+			p ≡ false ≡ p ∨ false
+		=    <Identity of ∨(3.30) —replace p∨false by p>
+			p ≡ false ≡ p
+		=    <Symmetry of ≡(3.2), with q:=false —replace p≡false by false≡p>
+			false ≡ p ≡ p
+		=    <Def. of false(3.8) —replace false by ¬true>
+			¬true ≡ p ≡ p
+		=    <Distributivity of ¬ over ≡(3.9), with p,q:=true,p
+			  —replace ¬true≡p by ¬(true≡p)>
+			¬(true ≡ p) ≡ p
+		=    <Associativity of ≡(3.1), with p,q,r:=true,p,p
+			  —replace ¬(true≡p)≡p by ¬true≡(p≡p)>
+			¬true ≡ (p ≡ p)
+		=    <Identity of ≡(3.3), with q:=p —replace p≡p by true>
+			¬true ≡ true
+		=    <Distributivity of ¬ over ≡(3.9), with p,q:=true,true
+			  —replace ¬true≡true by ¬(true≡true)>
+			¬(true≡true)
+		=    <Identity of ≡(3.3), q:=true —replace true≡true by true>
+			¬true
+		=    <Def. of false(3.8) —replace ¬true by false>
+			false
+3.25 Prove Distributivity of ∧ over ∧(3.41), p ∧ (q ∧ r) ≡ (p ∧ q) ∧ (p ∧ r)
+	 Answer:
+		p ∧ (q ∧ r)
+		=    <Idempotency of ∧(3.38) —replace p by p∧p>
+			p ∧ p ∧ (q ∧ r)
+		=    <Associativity of ∧(3.37) —replace p∧(q∧r) by (p∧q)∧r>
+			p ∧ (p ∧ q) ∧ r
+		=    <Symmetry of ∧(3.36), with p,q:=p∧(p∧q),r —replace p∧(p∧q)∧r
+			  by r∧p∧(p∧q)>
+			r ∧ p ∧ (p ∧ q)
+		=    <Symmetry of ∧(3.36), with p,q:=r,p —replace r∧p by p∧r>
+			p ∧ r ∧ (p ∧ q)
+3.26 Prove Contradiction(3.42), p ∧ ¬p ≡ false, using the heuristic of Definition
+	 elimination(3.23) —eliminate ∧ (using its definition, the Golden rule) and
+	 manipulate.
+	 Answer:
+		p ∧ ¬p
+		=    <Golden rule(3.35), with q:=¬p —replace p∧¬p by p≡¬p≡p∨¬p>
+			p ≡ ¬p ≡ p ∨ ¬p
+		=    <Excluded middle(3.28) —replace p∨¬p by true>
+			p ≡ ¬p ≡ true
+		=    <Identity of ≡(3.3), with q:=p —replace true by p≡p>
+			p ≡ ¬p ≡ p ≡ p
+		=    <Symmetry of ≡(3.2), with q:=¬p —replace p≡¬p by ¬p≡p>
+			¬p ≡ p ≡ p ≡ p
+		=    <Distributivity of ¬ over ≡(3.9) —replace ¬p≡p by ¬(p≡p)>
+			¬(p ≡ p) ≡ p ≡ p
+		=    <Identity of ≡(3.3), with q:=p —replace p≡p by true>
+			¬true ≡ p ≡ p
+		=    <Def. of false(3.8) —replace ¬true by false>
+			false ≡ p ≡ p
+		=    <Identity of ∨(3.30) —replace p by p∨false>
+			false ≡ p ≡ p ∨ false
+		=    <Symmetry of ≡(3.2),with p,q:=false,p —replace false≡p by p≡false>
+			p ≡ false ≡ p ∨ false
+		=    <Golden rule(3.35), with q:=false —replace p≡false≡p∨false
+			  by p ∧ false>
+			p ∧ false
+		=    <Zero of ∧(3.40) —replace p∧false by false>
+			false
+3.27 Prove Absorption(3.43a), p ∧ (p ∨ q) ≡ p, using the heuristic of Definition
+	 elimination(3.23) —eliminate ∧ (using its definition, the Golden rule) and
+	 manipulate.
+	 Answer:
+		p ∧ (p ∨ q)
+		=    <Golden rule(3.35), with q:=(p∨q) —replace p∧(p∨q) by p≡p∨q≡p∨p∨q>
+			p ≡ p ∨ q ≡ p ∨ p ∨ q
+		=    <Idempotency of ∨(3.26) —replace p∨p by p>
+			p ≡ p ∨ q ≡ p ∨ q
+		=    <Symmetry of ≡(3.32), with q:=p∨q —replace p≡p∨q≡p∨q by p>
+			p
+3.28 Prove Absorption(3.43b), p ∨ (p ∧ q) ≡ p. Use the golden rule.
+	Answer:
+		p ∨ (p ∧ q)
+		=    <Golden rule(3.35) —replace p∧q by p≡q≡p∨q>
+			p ∨ (p ≡ q ≡ p ∨ q)
+		=    <Distributivity of ∨ over ≡(3.27), with q,r:=(p≡q),(p∨q)
+			  —replace p∨(p≡q≡p∨q) by p∨(p≡q)≡p∨(p∨q)>
+			p ∨ p ∨ (p ≡ q) ≡ p ∨ (p ∨ q)
+		=    <Distributivity of ∨ over ≡(3.27), —replace p∨(p≡q) by p∨p≡p∨q
+			p ∨ p ∨ p ≡ p ∨ q ≡ p ∨ (p ∨ q)
+		=    <Associativity of ∨(3.25), with q,r:=p,q —replace p∨(p∨q)
+			  by (p∨p)∨q)
+			p ∨ p ∨ p ≡ p ∨ q ≡ (p ∨ p) ∨ q
+		=    <Idempotency of ∨(3.26) —replace p∨p by p>
+			p ∨ p ≡ p ∨ q ≡ (p ∨ p) ∨ q
+		=    <Idempotency of ∨(3.26) —replace p∨p by p>
+			p ∨ p ≡ p ∨ q ≡ p ∨ q
+		=    <Idempotency of ∨(3.26) —replace p∨p by p>
+			p ≡ p ∨ q ≡ p ∨ q
+		=    <Symmetry of ∨(3.24), with q:=p∨q —replace p≡p∨q≡p∨q by p>
+			p
+3.29 Prove Absorption(3.44b), p ∨ (¬p ∧ q) ≡ p ∨ q. Use the Golden rule and manipulate.
+	 Answer:
+	 p ∨ (¬p ∧ q)
+	 =    <Distributivity of ∨ over ∧(3.45), with q,r:=¬p,q —replace p∨(¬p∧q)
+		   by p∨¬p∧p∨q>
+			p ∨ ¬p ∧ p ∨ q
+	 =    <Golden rules(3.35), with p,q:=(p∨¬p),(p∨q) —replace p∨¬p∧p∨q by
+		   p∨¬p≡p∨q≡p∨¬p∨p∨q>
+			p ∨ ¬p ≡ p ∨ q ≡ p ∨ ¬p ∨ p ∨ q
+	 =    <Metatheorem(3.7), Excluded middle(3.28)
+		   and Reflexivity of ≡(3.5) —replace p∨¬p by (p=p)>
+			(p ≡ p) ≡ p ∨ q ≡ (p ≡ p) ∨ p ∨ q
+	 =    <Golden rules(3.35), with p,q:=(p≡p),(p∨q) —replace (p≡p)≡p∨q≡true∨p∨q
+		   by (p≡p)∧p∨q>
+			(p ≡ p) ∧ p ∨ q
+	 =    <Symmetry of ∧(3.36), with p,q:=(p≡p),p∨q —replace (p≡p)∧p∨q by p∨q∧true>
+			p ∨ q ∧ (p ≡ p)
+	 =    <Metatheorem(3.7), Reflexivity of ≡(3.5) and (3.4) —replace p≡p by true
+		   and Identity of ∧(3.39) with p:=p∨q  —replace p∨q∧true by p∨q>
+			p ∨ q
+3.30 Prove Distributivity of ∨ over ∧(3.45), p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r),
+	 using the heuristic of Definition elimination(3.23) —eliminate ∧ (using its
+	 definition, the Golden rule), manipulate, and reintroduce ∧ using the Golden
+	 rule again.
+	 Answer:
+		p ∨ (q ∧ r)
+	 =    <Golden rule(3.35), with p,q:=q,r —replace q∧r by q≡r≡q∨r>
+		p ∨ (q ≡ r ≡ q ∨ r)
+	 =    <Distributivity of ∨ over ≡(3.27) with q,r:=q≡r,q∨r —replace p∨(q≡r≡q∨r)
+		   by p∨(q≡r)≡p∨(q∨r)>
+		p ∨ (q ≡ r) ≡ p ∨ (q ∨ r)
+	 =    <Distributivity of ∨ over ≡(3.27) —replace p∨(q≡r) by p∨q≡p∨r>
+		p ∨ q ≡ p ∨ r ≡ p ∨ (q ∨ r)
+	 =    <Distributivity of ∨ over ∨(3.31), -replace p∨(q∨r) by p∨q∨r>
+		p ∨ q ≡ p ∨ r ≡ p ∨ q ∨ r
+	 =    <Golden rule(3.35), with p,q:=p∨q,p∨r —replace p∨q≡p∨r≡p∨q∨p∨r
+		   by (p∨q)∧(p∨r)>
+		(p ∨ q) ∧ (p ∨ r)
+3.31 Prove Distributivity of ∧ over ∨(3.46). It cannot be proved in the same manner
+	 as Distributivity of ∨ over ∧(3.45) because ∧ does not distribute over ≡ so
+	 nicely. Instead, prove it using (3.45) and Absorption.
+	 Answer:
+		(p ∧ q) ∨ (p ∧ r)
+		=    <Distributivity of ∨ over ∧(3.45), with p,q:=(p∧q),p —replace
+			  (p∧q)∨(p∧r) by ((p∧q)∨p)∧((p∧q)∨r)>
+			((p ∧ q) ∨ p) ∧ ((p ∧ q) ∨ r)
+		=    <Symmetry of ∨(3.24), with p,q:=(p∧q),p —replace (p∧q)∨p by p∨(p∧q)>
+			(p ∨ (p ∧ q)) ∧ ((p ∧ q) ∨ r)
+		=    <Absorption(3.43b) —replace p∨(p∧q) by p>
+			p ∧ ((p ∧ q) ∨ r)
+		=    <Symmetry of ∨(3.24), with p,q:=(p∧q),r —replace (p∧q)∨r by r∨(p∧q)>
+			p ∧ (r ∨ (p ∧ q))
+		=    <Distributivity of ∨ over ∧(3.45), with p,q,r:=r,p,q —replace
+			  r∨(p∧q) by (r∨p)∧(r∨q)>
+			p ∧ ((r ∨ p) ∧ (r ∨ q))
+		=    <Associativity of ∧, with q,r:=(r∨p),(r∨q) —replace p∧((r∨p)∧(r∨q))
+			  by (p∧(r∨p))∧(r∨q)>
+			(p ∧ (r ∨ p)) ∧ (r ∨ q)
+		=    <Symmetry of ∨(3.24), with p,q:=r,p —replace r∨p by p∨r>
+			(p ∧ (p ∨ r)) ∧ (r ∨ q)
+		=    <Absorption(3.43b), with q:=r —replace p∧(p∨r) by p>
+			p ∧ (r ∨ q)
+		=    <Symmetry of ∨(3.24), with p,q:=q,r —replace r∨q by q∨r>
+			p ∧ (q ∨ r)
+	 GOLDEN RULE(LOWLEVEL HARDCORE):
+		(p ∧ q) ∨ (p ∧ r)
+		=    <Golden rule(3.35) —replace p∧q by p≡q≡p∨q>
+			(p ≡ q ≡ p ∨ q) ∨ (p ∧ r)
+		=    <Golden rule(3.35) —replace p∧r by p≡r≡p∨r>
+			(p ≡ q ≡ p ∨ q) ∨ (p ≡ r ≡ p ∨ r)
+		=    <Distributivity of ∨ over ≡, with p,q,r:=(p≡q≡p∨q),(p≡r),(p∨r)
+			  —replace (p≡q≡p∨q)∨(p≡r≡p∨r) by (p≡q≡p∨q)∨(p≡r)≡(p≡q≡p∨q)∨(p∨r)>
+			(p ≡ q ≡ p ∨ q) ∨ (p ≡ r) ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Distributivity of ∨ over ≡, with p,q,r:=(p≡q≡p∨q),p,r
+			  —replace (p≡q≡p∨q)∨(p≡r) by ((p≡q≡p∨q)∨p)≡((p≡q≡p∨q)∨r)>
+			(p ≡ q ≡ p ∨ q) ∨ p ≡ (p ≡ q ≡ p ∨ q) ∨ r ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Symmetry of ∨(3.24), with p,q:=(p≡q≡p∨q),p —replace (p≡q≡p∨q)∨p
+			  by p∨(p≡q≡p∨q)>
+			p ∨ (p ≡ q ≡ p ∨ q) ≡ (p ≡ q ≡ p ∨ q) ∨ r ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Distributivity of ∨ over ≡(3.27), with q,r:=(p≡q),(p∨q) —replace
+			  p∨(p≡q≡p∨q) by (p∨(p≡q))≡(p∨(p∨q))>
+			p ∨ (p ≡ q) ≡ p ∨ (p ∨ q) ≡ (p ≡ q ≡ p ∨ q) ∨ r ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Distributivity of ∨ over ≡(3.27), with q,r:=p,q —replace p∨(p≡q) by
+			  p∨p≡p∨q>
+			p ∨ p ≡ p ∨ q ≡ p ∨ (p ∨ q) ≡ (p ≡ q ≡ p ∨ q) ∨ r ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Symmetry of ∨(3.24) —replace p∨q by q∨p>
+			p ∨ p ≡ p ∨ q ≡ p ∨ (q ∨ p) ≡ (p ≡ q ≡ p ∨ q) ∨ r ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Symmetry of ∨(3.24), with q:=(q∨p) —replace p∨(q∨p) by (q∨p)∨p>
+			p ∨ p ≡ p ∨ q ≡ (q ∨ p) ∨ p ≡ (p ≡ q ≡ p ∨ q) ∨ r ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Associativity of ∨ over ∨(3.25), with p,q,r:=q,p,p —replace (q∨p)∨p by
+			  q∨(p∨p)>
+			p ∨ p ≡ p ∨ q ≡ q ∨ (p ∨ p) ≡ (p ≡ q ≡ p ∨ q) ∨ r ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Idempotency of ∨(3.26) —replace p∨p by p>
+			p ≡ p ∨ q ≡ q ∨ (p ∨ p) ≡ (p ≡ q ≡ p ∨ q) ∨ r ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Idempotency of ∨(3.26) —replace p∨p by p>
+			p ≡ p ∨ q ≡ q ∨ p ≡ (p ≡ q ≡ p ∨ q) ∨ r ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Symmetry of ∨(3.24), with p,q:=q,p —replace q∨p by p∨q>
+			p ≡ p ∨ q ≡ p ∨ q ≡ (p ≡ q ≡ p ∨ q) ∨ r ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Symmetry of ∨(3.24), with q:=p∨q —replace p≡p∨q≡p∨q by p>
+			p ≡ (p ≡ q ≡ p ∨ q) ∨ r ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Symmetry of ∨(3.24), with p,q:=(p≡q≡p∨q),r —replace (p≡q≡p∨q)∨r
+			  by r∨(p≡q≡p∨q)>
+			p ≡ r ∨ (p ≡ q ≡ p ∨ q) ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Distributivity of ∨ over ≡(3.27), with p,q,r:=r,(p≡q),(p∨q) —replace 
+			  r∨(p≡q≡p∨q) by (r∨(p≡q))≡(r∨(p∨q))>
+			p ≡ r ∨ (p ≡ q) ≡ r ∨ p ∨ q ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Distributivity of ∨ over ≡(3.27), with p,q,r:=r,p,q —replace r∨(p≡q)
+			  by (r∨p)≡(r∨q)>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ (p ≡ q ≡ p ∨ q) ∨ (p ∨ r)
+		=    <Symmetry of ∨(3.24), with p,q:=(p≡q≡p∨q),(p∨r) —replace (p≡q≡p∨q)∨(p∨r)
+			  by (p∨r)∨(p≡q≡p∨q)>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ (p ∨ r) ∨ (p ≡ q ≡ p ∨ q)
+		=    <Distributivity of ∨ over ≡(3.27), with p,q,r:=(p∨r),(p≡q),(p∨q) —replace
+			  (p∨r)∨(p≡q≡p∨q) by (p∨r)∨(p≡q)≡(p∨r)∨(p∨q)>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ (p ∨ r) ∨ (p ≡ q) ≡ (p ∨ r) ∨ (p ∨ q)
+		=    <Distributivity of ∨ over ≡(3.27), with p,q,r:=(p∨r),p,q —replace
+			  (p∨r)∨(p≡q) by (p∨r)∨p≡(p∨r)∨q>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ (p ∨ r) ∨ p ≡ (p ∨ r) ∨ q ≡ (p ∨ r) ∨ (p ∨ q)
+		=    <Symmetry of ∨(3.24), with q:=r —replace p∨r by r∨p>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ (r ∨ p) ∨ p ≡ (p ∨ r) ∨ q ≡ (p ∨ r) ∨ (p ∨ q)
+		=    <Associativity of ∨(3.25), with p,q,r:=r,p,p —replace (r∨p)∨p by r∨(p∨p)>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ (p ∨ p) ≡ (p ∨ r) ∨ q ≡ (p ∨ r) ∨ (p ∨ q)
+		=    <Idempotency of ∨(3.26) —replace p∨p by p>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ (p ∨ r) ∨ (p ∨ q)
+		=    <Distributivity of ∨ over ∨(3.31), with p,q,r:=(p∨r),p,q —replace
+			  (p∨r)∨(p∨q) by ((p ∨ r) ∨ p) ∨ ((p ∨ r) ∨ q)>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ ((p ∨ r) ∨ p) ∨ ((p ∨ r) ∨ q)
+		=    <Symmetry of ∨(3.24), with q:=r —replace p∨r by r∨p>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ ((r ∨ p) ∨ p) ∨ ((p ∨ r) ∨ q)
+		=    <Associativity of ∨(3.25), with p,q,r:=r,p,p —replace (r∨p)∨p
+			  by r∨(p∨p)>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ (r ∨ (p ∨ p)) ∨ ((p ∨ r) ∨ q)
+		=    <Idempotency of ∨(3.26) —replace p∨p by p>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ (r ∨ p) ∨ ((p ∨ r) ∨ q)
+		=    <Symmetry of ∨(3.24), with p,q:=r,p —replace r∨p by p∨r>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ (p ∨ r) ∨ ((p ∨ r) ∨ q)
+		=    <Symmetry of ∨(3.24), with p,q:=(p∨r),q —replace (p∨r)∨q by q ∨ (p ∨ r)>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ (p ∨ r) ∨ (q ∨ (p ∨ r))
+		=    <Symmetry of ∨(3.24), with p,q:=(p∨r),(q∨(p∨r)) —replace (p∨r)∨(q∨(p∨r))
+			  by (q ∨ (p ∨ r)) ∨ (p ∨ r)>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ (q ∨ (p ∨ r)) ∨ (p ∨ r)
+		=    <Associativity of ∨(3.25), with p,q:=(q∨(p∨r)),p —replace (q∨(p∨r))∨(p∨r)
+			  by q∨((p∨r)∨(p∨r))>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ q ∨ ((p ∨ r) ∨ (p ∨ r))
+		=    <Distributivity of ∨ over ∨(3.31), with p,q,r:=(p∨r),p,r —replace (p∨r)∨(p∨r)
+			  by ((p ∨ r) ∨ p) ∨ ((p ∨ r) ∨ r)>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ q ∨ (((p ∨ r) ∨ p) ∨ ((p ∨ r) ∨ r))
+		=    <Symmetry of ∨(3.24), with q:=r —replace p∨r by r∨p>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ q ∨ (((r ∨ p) ∨ p) ∨ ((p ∨ r) ∨ r))
+		=    <Associativity of ∨(3.25), with p,q,r:=r,p,p —replace (r∨p)∨p by r∨(p∨p)>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ q ∨ ((r ∨ (p ∨ p)) ∨ ((p ∨ r) ∨ r))
+		=    <Idempotency of ∨(3.26) —replace p∨p by p>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ q ∨ ((r ∨ p) ∨ ((p ∨ r) ∨ r))
+		=    <Associativity of ∨(3.25), with q:=r —replace (p∨r)∨r by p ∨ (r ∨ r)>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ q ∨ ((r ∨ p) ∨ (p ∨ (r ∨ r)))
+		=    <Idempotency of ∨(3.26), with p:=r —replace r∨r by r>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ q ∨ ((r ∨ p) ∨ (p ∨ r))
+		=    <Symmetry of ∨(3.24), with p,q:=r,p —replace r∨p by p∨r>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ q ∨ ((p ∨ r) ∨ (p ∨ r))
+		=    <Idempotency of ∨(3.26), with p:=(p∨r) —replace (p∨r)∨(p∨r) by (p∨r)>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ (p ∨ r) ∨ q ≡ q ∨ (p ∨ r)
+		=    <Symmetry of ∨(3.24), with p=(p∨r) —replace (p∨r)∨q by q∨(p∨r )>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p ≡ q ∨ (p ∨ r) ≡ q ∨ (p ∨ r)
+		=    <Symmetry of ∨(3.24), with p,q:=r∨p,q∨(p∨r) —replace r∨p≡q∨(p∨r)≡q∨(p∨r)
+			  by r∨p>
+			p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q ≡ r ∨ p
+		=    <Symmetry of ≡(3.2), with p,q:=(p≡r∨p≡r∨q≡r∨(p∨q)),r∨p —replace
+			  p≡r∨p≡r∨q≡r∨(p∨q)≡r∨p by r∨p≡p≡r∨p≡r∨q≡r∨(p∨q)>
+			r ∨ p ≡ p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q
+		=    <Symmetry of ≡(3.2), with p,q:=r∨p,p —replace r∨p≡p by p≡r∨p>
+			p ≡ r ∨ p ≡ r ∨ p ≡ r ∨ q ≡ r ∨ p ∨ q
+		=    <Symmetry of ≡(3.2), with q:=r∨p —replace p≡r∨p≡r∨p by p>
+			p ≡ r ∨ q ≡ r ∨ p ∨ q
+		=    <Symmetry of ∨(3.24), with p:=r —replace r∨q by q∨r>
+			p ≡ q ∨ r ≡ r ∨ p ∨ q
+		=    <Symmetry of ∨(3.24), with p,q:=r,p —replace r∨p by p∨r>
+			p ≡ q ∨ r ≡ p ∨ r ∨ q
+		=    <Symmetry of ∨(3.24), with p:=r —replace r∨q by q∨r>
+			p ≡ q ∨ r ≡ p ∨ q ∨ r
+		=    <Golden rule(3.35), with q:=q∨r —replace p≡q∨r≡p∨q∨r by p∧(q∨r)>
+			p ∧ (q ∨ r)
+3.47 De Morgan:
+		1. ¬(p ∧ q) ≡ ¬ p ∨ ¬q
+		2. ¬(p ∨ q) ≡ ¬ p ∧ ¬q
+3.32 Prove De Morgan(3.47a), ¬(p ∧ q) ≡ ¬p ∨ ¬q. Start by using the Golden rule;
+	 (3.32) should come in handy.
+	 Answer:
+		¬(p ∧ q)
+		=    <Golden rule(3.35) —replace p∧q by p≡q≡p∨q>
+			¬(p ≡ q ≡ p ∨ q)
+		=    <(3.32) —replace p∨q by p∨¬q≡p>
+			¬(p ≡ q ≡ p ∨ ¬q ≡ p)
+		=    <Symmetry of ≡(3.2), with p,q:=p∨¬q,p≡q —replace p≡q≡p∨¬q
+			  by p∨¬q≡p≡q>
+			¬(p ∨ ¬q ≡ p ≡ q ≡ p)
+		=    <Symmetry of ≡(3.2) —replace p≡q by q≡p>
+			¬(p ∨ ¬q ≡ q ≡ p ≡ p)
+		=    <Symmetry of ≡(3.2), with p,q:=q,p —replace q≡p≡p by q>
+			¬(p ∨ ¬q ≡ q)
+		=    <Symmetry of ≡(3.2), with p,q:=p∨¬q,q —replace p∨¬q≡q by q≡p∨¬q>
+			¬(q ≡ p ∨ ¬q)
+		=    <Distributivity of ¬ over ≡(3.9), with p,q:=q,p∨¬q —replace ¬(q≡p∨¬q)
+			  ¬q≡p∨¬q>
+			¬q ≡ p ∨ ¬q
+		=    <Symmetry of ∨(3.24), with q:=¬q —replace p∨¬q by ¬q∨p>
+			¬q ≡ ¬q ∨ p
+		=    <(3.32), with p,q:=¬q,p —replace ¬q≡¬q∨p by ¬q∨¬p>
+			¬q ∨ ¬p
+		=    <Symmetry of ∨(3.24), with p,q:=¬q∨¬p —replace ¬q∨¬p by ¬p∨¬q>
+			¬p ∨ ¬q
+3.33 Prove De Morgan(3.47b), ¬(p ∨ q) ≡ ¬p ∧ ¬q, beginning with the LHS and using
+	 the Golden rule.
+	 Answer:
+	 ¬(p ∨ q)
+	 =   <(3.32) —replace p∨q by p≡p∨¬q>
+		¬(p ≡ p ∨ ¬q)
+	 =  <(3.32) —replace p by p∨q≡p∨¬q>
+		¬(p ∨ q ≡ p ∨ ¬q ≡ p ∨ ¬q)
+	 =  <(3.32) —replace p∨q by p≡p∨¬q>
+		¬(p ≡ p ∨ ¬q ≡ p ∨ ¬q ≡ p ∨ ¬q)
+	 =   <Distributivity of ¬ over≡(3.9), with p,q:=p,p∨¬q≡p∨¬q≡p∨¬q —replace
+		  ¬(p≡p∨¬q≡p∨¬q≡p∨¬q) by ¬p≡p∨¬q≡p∨¬q≡p∨¬q>
+		¬p ≡ p ∨ ¬q ≡ p ∨ ¬q ≡ p ∨ ¬q
+	 =   <Idempotency of ∨(3.26) —replace p by p∨p>
+		¬p ≡ p ∨ ¬q ≡ p ∨ p ∨ ¬q ≡ p ∨ ¬q
+	 =   <Symmetry of ∨(3.26), with q:=¬q —replace p∨¬q by ¬q∨p>
+		¬p ≡ p ∨ ¬q ≡ p ∨ ¬q ∨ p ≡ p ∨ ¬q
+	 =   <(3.32), with p,q:=p∨¬q,p —replace p∨¬q∨p≡p∨¬q by p∨¬q∨¬p>
+		¬p ≡ p ∨ ¬q ≡ p ∨ ¬q ∨ ¬p
+	 =   <Symmetry of ∨(3.26), with p,q:=p∨¬q,¬p —replace p∨¬q∨¬p by ¬p∨p∨¬q>
+		¬p ≡ p ∨ ¬q ≡ ¬p ∨ p ∨ ¬q
+	 =   <Golden rule(3.35), with p,q:=¬p,p∨¬q —replace ¬p≡p∨¬q≡¬p∨p∨¬q
+		  by ¬p∧(p∨¬q)>
+		¬p ∧ (p ∨ ¬q)
+	 =   <Double negation(3.12) —replace p by ¬¬p>
+		¬p ∧ (¬¬p ∨ ¬q)
+	 =   <Absorption(3.44a), with p,q:=¬p,¬q —replace ¬p∧(¬¬p∨¬q) by ¬p∧¬q>
+		¬p ∧ ¬q
+3.34 Prove (p ∧ q) ∨ (p ∧ ¬q) ≡ p
+	 Answer:
+	 (p ∧ q) ∨ (p ∧ ¬q)
+	 =   <Distributivity of ∧ over ∨(3.46), with r:=¬q —replace (p∧q)∨(p∧¬q)
+		  by p ∧(q ∨¬q)>
+		p ∧ (q ∨ ¬q)
+	 =   <Metatheorem(3.7), Excluded middle(3.28), with p:=q and theorem(3.4)
+		  —replace q∨¬q by true>
+		p ∧ true
+	 =   <Identity of ∧(3.39), —replace p∧true by p>
+		p
+3.35 Prove (3.48), p ∧ q ≡ p ∧ ¬q ≡ ¬p. Theorem(3.32) should come in
+	 handy.
+	 Answer:
+	 p ∧ q
+	 =   <Golden rule(3.35) —replace p∧q by p≡q≡p∨q>
+		p ≡ q ≡ p ∨ q
+	 =   <Symmetry of ∨(3.24) —replace p≡q by q≡p>
+		q ≡ p ≡ p ∨ q
+	 =   <(3.32) —replace p≡p∨q by p∨¬q>
+		q ≡ p ∨ ¬q
+	 =   <Golden rule(3.35), with q:=¬q —replace p∨¬q by p≡¬q≡p∧¬q>
+		q ≡ p ≡ ¬q ≡ p ∧ ¬q
+	 =   <Symmetry of ≡(3.2), with p,q:=q≡p,¬q —replace q≡p≡¬q by ¬q≡q≡p>
+		¬q ≡ q ≡ p ≡ p ∧ ¬q
+	 =   <Distributivity of ¬ over ≡(3.9), with p,q:=q,q≡p≡p∧¬q —replace ¬q≡q≡p≡p∧¬q
+		  by ¬(q≡q≡p≡p∧¬q)>
+		¬(q ≡ q ≡ p ≡ p ∧ ¬q)
+	 =   <Symmetry of ≡(3.2), with p,q:=q≡q,p —replace q≡q≡p by p≡q≡q>
+		¬(p ≡ q ≡ q ≡ p ∧ ¬q)
+	 =   <Symmetry of ≡(3.2) —replace p≡q≡q by p>
+		¬(p ≡ p ∧ ¬q)
+	 =   <Distributivity of ¬ over ≡(3.9), with q:=p∧¬q —replace ¬(p≡p∧¬q)
+		  by ¬p≡p∧¬q>
+		¬p ≡ p ∧ ¬q
+	 =   <Symmetry of ≡(3.2), with p,q:=¬p,p∧¬q —replace ¬p≡p∧¬q by p∧¬q≡¬p>
+		p ∧ ¬q ≡ ¬p
+3.36 Prove (3.50), p ∧ (q ≡ p) ≡ p ∧ q, using (3.49) with the instantiation
+	 r:=p.
+	 Answer:
+	 p ∧ (q ≡ p)
+	 =   <(3.49), with r:=p —replace p∧(q≡p) by p∧q≡p∧p≡p>
+		p ∧ q ≡ p ∧ p ≡ p
+	 =   <Identity of ∧(3.39) —replace p∧p by p>
+		p ∧ q ≡ p ≡ p
+	 =   <Symmetry of ≡(3.2), with p,q:=p∧q,p —replace p∧q≡p≡p by p ∧ q>
+		p ∧ q
+3.37 Prove Replacement(3.51), (p ≡ q) ∧ (r ≡ p) ≡ (p ≡ q) ∧ (r ≡ q), by proving
+	 that the LHS and the RHS each equivale p ≡ q ≡ r ≡ p ∨ q ≡ q ∨ r ≡ r ∨ p.
+	 The transformation of the LHS (or the RHS) to this expression can be done
+	 by applying (3.27) three times.
+	 Answer:
+	 (p ≡ q) ∧ (r ≡ p) ≡ (p ≡ q) ∧ (r ≡ q)
+	 =   <Golden rule(3.35), with p,q:=(p≡q),(r≡p) —replace (p≡q)∧(r≡p)
+		  by (p≡q)≡(r≡p)≡(p≡q)∨(r≡p) twice>
+		p ≡ q ≡ r ≡ p ≡ (p ≡ q) ∨ (r ≡ p) ≡ (p ≡ q) ≡ (r ≡ p) ≡ (p ≡ q) ∨ (r ≡ p)
+	 =   <Distributivity of ∨ over ≡(3.27), with p,q,r:=(p≡q),r,p —replace (p≡q)∨(r≡p)
+		  by ((p≡q)∨r)≡((p≡q)∨p) twice>
+		p ≡ q ≡ r ≡ p ≡ ((p ≡ q) ∨ r) ≡ ((p ≡ q) ∨ p) ≡ p ≡ q ≡ r ≡ p ≡ ((p ≡ q) ∨ r) ≡ ((p ≡ q) ∨ p)
+	 =   <Symmetry of ∨(3.24), with p,q:=(p≡q),r —replace (p≡q)∨r by r∨(p≡q) twice>
+		p ≡ q ≡ r ≡ p ≡ (r ∨ (p ≡ q)) ≡ ((p ≡ q) ∨ p) ≡ p ≡ q ≡ r ≡ p ≡ (r ∨ (p ≡ q)) ≡ ((p ≡ q) ∨ p)
+	 =   <Symmetry of ∨(3.24), with p,q:=(p≡q),p —replace (p≡q)∨p by p∨(p≡q) twice>
+		p ≡ q ≡ r ≡ p ≡ (r ∨ (p ≡ q)) ≡ (p ∨ (p ≡ q)) ≡ p ≡ q ≡ r ≡ p ≡ (r ∨ (p ≡ q)) ≡ (p ∨ (p ≡ q))
+	 =   <Distributivity of ∨ over ≡(3.27), with p,q,r:=r,p,q —replace r∨(p≡q) by r∨p≡r∨q twice>
+		p ≡ q ≡ r ≡ p ≡ r ∨ p ≡ r ∨ q ≡ (p ∨ (p ≡ q)) ≡ p ≡ q ≡ r ≡ p ≡ r ∨ p ≡ r ∨ q ≡ (p ∨ (p ≡ q))
+	 =   <Distributivity of ∨ over ≡(3.27), with p,q,r:=p,p,q —replace p∨(p≡q) by p∨p≡p∨q twice>
+		p ≡ q ≡ r ≡ p ≡ r ∨ p ≡ r ∨ q ≡ p ∨ p ≡ p ∨ q ≡ p ≡ q ≡ r ≡ p ≡ r ∨ p ≡ r ∨ q ≡ p ∨ p ≡ p ∨ q
+	 =   <Idempotency of ∨(3.26) —replace p∨p by p twice>
+		p ≡ q ≡ r ≡ p ≡ r ∨ p ≡ r ∨ q ≡ p ≡ p ∨ q ≡ p ≡ q ≡ r ≡ p ≡ r ∨ p ≡ r ∨ q ≡ p ≡ p ∨ q
+	 =   <Symmetry of ≡(3.2), with p,q:=r∨p≡r∨q,p —replace r∨p≡r∨q≡p by p≡r∨p≡r∨q twice>
+		p ≡ q ≡ r ≡ p ≡ p ≡ r ∨ p ≡ r ∨ q ≡ p ∨ q ≡ p ≡ q ≡ r ≡ p ≡ p ≡ r ∨ p ≡ r ∨ q ≡ p ∨ q
+	 =   <Symmetry of ≡(3.2), with p,q:=p≡q≡r,p —replace p≡q≡r≡p≡p by p≡q≡r twice>
+			p ≡ q ≡ r ≡ r ∨ p ≡ r ∨ q ≡ p ∨ q ≡ p ≡ q ≡ r ≡ r ∨ p ≡ r ∨ q ≡ p ∨ q
+	 =   <Symmetry of ∨(3.24), with p,q:=q,r —replace r∨q by q∨r twice>
+			p ≡ q ≡ r ≡ r ∨ p ≡ q ∨ r ≡ p ∨ q ≡ p ≡ q ≡ r ≡ r ∨ p ≡ q ∨ r ≡ p ∨ q
+	 =   <Symmetry of ∨(3.24), with p,q:=r∨p≡q∨r,p∨q —replace r∨p≡q∨r≡p∨q
+		  by p∨q≡r∨p≡q∨r twice>
+		p ≡ q ≡ r ≡ p ∨ q ≡ r ∨ p ≡ q ∨ r ≡ p ≡ q ≡ r ≡ p ∨ q ≡ r ∨ p ≡ q ∨ r
+	 =   <Symmetry of ∨(3.24), with p,q:=r∨p,q∨r —replace r∨p≡q∨r by q∨r≡r∨p twice>
+		p ≡ q ≡ r ≡ p ∨ q ≡ q ∨ r ≡ r ∨ p ≡ p ≡ q ≡ r ≡ p ∨ q ≡ q ∨ r ≡ r ∨ p
+3.38 Prove Replacement(3.51), (p ≡ q) ∧ (r ≡ p) ≡ (p ≡ q) ∧ (r ≡ q), by making
+	 immediate use of Distributivity of ∧ over ≡(3.49) to replace both equivalents.
+	 Answer:
+	 (p ≡ q) ∧ (r ≡ p) ≡ (p ≡ q) ∧ (r ≡ q)
+	 =   <Distributivity of ∧ over ≡(3.49), with p,q,r:=(p≡q),r,p —replace (p≡q)∧(r≡p)
+		  by ((p≡q)∧r)≡((p≡q)∧p)≡(p≡q) twice>
+		((p ≡ q) ∧ r) ≡ ((p ≡ q) ∧ p) ≡ p ≡ q ≡ ((p ≡ q) ∧ r) ≡ ((p ≡ q) ∧ p) ≡ p ≡ q
+	 =   <Symmetry of ∧(3.36), with p,q:=(p≡q),r —replace (p≡q)∧r by r∧(p≡q) twice>
+		(r ∧ (p ≡ q)) ≡ ((p ≡ q) ∧ p) ≡ p ≡ q ≡ (r ∧ (p ≡ q)) ≡ ((p ≡ q) ∧ p) ≡ p ≡ q
+	 =   <Symmetry of ∧(3.36), with p,q:=(p≡q),p —replace (p≡q)∧p by p∧(p≡q) twice>
+		(r ∧ (p ≡ q)) ≡ (p ∧ (p ≡ q)) ≡ p ≡ q ≡ (r ∧ (p ≡ q)) ≡ (p ∧ (p ≡ q)) ≡ p ≡ q
+	 =   <Distributivity of ∧ over ≡(3.49), with p,q,r:=r,p,q —replace r∧(p≡q)
+		  by r∧p≡r∧q≡r twice>
+		r ∧ p ≡ r ∧ q ≡ r ≡ (p ∧ (p ≡ q)) ≡ p ≡ q ≡ r ∧ p ≡ r ∧ q ≡ r ≡ (p ∧ (p ≡ q)) ≡ p ≡ q
+	 =   <Distributivity of ∧ over ≡(3.49), with q,r:=p,q —replace p∧(p≡q)
+		  by p∧p≡p∧q≡p twice>
+		r ∧ p ≡ r ∧ q ≡ r ≡ p ∧ p ≡ p ∧ q ≡ p ≡ p ≡ q ≡ r ∧ p ≡ r ∧ q ≡ r ≡ p ∧ p ≡ p ∧ q ≡ p ≡ p ≡ q
+	 =   <Idempotency of ∧(3.38) —replace p∧p by p twice>
+		r ∧ p ≡ r ∧ q ≡ r ≡ p ≡ p ∧ q ≡ p ≡ p ≡ q ≡ r ∧ p ≡ r ∧ q ≡ r ≡ p ≡ p ∧ q ≡ p ≡ p ≡ q
+	 =   <Symmetry of ≡(3.2), with p,q:=p∧q,p —replace p∧q≡p≡p by p∧q twice>
+		r ∧ p ≡ r ∧ q ≡ r ≡ p ≡ p ∧ q ≡ q ≡ r ∧ p ≡ r ∧ q ≡ r ≡ p ≡ p ∧ q ≡ q
+	 =   <Golden rule(3.35), with p,q:=r,p —replace r∧p by r≡p≡r∨p twice>
+		r ≡ p ≡ r ∨ p ≡ r ∧ q ≡ r ≡ p ≡ p ∧ q ≡ q ≡ r ≡ p ≡ r ∨ p ≡ r ∧ q ≡ r ≡ p ≡ p ∧ q ≡ q
+	 =   <Golden rule(3.35), with p,q:=r,q —replace r∧p by r≡q≡r∨q twice>
+		r ≡ p ≡ r ∨ p ≡ r ≡ q ≡ r ∨ q ≡ r ≡ p ≡ p ∧ q ≡ q ≡ r ≡ p ≡ r ∨ p ≡ r ≡ q ≡ r ∨ q ≡ r ≡ p ≡ p ∧ q ≡ q
+	 =   <Golden rule(3.35) —replace p∧q by p≡q≡p∨q twice>
+		r ≡ p ≡ r ∨ p ≡ r ≡ q ≡ r ∨ q ≡ r ≡ p ≡ p ≡ q ≡ p ∨ q ≡ q ≡ r ≡ p ≡ r ∨ p ≡ r ≡ q ≡ r ∨ q ≡ r ≡ p ≡ p ≡ q ≡ p ∨ q ≡ q
+	 =   <Symmetry of ≡(3.2), with p,q:=r,p —replace r≡p≡p by r twice>
+		r ≡ p ≡ r ∨ p ≡ r ≡ q ≡ r ∨ q ≡ r ≡ q ≡ p ∨ q ≡ q ≡ r ≡ p ≡ r ∨ p ≡ r ≡ q ≡ r ∨ q ≡ r ≡ q ≡ p ∨ q ≡ q
+	 =   <Symmetry of ≡(3.2), with p,q:=p∨q,q —replace p∨q≡q by q≡p∨q twice>
+		r ≡ p ≡ r ∨ p ≡ r ≡ q ≡ r ∨ q ≡ r ≡ q ≡ q ≡ p ∨ q ≡ r ≡ p ≡ r ∨ p ≡ r ≡ q ≡ r ∨ q ≡ r ≡ q ≡ q ≡ p ∨ q
+	 =   <Symmetry of ≡(3.2), with p,q:=r,q —replace r≡q≡q by r twice>
+		r ≡ p ≡ r ∨ p ≡ r ≡ q ≡ r ∨ q ≡ r ≡ p ∨ q ≡ r ≡ p ≡ r ∨ p ≡ r ≡ q ≡ r ∨ q ≡ r ≡ p ∨ q
+	 =   <Symmetry of ≡(3.2), with p,q:=q≡r∨q,r —replace q≡r∨q≡r by r≡q≡r∨q twice>
+		r ≡ p ≡ r ∨ p ≡ r ≡ r ≡ q ≡ r ∨ q ≡ p ∨ q ≡ r ≡ p ≡ r ∨ p ≡ r ≡ r ≡ q ≡ r ∨ q ≡ p ∨ q
+	 =   <Symmetry of ≡(3.2), with p,q:=r∨p,r —replace r∨p≡r≡r by r∨p twice>
+		r ≡ p ≡ r ∨ p ≡ q ≡ r ∨ q ≡ p ∨ q ≡ r ≡ p ≡ r ∨ p ≡ q ≡ r ∨ q ≡ p ∨ q
+	 =   <Symmetry of ≡(3.2), with p,q:=r∨p,q≡r∨q≡p∨q —replace r∨p≡q≡r∨q≡p∨q by q≡r∨q≡p∨q≡r∨p twice>
+		r ≡ p ≡ q ≡ r ∨ q ≡ p ∨ q ≡ r ∨ p ≡ r ≡ p ≡ q ≡ r ∨ q ≡ p ∨ q ≡ r ∨ p
+	 =   <Symmetry of ≡(3.2), with p,q:=r∨q,p∨q —replace r∨q≡p∨q by p∨q≡r∨q twice>
+		r ≡ p ≡ q ≡ p ∨ q ≡ r ∨ q ≡ r ∨ p ≡ r ≡ p ≡ q ≡ p ∨ q ≡ r ∨ q ≡ r ∨ p
+	 =   <Symmetry of ≡(3.2), with p,q:=r,q —replace r∨q by q∨r twice>
+		r ≡ p ≡ q ≡ p ∨ q ≡ q ∨ r ≡ r ∨ p ≡ r ≡ p ≡ q ≡ p ∨ q ≡ q ∨ r ≡ r ∨ p
+	 =   <Symmetry of ≡(3.2), with p,q:=r,p≡q —replace r≡p≡q by p≡q≡r twice>
+		p ≡ q ≡ r ≡ p ∨ q ≡ q ∨ r ≡ r ∨ p ≡ p ≡ q ≡ r ≡ p ∨ q ≡ q ∨ r ≡ r ∨ p
+3.39 Prove Definition of ≡(3.52), p ≡ q ≡ (p ∧ q) ∨ (¬p ∧ ¬q).
+	 Hint: Apply theorem(3.32), p ∨ q ≡ p ∨ ¬q ≡ p, to the RHS.
+	 Answer:
+	 (p ∧ q) ∨ (¬p ∧ ¬q)
+	 =   <De Morgan(3.47b) —replace ¬p∧¬q by ¬(p∨q)>
+		(p ∧ q) ∨ ¬(p ∨ q)
+	 =   <(3.32), with p,q:=p∧q,p∨q —replace (p∧q)∨¬(p∨q) by (p∧q)≡(p∧q)∨(p∨q)>
+		p ∧ q ≡ (p ∧ q) ∨ (p ∨ q)
+	 =   <Distributivity of ∨ over ∨(3.31), with p,q,r:=p∧q,p,q —replace
+		  (p∧q)∨(p∨q) by ((p∧q)∨p)∨((p∧q)∨q)>
+		p ∧ q ≡ ((p ∧ q) ∨ p) ∨ ((p ∧ q) ∨ q)
+	 =   <Symmetry of ∨(3.24), with p,q:=(p∧q),p —replace (p∧q)∨p by p ∨ (p ∧ q)>
+		p ∧ q ≡ (p ∨ (p ∧ q)) ∨ ((p ∧ q) ∨ q)
+	 =   <Symmetry of ∨(3.24), with p,q:=(p∧q),q —replace (p∧q)∨q by q ∨ (p ∧ q)>
+		p ∧ q ≡ (p ∨ (p ∧ q)) ∨ (q ∨ (p ∧ q))
+	 =   <Absorption(3.43b) —replace p∨(p∧q) by p>
+		p ∧ q ≡ p ∨ (q ∨ (p ∧ q))
+	 =   <Symmetry of ∧(3.36) —replace p∧q by q∧p>
+		p ∧ q ≡ p ∨ (q ∨ (q ∧ p))
+	 =   <Absorption(3.43b), with p,q:=q,p —replace q∨(q∧p) by q>
+		p ∧ q ≡ p ∨ q
+	 =   <Golden rule(3.35) —replace p∧q≡p∨q by p≡q>
+		p ≡ q
+3.40 Prove Exclusive or(3.53), p ≢ q ≡ (¬p ∧ q) ∨ (p ∧ ¬q). Hint: Try to apply
+	 Definition of ≡(3.52).
+	 Answer:
+	 (¬p ∧ q) ∨ (p ∧ ¬q)
+	 =   <Definition of ≡(3.52), with p,q:=¬p,q —replace (¬p∧q)∨(p∧¬q) by ¬p≡q>
+		¬p ≡ q
+	 =   <Theorem(3.14) —replace ¬p≡q by p≢q>
+		p ≢ q
+3.41 Prove Implication(3.59), p → q ≡ ¬p ∨ q. At one point of the proof,you may find theorem(3.32) useful.
+	 Answer:
+	 p → q
+	 =   <→(3.57) —replace p→q by p∨q≡q>
+		p ∨ q ≡ q
+	 =   <Symmetry of ≡(3.2), with p:=p∨q —replace q≡p∨q>
+		q ≡ p ∨ q
+	 =   <Symmetry of ∨(3.24) —replace p∨q by q∨p>
+		q ≡ q ∨ p
+	 =   <(3.32), with p,q:=q,p —replace q≡q∨p by q∨¬p>
+		q ∨ ¬p
+	 =   <Symmetry of ∨(3.24) —replace q∨¬p by ¬p∨q>
+		¬p ∨ q
+3.42 Prove Implication(3.60), p → q ≡ p ∧ q ≡ p.
+	Answer:
+	 p → q
+	 =   <→(3.57) —replace p→q by p∨q≡q>
+		p ∨ q ≡ q
+	 =   <Symmetry of ≡(3.2), with p:=p∨q —replace q≡p∨q>
+		q ≡ p ∨ q
+	 =   <Symmetry of ∨(3.24) —replace p∨q by q∨p>
+		q ≡ q ∨ p
+	 =   <Golden rule(3.35), with q,p:=p,q —replace q≡q∨p by p≡p∧q>
+		p ≡ p ∧ q
+	 =   <Symmetry of ≡(3.2) —replace p≡p∧q by p∧q≡p>
+		p ∧ q ≡ p
+3.43 Prove Contrapositive(3.60), p → q ≡ ¬q → ¬p.
+	 Answer:
+	 p → q
+	 =   <Implication(3.59) —replace p→q by ¬p∨q>
+		¬p ∨ q
+	 =   <(3.32), with p:=¬p —replace ¬p∨q by ¬p≡¬p∨¬q>
+		¬p ≡ ¬p ∨ ¬q
+	 =   <Symmetry of ≡(3.2), with p,q:=¬p,¬p∨¬q —replace ¬p≡¬p∨¬q by ¬p∨¬q≡¬p>
+		¬p ∨ ¬q ≡ ¬p
+	 =   <Symmetry of ∨(3.24), with p,q:=¬p,¬q —replace ¬p∨¬q by ¬q∨¬p>
+		¬q ∨ ¬p ≡ ¬p
+	 =   <→(3.57), with p,q:=¬q,¬p —replace ¬q∨¬p≡¬p by ¬q→¬p>
+		¬q → ¬p
+3.44 Prove p → q ≡ ¬(p∧¬q). Axiom(3.57) may not be the best choice to eliminate the
+	 implication.
+	 Answer:
+	 p → q
+	 =   <Implication(3.59) —replace p→q by ¬p∨q>
+		¬p ∨ q
+	 =   <Double negation(3.12), with p:=q —replace q by ¬¬q>
+		¬p ∨ ¬¬q
+	 =   <De Morgan(3.47a) with q:=¬q —replace ¬p∨¬¬q by ¬(p∧¬q)>
+		¬(p ∧ ¬q)
+3.45 Prove p → q ≡ ¬p ∨ ¬q ≡ ¬p
+	 Answer:
+	 p → q
+	 =   <Implication(3.59) —replace p→q by ¬p∨q>
+		¬p ∨ q
+	 =   <(3.32), with p,q:=¬p,q —replace ¬p∨q by ¬p≡¬p∨¬q>
+		¬p ≡ ¬p ∨ ¬q
+	 =   <Symmetry of ≡(3.2), with p,q:=¬p,¬p∨¬q —replace ¬p≡¬p∨¬q by ¬p∨¬q≡¬p>
+		¬p ∨ ¬q ≡ ¬p
+3.46 Prove p → q ≡ ¬p ∧ ¬q ≡ ¬q
+	 Answer:
+	 p → q
+	 =   <Implication(3.59) —replace p→q by ¬p∨q>
+		¬p ∨ q
+	 =   <Symmetry of ∨(3.24), with p:=¬p —replace ¬p∨q by q∨¬p>
+		q ∨ ¬p
+	 =   <(3.32), with p,q:=q,p —replace q∨¬p by p∨q≡q>
+		p ∨ q ≡ q
+	 =   <Double negation(3.12), with p:=q —replace q by ¬¬q>
+		p ∨ q ≡ ¬¬q
+	 =   <Symmetry of ≡(3.2), with p,q:=¬¬q,p∨q —replace p∨q≡¬¬q by ¬¬q≡p∨q>
+		¬¬q ≡ p ∨ q
+	 =   <Distributivity of ¬ over ≡(3.9), with p,q:=¬q,p∨q —replace ¬¬q≡p∨q
+		  by ¬(¬q≡p∨q)>
+		¬(¬q ≡ p ∨ q)
+	 =   <Symmetry of ≡(3.2), with p,q:=¬q,p∨q —replace ¬q≡p∨q by p∨q≡¬q>
+		¬(p ∨ q ≡ ¬q)
+	 =   <Distributivity of ¬ over ≡(3.9), with p,q:=p∨q,¬q —replace ¬(p∨q≡¬q)
+		  by ¬(p ∨ q) ≡ ¬q>
+		¬(p ∨ q) ≡ ¬q
+	 =   <De Morgan(3.47b) —replace ¬(p∨q) by ¬p∧¬q>
+		¬p ∧ ¬q ≡ ¬q
+3.47 Prove Distributivity of → over ≡(3.63), p → (q ≡ r) ≡ p → q ≡ p → r.
+	 Answer:
+	 p → (q ≡ r)
+	 =   <Implication(3.57), with q:=(q≡r) —replace p→(q≡r) by p∨(q≡r)≡q≡r>
+		p ∨ (q ≡ r) ≡ q ≡ r
+	 =   <Distributivity of ∨ over ≡(3.27) —replace p∨(q≡r) by p∨q≡p∨r>
+		p ∨ q ≡ p ∨ r ≡ q ≡ r
+	 =   <Symmetry of ≡(3.2), with p:=p∨r —replace p∨r≡q by q≡p∨r>
+		p ∨ q ≡ q ≡ p ∨ r ≡ r
+	 =   <Implication(3.57) —replace p∨q≡q by p→q>
+		p → q ≡ p ∨ r ≡ r
+	 =   <Implication(3.57) —replace p∨r≡r by p→r>
+		p → q ≡ p → r
+3.48 Prove theorem(3.64), p → (q → r) ≡ (p → q) → (p → r).
+	 p → (q → r)
+	 Answer:
+	 =   <Implication(3.59), with q:=q→r —replace p→(q→r) by ¬p∨(q→r)>
+		¬p ∨ (q → r)
+	 =   <Implication(3.59), with p,q:=q,r —replace q→r by ¬q∨r>
+		¬p ∨ (¬q ∨ r)
+	 =   <Associativity of ∨(3.25), with p,q:=¬p,¬q —replace ¬p∨(¬q∨r)
+		  by (¬p∨¬q)∨r>
+		(¬p ∨ ¬q) ∨ r
+	 =   <Absorption(3.44b), with p,q:=¬p,¬q —replace (¬p∨¬q) by ¬p∨(¬¬p∧¬q)>
+		¬p ∨ (¬¬p ∧ ¬q) ∨ r
+	 =   <Symmetry of ∨(3.24), with p,q:=¬p,(¬¬p∧¬q) —replace ¬p∨(¬¬p∧¬q) by (¬¬p∧¬q)∨¬p>
+		(¬¬p ∧ ¬q) ∨ ¬p ∨ r
+	 =   <De Morgan(3.47b), with p:=¬p —replace ¬¬p∧¬q by ¬(¬p∨q)>
+		¬(¬p ∨ q) ∨ ¬p ∨ r
+	 =   <Implication(3.59) —replace ¬p∨q by p→q>
+		¬(p → q) ∨ (¬p ∨ r)
+	 =   <Implication(3.59) —replace ¬p∨r by p→r>
+		¬(p → q) ∨ (p → r)
+	 =   <Implication(3.59), with p,q:=p→q,p→r —replace ¬(p→q)∨(p→r)
+		  by (p→q)→(p→r)>
+		(p → q) → (p → r)
+3.49 Prove Currying(3.65), p ∧ q → r ≡ p → (q → r). Use the heuristic of Definition
+	 Elimination, (3.23), on page 48. Use of one of (3.59)—(3.61) instead of (3.57)
+	 to remove the implication will be more fruitful.
+	 Answer:
+	 p ∧ q → r
+	 =   <Def. of →(3.59), with p,q:=p∧q,r —replace p∧q→r
+		  by ¬(p∧q)∨r>
+		¬(p ∧ q) ∨ r
+	 =   <De Morgan(3.47a) —replace ¬(p∧q) by (¬p ∨ ¬q)>
+		(¬p ∨ ¬q) ∨ r
+	 =   <Associativity of ∨(3.25), with p,q:=¬p,¬q —replace (¬p∨¬q)∨r
+		  by ¬p ∨ (¬q ∨ r)>
+		¬p ∨ (¬q ∨ r)
+	 =   <Definition of Implication(3.59), with p,q:=q,r —replace ¬q∨r by q→r>
+		¬p ∨ (q → r)
+	=   <Definition of Implication(3.59), with q:=(q→r) —replace ¬p∨(q→r)
+		  by p→(q→r)>
+		p → (q → r)
+3.50 Prove theorem(3.66), p ∧ (p → q) ≡ p ∧ q. Hint: Try to eliminate the
+	 implication in a manner that allows an Absorption law to be used.
+	 Answer:
+	 p ∧ (p → q)
+	 =   <Def. of →(3.59) —replace p→q ¬p∨q>
+		p ∧ (¬p ∨ q)
+	 =   <Absorption(3.44a) —replace p∧(¬p∨q) by p∧q>
+		p ∧ q
+3.51 Prove theorem(3.67), p ∧ (q → p) ≡ p. Hint: Try to eliminate the implication
+	 in a manner that allows an Absorption law to be used.
+	 Answer:
+	 p ∧ (q → p)
+	 =   <Contrapositive(3.61), with p,q:=q,p —replace ¬p→¬q>
+		p ∧ (¬p → ¬q)
+	 =   <→(3.59), with p,q:=¬p,¬q —replace ¬p→¬q by ¬¬p∨¬q>
+		p ∧ (¬¬p ∨ ¬q)
+	 =   <Double negation(3.12) —replace ¬¬p by p>
+		p ∧ (p ∨ ¬q)
+	 =   <Absorption(3.43a), with q:=¬q —replace p∧(p∨¬q) by p>
+		p
+3.52 Prove theorem (3.68), p ∨ (p → q) ≡ true. Hint: Use (3.59) to eliminate the
+	 implication.
+	 Answer:
+	 p ∨ (p → q)
+	 =   <Def. of →(3.59) —replace p→q by ¬p∨q>
+		p ∨ (¬p ∨ q)
+	 =   <Associativity of ∨(3.25), with q,r:=¬p,q —replace p∨(¬p∨q) by (p∨¬p)∨q>
+		(p ∨ ¬p) ∨ q
+	 =   <Metatheorem(3.7), Excluded middle(3.28) and true(3.4) —replace p∨¬p by true>
+		true ∨ q
+	 =   <Symmetry of ∨(3.24), with p,q:=true,q —replace true∨q by q∨true>
+		q ∨ true
+	 =   <Zero of ∨(3.29), with p:=q —replace q∨true by true>
+		true
+3.53 Prove theorem(3.69), p ∨ (q → p) ≡ q → p. Hint: use (3.59) to eliminate the
+	 implication.
+	 Answer:
+	 p ∨ (q → p)
+	 =   <→(3.59), with p,q:=q,p —replace q→p by ¬q∨p>
+		p ∨ (¬q ∨ p)
+	 =   <Symmetry of ∨(3.24), with p,q:=p,(¬q∨p) —replace p∨(¬q∨p) by (¬q∨p)∨p>
+		(¬q ∨ p) ∨ p
+	 =   <Associativity of ∨(3.25), with p,q,r:=¬q,p,p —replace (¬q∨p)∨p
+		  by ¬q∨(p∨p)>
+		¬q ∨ (p ∨ p)
+	 =   <Idempotency of ∨(3.26) —replace p∨p by p>
+		¬q ∨ p
+	 =   <→(3.59), with p,q:=q,p —replace ¬q∨p by q→p>
+		q → p
+3.54 Prove theorem(3.70), p ∨ q → p ∧ q ≡ p ≡ q. Hint: Start with p ∨ q → p ∧ q
+	 and remove the implication. Head toward a use of the alternative definition
+	 of ≡.
+	 Answer:
+	 p ∨ q → p ∧ q
+	 =   <Def. of →(3.59), with p,q:=p∨q,p∧q —replace p∨q→p∧q
+		  by ¬(p∨q)∨(p∧q)>
+		¬(p ∨ q) ∨ (p ∧ q)
+	 =   Symmetry of ∨(3.24), with p,q:=¬(p∨q),(p∧q) —replace ¬(p∨q)∨(p∧q)
+		  by (p∧q)∨¬(p∨q)>
+		(p ∧ q) ∨ ¬(p ∨ q)
+	 =   <De Morgan(3.47b) —replace ¬(p∨q) by (¬p∧¬q)>
+		(p ∧ q) ∨ (¬p ∧ ¬q)
+	 =   <Def. of ≡(3.52) —replace (p∧q)∨(¬p∧¬q) with p≡q>
+		p ≡ q
+3.55 Prove Reflexivity of →(3.71), p → p ≡ true
+	 Answer:
+	 p → p
+	 =   <Def. of →(3.60), with q:=p —replace p→p by p∧p≡p>
+		p ∧ p ≡ p
+	 =   <Idempotency of ∧(3.38) —replace p∧p by p>
+		p ≡ p
+	 =   <Metatheorem(3.7), Reflexivity of ≡(3.5) and true(3.4) —replace p≡p by true>
+		true
+3.56 Prove Right zero of →(3.72), p → true ≡ true.
+	 Answer:
+	 p → true
+	 =   <Def. of →(3.59), with q:=true —replace p→true by ¬p∨true>
+		¬p ∨ true
+	 =   <Zero of ∨(3.29), with p:=¬p —replace ¬p∨true by true>
+		true
+3.57 Prove left identity of →(3.73), true → p ≡ p.
+	 Answer:
+	 true → p
+	 =   <Def. of →(3.59), with p,q:=true,p —replace true→p by ¬true∨p>
+		¬true ∨ p
+	 =   <Def. of false(3.8) —replace ¬true by false>
+		false ∨ p
+	 =   <Symmetry of ∨(3.24), with p,q:=false,p —replace false∨p by p∨false>
+		p ∨ false
+	 =   <Identity of ∨(3.30) —replace p∨false by p>
+		p
+3.58 Prove theorem(3.74), p → false ≡ ¬p.
+	 Answer:
+	 p → false
+	 =   <Def. of →(3.59), with p,q:=p,false —replace p→false by ¬p∨false>
+		¬p ∨ false
+	 =   <Identity of ∨(3.30), with p:=¬p —replace ¬p∨false by ¬p>
+		¬p
+3.59 Prove theorem(3.75), false → p ≡ true.
+	 Answer:
+	 =   <Def. of →(3.59), with p,q:=false,p —replace false→p by ¬false∨p>
+		¬false ∨ p
+	 =   <Negation of false(3.13) —replace ¬false by true>
+		true ∨ p
+	 =   <Symmetry of ∨(3.24), with p,q:=true,p —replace true∨p by p∨true>
+		p ∨ true
+	 =   <Zero of ∨(3.29) —replace p∨true by true>
+		true
+3.60 Prove Weakening/strengthing(3.76a), p → p ∨ q. After eliminating the implication
+	 (in a suitable manner), you may find it helpful to use a law of absorption.
+	 Answer:
+	 p → p ∨ q
+	 =   <Def. of →(3.60), with q:=p∨q —replace p→p∨q by p∧(p∨q)≡p>
+		p ∧ (p ∨ q) ≡ p —Absorption(3.43a)
+3.61 Prove Weakening/strengthening(3.76b), p ∧ q → p. The hint of the preceding
+	 exercise applies here also.
+	 Answer:
+	 p ∧ q → p
+	 =   <Def. of →(3.57), with p:=p∧q —replace p∧q→p by (p∧q)∨p≡p>
+		(p ∧ q) ∨ p ≡ p
+	 =   <Symmetry of ∨(3.24), with p,q:=(p∧q),p —replace (p∧q)∨p by p∨(p∧q)>
+		p ∨ (p ∧ q) ≡ p —Absorption(3.43b)
+3.62 Prove Weakening/strengthening (3.76c), p ∧ q → p ∨ q. The hint of the preceding
+	 exercise applies here also.
+	 Answer:
+	 p ∧ q → p ∨ q
+	 =   <Def. of →(3.59), with p,q:=p∧q,p∨q —replace p∧q→p∨q by ¬(p∧q)∨p∨q>
+		¬(p ∧ q) ∨ p ∨ q
+	 =   <De Morgan(3.47a) —replace ¬(p∧q) by ¬p ∨ ¬q>
+		¬p ∨ ¬q ∨ p ∨ q
+	 =   <Symmetry of ∨(3.24), with p,q:=¬p∨¬q,p∨q —replace ¬p∨¬q∨p∨q by p∨q∨¬p∨¬q>
+		p ∨ q ∨ ¬p ∨ ¬q
+	 =   <Symmetry of ∨(3.24), with p,q:=q,¬p —replace q∨¬p by ¬p∨q>
+		p ∨ ¬p ∨ q ∨ ¬q
+	 =   <Metatheorem(3.7), Excluded middle(3.28) and true(3.4) —replace p∨¬p by true>
+		true ∨ q ∨ ¬q
+	 =   <Metatheorem(3.7), Excluded middle(3.28), with p:=q and true(3.4) 
+		  —replace q∨¬q by true>
+		true ∨ true
+	 =   <Zero of ∨(3.29), with p:=true —replace true∨true by true>
+		true —theorem(3.4)
+3.63 Prove Weakening/strengthening(3.76d), p ∨ (q ∧ r) → p ∨ q. Since the main
+	 operator in this expression is ∨, one idea is to remove the implication
+	 using (3.57). Alternatively, it can be removed in one step.
+	 Answer:
+	 p ∨ (q ∧ r) → p ∨ q
+	 =   <Def. of →(3.57), with p,q:=p∨(q∧r),p∨q>
+		(p ∨ (q ∧ r)) ∨ (p ∨ q) ≡ (p ∨ q)
+	 =   <Symmetry of ∨(3.24), with p,q:=(p∨(q∧r)),(p∨q)>
+		(p ∨ q) ∨ (p ∨ (q ∧ r)) ≡ (p ∨ q)
+	 =   <Associativity of ∨(3.25), with p,q,r:=(p∨q),p,(q∧r)>
+		((p ∨ q) ∨ p) ∨ (q ∧ r) ≡ (p ∨ q)
+	 =   <Symmetry of ∨(3.24)>
+		((q ∨ p) ∨ p) ∨ (q ∧ r) ≡ (p ∨ q)
+	 =   <Associativity of ∨(3.25), with p,q,r:=q,p,p>
+		(q ∨ (p ∨ p)) ∨ (q ∧ r) ≡ (p ∨ q)
+	 =   <Idempotency of ∨(3.26)>
+		(q ∨ p) ∨ (q ∧ r) ≡ (p ∨ q)
+	 =   <Symmetry of ∨(3.24), with p,q:=q,p>
+		(p ∨ q) ∨ (q ∧ r) ≡ (p ∨ q)
+	 =   <(3.32), with p,q:=(p∨q),q∧r>
+		(p ∨ q) ∨ ¬(q ∧ r)
+	 =   <De Morgan(3.47a), with p,q:=q,r>
+		(p ∨ q) ∨ (¬q ∨ ¬r)
+	 =   <Associativity of ∨(3.25), with r:=(¬q∨¬r)>
+		p ∨ (q ∨ (¬q ∨ ¬r))
+	 =   <Associativity of ∨(3.25), with p,q,r:=q,¬q,¬r>
+		p ∨ ((q ∨ ¬q) ∨ ¬r)
+	 =   <Metatheorem(3.7), Excluded middle(3.28), with p:=q and true(3.4)>
+		p ∨ (true ∨ ¬r)
+	 =   <Symmetry of ∨(3.24), with p,q:=true,¬r>
+		p ∨ (¬r ∨ true)
+	 =   <Zero of ∨(3.29), with p:=¬r>
+		p ∨ true
+	 =   <Zero of ∨(3.29)>
+		true —theorem(3.4)
+3.64 Prove Weakening/strengthening(3.76e), p ∧ q → p ∧ (q ∨ r). Since the main operator
+	 in this expression is ∧, one idea is to remove the implication using (3.60).
+	 Alternatively, it can be proved in one step.
+	 Answer: 
+	 p ∧ q → p ∧ (q ∨ r)
+	 =   <Def. of →(3.59), with p,q:=p∧q,p∧(q∨r) —replace p∧q→p∧(q∨r)
+		  by ¬(p∧q)∨(p∧(q∨r))>
+		¬(p ∧ q) ∨ (p ∧ (q ∨ r))
+	 =   <De Morgan(3.47a) —replace ¬(p∧q) by (¬p∨¬q)>
+		(¬p ∨ ¬q) ∨ (p ∧ (q ∨ r))
+	 =   <Distributivity of ∨ over ∧(3.45), with p,q,r:=(¬p∨¬q),p,(q∨r)>
+		((¬p ∨ ¬q) ∨ p) ∧ ((¬p ∨ ¬q) ∨ (q ∨ r))
+	 =   <Symmetry of ∨(3.24), with p,q:=¬p,¬q —replace ¬p∨¬q by ¬q∨¬p>
+		((¬q ∨ ¬p) ∨ p) ∧ ((¬p ∨ ¬q) ∨ (q ∨ r))
+	 =   <Associativity of ∨(3.25), with p,q,r:=¬q,¬p,p —replace (¬q∨¬p)∨p by ¬q∨(¬p∨p)>
+		(¬q ∨ (¬p ∨ p)) ∧ ((¬p ∨ ¬q) ∨ (q ∨ r))
+	 =   <Symmetry of ∨(3.24), with p,q:=¬p,p —replace ¬p∨p by p∨¬p>
+		(¬q ∨ (p ∨ ¬p)) ∧ ((¬p ∨ ¬q) ∨ (q ∨ r))
+	 =   <Metatheorem(3.7), Excluded middle(3.28) and true(3.4) —replace p∨¬p by true>
+		(¬q ∨ true) ∧ ((¬p ∨ ¬q) ∨ (q ∨ r))
+	 =   <Zero of ∨(3.29), with p:=¬q —replace ¬q∨true by true>
+		true ∧ ((¬p ∨ ¬q) ∨ (q ∨ r))
+	 =   <Symmetry of ∧(3.36), with p,q:=true,((¬p∨¬q)∨(q∨r)), with p,q:=true,((¬p∨¬q)∨(q∨r))
+		  —replace true∧((¬p∨¬q)∨(q∨r)) by ((¬p∨¬q)∨(q∨r))true>
+		((¬p ∨ ¬q) ∨ (q ∨ r)) ∧ true
+	 =   <Identity of ∧(3.39), with p:=((¬p∨¬q)∨(q∨r)) —replace ((¬p∨¬q)∨(q∨r))∧true
+		  by ((¬p∨¬q)∨(q∨r))>
+		((¬p ∨ ¬q) ∨ (q ∨ r))
+	 =   <Associativity of ∨(3.25), with p,q,r:=(¬p∨¬q),q,r —replace ((¬p∨¬q)∨(q∨r))
+		  by ((¬p∨¬q)∨q)∨r>
+		((¬p ∨ ¬q) ∨ q) ∨ r
+	 =   <Associativity of ∨(3.25), with p,q,r:=¬p,¬q,q —replace (¬p∨¬q)∨q
+		  by ¬p ∨ (¬q ∨ q)>
+		(¬p ∨ (¬q ∨ q)) ∨ r
+	 =   <Symmetry of ∨(3.24), with p,q:=¬q,q —replace ¬q∨q by q∨¬q>
+		(¬p ∨ (q ∨ ¬q)) ∨ r
+	 =   <Metatheorem(3.7), Excluded middle(3.28), with p:=q and true(3.4) —replace q∨¬q by true>
+		(¬p ∨ true) ∨ r
+	 =   <Zero of ∨(3.29), with p:=¬p —replace ¬p∨true by true>
+		true ∨ r
+	 =   <Symmetry of ∨(3.24), with p,q:=true,r —replace true∨r by r∨true>
+		r ∨ true
+	 =   <Zero of ∨(3.29), with p:=r —replace r∨true by true>
+		true —theorem(3.4)
+3.65 Prove Modus ponens, (3.77), p ∧ (p → q) → q. Hint: Use theorem(3.66).
+	 p ∧ (p → q) → q
+	 =   <(3.66) —replace p∧(p→q) by p∧q>
+		p ∧ q → q
+	 =   <Def. of →(3.59), with p:=p∧q —replace q → p ∧ q>
+		¬(p ∧ q) ∨ q
+	 =   <De Morgan(3.47a), —replace ¬(p∧q) by ¬p∨¬q>
+		¬p ∨ ¬q ∨ q
+	 =   <Symmetry of ∨(3.24), with p:=¬q —replace ¬q∨q by q∨¬q>
+		¬p ∨ q ∨ ¬q
+	 =   <Metatheorem(3.7), Excluded middle(3.28), with p:=q and true(3.4)
+		  —replace q∨¬q by true>
+		¬p ∨ true
+	 =   <Zero of ∨(3.29), with p:=¬p —replace ¬p∨true by true>
+		true
+3.66 Prove theorem(3.78), (p → r) ∧ (q → r) ≡ (p ∨ q → r).
+	 (p → r) ∧ (q → r)
+	 =   <Def. of →(3.59), with q:=r —replace p→r by ¬p∨r>
+		(¬p ∨ r) ∧ (q → r)
+	 =   <Def. of →(3.59), with p,q:=q,r —replace q→r by ¬q∨r>
+		(¬p ∨ r) ∧ (¬q ∨ r)
+	 =   <Symmetry of ∨(3.24), with p,q:=¬p,r —replace ¬p∨r by r∨¬p>
+		(r ∨ ¬p) ∧ (¬q ∨ r)
+	 =   <Symmetry of ∨(3.24), with p,q:=¬q,r —replace ¬q∨r by r∨¬q>
+		(r ∨ ¬p) ∧ (r ∨ ¬q)
+	 =   <Distributivity of ∨ over ∧(3.45), with p,q,r:=r,¬p,¬q —replace (r∨¬p)∧(r∨¬q)
+		  by r∨(¬p∧¬q)>
+		r ∨ (¬p ∧ ¬q)
+	 =   <De Morgan(3.47b) —replace (¬p∧¬q) by ¬(p∨q)>
+		r ∨ ¬(p ∨ q)
+	 =   <Symmetry of ∨(3.24), with p,q:=r,¬(p∨q) —replace r∨¬(p∨q) by ¬(p∨q)∨r>
+		¬(p ∨ q) ∨ r
+	 =   <Def. of →(3.59), with p,q:=p∨q,r —replace ¬(p∨q)∨r by p ∨ q → r>
+		p ∨ q → r
+3.67 Prove theorem(3.79), (p → r) ∧ (¬p → r) ≡ r.
+	 (p → r) ∧ (¬p → r)
+	 =   <Def. of →(3.59), with q:=r —replace p→r by ¬p∨r>
+		(¬p ∨ r) ∧ (¬p → r)
+	 =   <Def. of →(3.59), with p,q:=¬p,r —replace ¬p→r by ¬¬p∨r>
+		(¬p ∨ r) ∧ (¬¬p ∨ r)
+	 =   <Double negation(3.12) —replace ¬¬p by p>
+		(¬p ∨ r) ∧ (p ∨ r)
+	 =   <Symmetry of ∨(3.24), with p,q:=¬p,r —replace ¬p∨r by r∨¬p>
+		(r ∨ ¬p) ∧ (p ∨ r)
+	 =   <Symmetry of ∨(3.24), with p,q:=p,r —replace p∨r by r∨p>
+		(r ∨ ¬p) ∧ (r ∨ p)
+	 =   <Distributivity of ∨ over ∧(3.45), with p,q,r:=r,¬p,p —replace (r∨¬p)∧(r∨p)
+		  by r∨(¬p∧p)>
+		r ∨ (¬p ∧ p)
+	 =   <Symmetry of ∧(3.36), with p,q:=¬p,p —replace ¬p∧p by p∧¬p>
+		r ∨ (p ∧ ¬p)
+	 =   <Contradiction(3.42) —replace p∧¬p by false>
+		r ∨ false
+	 =   <Identity of ∨(3.30), with p:=r —replace r∨false by r>
+		r
+3.68 Prove mutual implication(3.80). Begin by replacing each conjunct in the LHS
+	 using (3.59) and then use the Golden rule.
+	 Answer:
+	 (p → q) ∧ (q → p)
+	 =   <Def. of →(3.59) —replace p→q by ¬p∨q>
+		(¬p ∨ q) ∧ (q → p)
+	 =   <Def. of →(3.59), with p,q:=q,p —replace q→p by ¬q∨p>
+		(¬p ∨ q) ∧ (¬q ∨ p)
+	 =   <Distributivity of ∧ over ∨(3.46), with p,q,r:=(¬p∨q),¬q,p —replace
+		  (¬p∨q)∧(¬q∨p) by ((¬p∨q)∧¬q) ∨ ((¬p∨q)∧p)>
+		((¬p ∨ q) ∧ ¬q) ∨ ((¬p ∨ q) ∧ p)
+	 =   <Symmetry of ∧(3.36), with p,q:=(¬p∨q),¬q —replace (¬p∨q)∧¬q by ¬q∧(¬p∨q)>
+		(¬q ∧ (¬p ∨ q)) ∨ ((¬p ∨ q) ∧ p)
+	 =   <Symmetry of ∧(3.36), with p,q:=(¬p∨q),p —replace (¬p∨q)∧p by p∧(¬p∨q)>
+		(¬q ∧ (¬p ∨ q)) ∨ (p ∧ (¬p ∨ q))
+	 =   <Distributivity of ∧ over ∨(3.46), with p,q,r:=¬q,¬p,q —replace ¬q∧(¬p∨q)
+		  by (¬q∧¬p)∨(¬q∧q)>
+		((¬q ∧ ¬p) ∨ (¬q ∧ q)) ∨ (p ∧ (¬p ∨ q))
+	 =   <Distributivity of ∧ over ∨(3.46), with p,q,r:=p,¬p,q —replace p∧(¬p∨q)
+		  by (p∧¬p)∨(p∧q)>
+		((¬q ∧ ¬p) ∨ (¬q ∧ q)) ∨ ((p ∧ ¬p) ∨ (p ∧ q))
+	 =   <Symmetry of ∧(3.36), with p,q:=¬q,q —replace ¬q∧q by q∧¬q>
+		((¬q ∧ ¬p) ∨ (q ∧ ¬q)) ∨ ((p ∧ ¬p) ∨ (p ∧ q))
+	 =   <Contradiction(3.42), with p:=q —replace q∧¬q by false>
+		((¬q ∧ ¬p) ∨ false) ∨ ((p ∧ ¬p) ∨ (p ∧ q))
+	 =   <Contradiction(3.42) —replace p∧¬p by false>
+		((¬q ∧ ¬p) ∨ false) ∨ (false ∨ (p ∧ q))
+	 =   <Symmetry of ∨(3.24), with p,q:=false,(p∧q) —replace false∨(p∧q)
+		  by (p∧q)∨false>
+		((¬q ∧ ¬p) ∨ false) ∨ ((p ∧ q) ∨ false)
+	 =   <Identity of ∨(3.30), with p:=¬q∧¬p —replace (¬q∧¬p)∨false by ¬q∧¬p>
+		(¬q ∧ ¬p) ∨ ((p ∧ q) ∨ false)
+	 =   <Identity of ∨(3.30), with p:=p∧q —replace (p∧q)∨false by p∧q>
+		(¬q ∧ ¬p) ∨ (p ∧ q)
+	 =   <De Morgan(3.47b), with p,q:=q,p —replace ¬q∧¬p by ¬(q∨p)>
+		¬(q ∨ p) ∨ (p ∧ q)
+	 =   <(3.32), with p,q:=(p∧q),(q∨p) —replace ¬(q∨p)∨(p∧q)
+		  by p∧q≡(p∧q)∨(q∨p)>
+		p ∧ q ≡ (p ∧ q) ∨ (q ∨ p)
+	 =   <Golden rule(3.35) —replace p∧q by p≡q≡p∨q>
+		p ∧ q ≡ (p ≡ q ≡ p∨q) ∨ (q ∨ p)
+	 =   <Symmetry of ∨(3.24), with p,q:=(p≡q≡p∨q),(q∨p) —replace (p≡q≡p∨q)∨(q∨p)
+		  by (q∨p)∨(p≡q≡p∨q)>
+		p ∧ q ≡ (q ∨ p) ∨ (p ≡ q ≡ p∨q)
+	 =   <Distributivity of ∨ over ≡(3.27), with p,q,r:=(q∨p),p≡q,p∨q —replace
+		 (q∨p)∨(p≡q≡p∨q) by ((q∨p)∨(p≡q))≡((q∨p)∨(p∨q))>
+		p ∧ q ≡ ((q ∨ p) ∨ (p ≡ q)) ≡ ((q ∨ p) ∨ (p ∨ q))
+	 =   <Distributivity of ∨ over ≡(3.27), with p,q,r:=q∨p,p,q —replace (q∨p)∨(p≡q)
+		  by ((q∨p)∨p)≡((q∨p)∨q)>
+		p ∧ q ≡ ((q ∨ p) ∨ p) ≡ ((q ∨ p) ∨ q) ≡ ((q ∨ p) ∨ (p ∨ q))
+	 =   <Distributivity of ∨ over ∨(3.31), with p,q,r:=q∨p,p,q —replace ((q∨p)∨(p∨q))
+		  by ((q∨p)∨p)∨((q∨p)∨q)>
+		p ∧ q ≡ ((q ∨ p) ∨ p) ≡ ((q ∨ p) ∨ q) ≡ ((q ∨ p) ∨ p) ∨ ((q ∨ p) ∨ q)
+	 =   <Associativity of ∨(3.25), with p,q,r:=q,p,p —replace (q∨p)∨p by q∨(p∨p)>
+		p ∧ q ≡ (q ∨ (p ∨ p)) ≡ ((q ∨ p) ∨ q) ≡ ((q ∨ p) ∨ p) ∨ ((q ∨ p) ∨ q)
+	 =   <Symmetry of ∨(3.24), with p,q:=q,p —replace q∨p by p∨q>
+		p ∧ q ≡ (q ∨ (p ∨ p)) ≡ ((p ∨ q) ∨ q) ≡ ((q ∨ p) ∨ p) ∨ ((q ∨ p) ∨ q)
+	 =   <Associativity of ∨(3.25), with p,q,r:=p,q,q —replace (p∨q)∨q by p∨(q∨q)>
+		p ∧ q ≡ (q ∨ (p ∨ p)) ≡ (p ∨ (q ∨ q)) ≡ ((q ∨ p) ∨ p) ∨ ((q ∨ p) ∨ q)
+	 =   <Idempotency of ∨(3.26) —replace p∨p by p>
+		p ∧ q ≡ q ∨ p ≡ (p ∨ (q ∨ q)) ≡ ((q ∨ p) ∨ p) ∨ ((q ∨ p) ∨ q)
+	 =   <Idempotency of ∨(3.26), with p:=q —replace q∨q by q>
+		p ∧ q ≡ q ∨ p ≡ p ∨ q ≡ ((q ∨ p) ∨ p) ∨ ((q ∨ p) ∨ q)
+	 =   <Associativity of ∨(3.25), with p,q,r:=q,p,p —replace (q∨p)∨p by q∨(p∨p)>
+		p ∧ q ≡ q ∨ p ≡ p ∨ q ≡ (q ∨ (p ∨ p)) ∨ ((q ∨ p) ∨ q)
+	 =   <Symmetry of ∨(3.24), with p,q:=q,p —replace q∨p by p∨q>
+		p ∧ q ≡ q ∨ p ≡ p ∨ q ≡ (q ∨ (p ∨ p)) ∨ ((p ∨ q) ∨ q)
+	 =   <Associativity of ∨(3.25), with p,q,r:=p,q,q —replace (p∨q)∨q by p∨(q∨q)>
+		p ∧ q ≡ q ∨ p ≡ p ∨ q ≡ (q ∨ (p ∨ p)) ∨ (p ∨ (q ∨ q))
+	 =   <Idempotency of ∨(3.26) —replace p∨p by p>
+		p ∧ q ≡ q ∨ p ≡ p ∨ q ≡ (q ∨ p) ∨ (p ∨ (q ∨ q))
+	 =   <Idempotency of ∨(3.26), with p:=q —replace q∨q by q>
+		p ∧ q ≡ q ∨ p ≡ p ∨ q ≡ (q ∨ p) ∨ (p ∨ q)
+	 =   <Associativity of ∨(3.25), with p,q,r:=q∨p,p,q —replace (q∨p)∨(p∨q)
+		  by ((q ∨ p) ∨ p) ∨ q>
+		p ∧ q ≡ q ∨ p ≡ p ∨ q ≡ ((q ∨ p) ∨ p) ∨ q
+	 =   <Associativity of ∨(3.25), with p,q,r:=q,p,p —replace (q∨p)∨p by q∨(p∨p)>
+		p ∧ q ≡ q ∨ p ≡ p ∨ q ≡ (q ∨ (p ∨ p)) ∨ q
+	 =   <Idempotency of ∨(3.26) —replace p∨p by p>
+		p ∧ q ≡ q ∨ p ≡ p ∨ q ≡ (q ∨ p) ∨ q
+	 =   <Symmetry of ∨(3.24), with p,q:=q,p —replace q∨p by p∨q>
+		p ∧ q ≡ q ∨ p ≡ p ∨ q ≡ (p ∨ q) ∨ q
+	 =   <Associativity of ∨(3.25), with p,q,r:=p,q,q —replace (p∨q)∨q by p∨(q∨q)>
+		p ∧ q ≡ q ∨ p ≡ p ∨ q ≡ p ∨ (q ∨ q)
+	 =   <Idempotency of ∨(3.26),with p:=q —replace q∨q by q>
+		p ∧ q ≡ q ∨ p ≡ p ∨ q ≡ p ∨ q
+	 =   <Symmetry of ∨(3.24), with p,q:=q,p —replace q∨p by p∨q>
+		p ∧ q ≡ p ∨ q ≡ p ∨ q ≡ p ∨ q
+	 =   <Symmetry of ≡(3.2), with p,q:=(p∧q),(p∨q) —replace p∧q≡p∨q≡p∨q
+		  by p∧q>
+		p ∧ q ≡ p ∨ q
+	 =   <Golden rule(3.35) —replace p∧q by p ≡ q ≡ p ∨ q>
+		p ≡ q ≡ p ∨ q ≡ p ∨ q
+	 =   <Symmetry of ≡(3.2), with p,q:=q,p ∨ q —replace q≡p∨q≡p∨q by q>
+		p ≡ q
+3.69 Prove Antisymmetry(3.81) in two steps (use Mutual implication(3.80)).
+	 Answer:
+	 (p → q) ∧ (q → p) → (p ≡ q)
+	 =   <Mutual implication(3.80) —replace (p→q)∧(q→p) by (p≡q)>
+		(p ≡ q) → (p ≡ q)
+	 =   <Reflexivity of →(3.71),with p:=p≡q —replace (p≡q)→(p≡q)
+		  by true>
+		true —theorem(3.4)
+3.70 Prove Transitivity of implication(3.82a). Start with the whole expression,
+	 transform each of the four implications in it using (3.59), and then massage.
+	 Answer:
+	 (p → q) ∧ (q → r) → (p → r)
+	 =   <Def. of →(3.59), with p,q:=(p→q)∧(q→r),(p→r) —replace (p→q)∧(q→r)→(p→r)
+		  by ¬((p→q)∧(q→r))∨(p→r)>
+		¬((p → q) ∧ (q → r)) ∨ (p → r)
+	 =   <Def. of →(3.59) —replace p→q by ¬p∨q>
+		¬((¬p ∨ q) ∧ (q → r)) ∨ (p → r)
+	 =   <Def. of →(3.59), with p,q:=q,r —replace q→r by ¬q∨r>
+		¬((¬p ∨ q) ∧ (¬q ∨ r)) ∨ (p → r)
+	 =   <Def. of →(3.59), with q:=r —replace p→r by ¬p∨r>
+		¬((¬p ∨ q) ∧ (¬q ∨ r)) ∨ ¬p ∨ r
+	 =   <De Morgan(3.47a), with p,q:=(¬p∨q),(¬q∨r) —replace ¬((¬p∨q)∧(¬q∨r))
+		  by ¬(¬p∨q)∨¬(¬q∨r)>
+		¬(¬p ∨ q) ∨ ¬(¬q ∨ r) ∨ ¬p ∨ r
+	 =   <De Morgan(3.47b), with p:=¬p —replace ¬(¬p∨q) by (¬¬p∧¬q)>
+		(¬¬p ∧ ¬q) ∨ ¬(¬q ∨ r) ∨ ¬p ∨ r
+	 =   <De Morgan(3.47b), with p,q:=¬q,r —replace ¬(¬q∨r) by (¬¬q∧¬r)>
+		(¬¬p ∧ ¬q) ∨ (¬¬q ∧ ¬r) ∨ ¬p ∨ r
+	 =   <Symmetry of ∨(3.24), with p,q:=(¬¬p∧¬q)∨(¬¬q∧¬r),¬p —replace
+		  (¬¬p∧¬q)∨(¬¬q∧¬r)∨¬p by ¬p∨(¬¬p∧¬q)∨(¬¬q∧¬r)>
+		¬p ∨ (¬¬p ∧ ¬q) ∨ (¬¬q ∧ ¬r) ∨ r
+	 =   <Absorption(3.44b), with p,q:=¬p,¬q —replace ¬p∨(¬¬p∧¬q) by ¬p∨¬q>
+		¬p ∨ ¬q ∨ (¬¬q ∧ ¬r) ∨ r
+	 =   <Absorption(3.44b), with p,q:=¬q,¬r —replace ¬q∨(¬¬q∧¬r) by ¬q∨¬r>
+		¬p ∨ r ∨ ¬q ∨ ¬r
+	 =   <Symmetry of ∨(3.24), with p,q:=r,¬q —replace r∨¬q by ¬q∨r>
+		¬p ∨ ¬q ∨ r ∨ ¬r
+	 =   <Metatheorem(3.7), Excluded middle(3.28), with p:=r and true(3.4)
+		  —replace r∨¬r by true>
+		¬p ∨ ¬q ∨ true
+	 =   <Zero of ∨(3.29), with p:=¬p∨¬q —replace ¬p∨¬q∨true by true>
+		true —theorem(3.4)
+3.71 Prove Transitivity(3.82b), (p ≡ q) ∧ (q → r) → (p → r). Use Mutual
+	 implication(3.80), Transitivity(3.82a), and Currying(3.65).
+	 Answer:
+	 =   <Mutual implication(3.80) —replace p≡q by (p→q)∧(q→p)>
+		(p → q) ∧ (q → p) ∧ (q → r) → (p → r)
+	 =   <Symmetry of ∧(3.36), with p,q:=(p→q),(q→p) —replace (p→q)∧(q→p)
+		  by (q→p)∧(p→q)>
+		(q → p) ∧ (p → q) ∧ (q → r) → (p → r)
+	 =   <Currying(3.65), with p,q,r:=(q→p),(p→q)∧(q→r),(p→r) —replace
+		  (q→p)∧(p→q)∧(q→r)→(p→r) by (q→p)→((p→q)∧(q→r)→(p→r))>
+		(q → p) → ((p → q) ∧ (q → r) → (p → r))
+	 =   <Metatheorem(3.7), Transitivity(3.82a) and True(3.4) —replace
+		  (p→q)∧(q→r)→(p→r) by true>
+		(q → p) → true
+	 =   <Right zero of →(3.72), with p:=(q→p) —replace (q→p)→true by true>
+		true —theorem(3.4)
+3.72 Prove Transitivity(3.82c), (p → q) ∧ (q ≡ r) → (p → r). Use Mutual
+	 implication(3.80), Transitivity(3.82a), and Currying(3.65).
+	 (p → q) ∧ (q ≡ r) → (p → r)
+	 Answer:
+	 =   <Mutual implication(3.80), with p,q:=q,r —replace q≡r by (q→r)∧(r→q)>
+		(p → q) ∧ (q → r) ∧ (r → q) → (p → r)
+	 =   <Symmetry of ∧(3.36), with p,q:=(p→q)∧(q→r),(r→q) —replace (p→q)∧(q→r)∧(r→q)
+		  by (r→q)∧(p→q)∧(q→r)>
+		(r → q) ∧ (p → q) ∧ (q → r) → (p → r)
+	 =   <Currying(3.65), with p,q,r:=(r→q),(p→q)∧(q→r),(p→r) —replace
+		  (r→q)∧(p→q)∧(q→r)→(p→r) by (r→q)→((p→q)∧(q→r)→(p→r))>
+		(r → q) → ((p → q) ∧ (q → r) → (p → r))
+	 =   <Metatheorem(3.7), Transitivity(3.82a) and True(3.4) —replace
+		  (p→q)∧(q→r)→(p→r) by true>
+		(r → q) → true
+	 =   <Right zero of →(3.72), with p:=(r→q) —replace (r→q)→true by true>
+		true —theorem(3.4)
+3.73 Prove Substitution(3.84a), (e = f) ∧ E[z:=e] ≡ (e = f) ∧ E[z:=f]. Begin with Leibniz(3.83)
+	 and replace the implication.
+	 Answer:
+	 (e = f) → (E[z:=e]=E[z:=f])
+	 =   <(3.62), with p,q,r:=(e=f),E[z:=e],E[z:=f] —replace (e=f)→(E[z:=e]=E[z:=f])
+		by (e=f)∧E[z:=e]≡(e=f)∧E[z:=f]>
+		(e = f) ∧ E[z:=e] ≡ (e = f) ∧ E[z:=f]
+3.74 Prove Substitution(3.84b), (e = f) → E[z:=e] ≡ (e = f) → E[z:=f].
+	 Answer:
+	 (e = f) → (E[z:=e] = E[z:=f])
+	 =   <Distributivity of → over ≡(3.63), with p,q,r:=(e=f),E[z:=e],E[z:=f] —replace
+		  (e=f)→(E[z:=e]=E[z:=f]) by (e=f)→E[z:=e]≡(e=f)→E[z:=f]>
+		(e = f) → E[z:=e] ≡ (e = f) → E[z:=f]
+3.75 Prove Substitution(3.84c), q ∧ (e = f) → E[z:=e] ≡ q ∧ (e = f) → E[z:=f]. Using
+	 Currying(3.65).
+	 Answer:
+	 q ∧ (e = f) → E[z:=e] ≡ q ∧ (e = f) → E[z:=f]
+	 =   <Currying(3.65), with p,q,r:=q,(e=f),E[z:=e] —replace q∧(e=f)→E[z:=e]
+		  by q→((e=f)→E[z:=e])>
+		q → ((e = f) → E[z:=e]) ≡ q ∧ (e = f) → E[z:=f]
+	 =   <Currying(3.65), with p,q,r:=q,(e=f),E[z:=f] —replace q∧(e=f)→E[z:=f]
+		  by q→((e=f)→E[z:=f])>
+		q → ((e = f) → E[z:=e]) ≡ q → ((e = f) → E[z:=f])
+	 =   <Substitution(3.84b) —replace (e=f)→E[z:=f] by (e=f)→E[z:=e]>
+		q → ((e = f) → E[z:=e]) ≡ q → ((e = f) → E[z:=e])
+	 =   <Metatheorem(3.7), Reflexivity of ≡(3.5) and True(3.4) —replace
+		q→((e=f)→E[z:=e])≡q→((e=f)→E[z:=e]) by true>
+		true
+3.76 Prove Replace by true(3.85a), p → E[z:=p] ≡ p → E[z:=true]. In order to be able
+	 to use (3.84b), introduce the equivalent true into the antecedent.
+	 Answer:
+	 p → E[z:=p] ≡ p → E[z:=true]
+	 =   <Identity of ≡(3.3), with q:=p —replace p by true≡p twice>
+		(true ≡ p) → E[z:=p] ≡ (true ≡ p) → E[z:=true]
+	 =   <Symmetry of ≡(3.2), with p,q:=true,p —replace true≡p by p≡true twice>
+		(p ≡ true) → E[z:=p] ≡ (p ≡ true) → E[z:=true]
+	 =   <Metatheorem(3.7), Substitution(3.84a) and True(3.4) —replace
+		(p≡true)→E[z:=p]≡(p≡true)→E[z:=true] by true>
+		true
+3.77 Prove Replace by true(3.85b), q ∧ p → E[z:=p] ≡ q ∧ p → E[z:=true].
+	 Answer:
+	 q ∧ p → E[z:=p] ≡ q ∧ p → E[z:=true]
+	 =   <Identity of ≡(3.3), with q:=p —replace p by true≡p twice>
+		q ∧ (true ≡ p) → E[z:=p] ≡ q ∧ (true ≡ p) → E[z:=true]
+	 =   <Metatheorem(3.7), Substitution(3.84c) and True(3.4) —replace
+		  q∧(true≡p)→E[z:=p]≡q∧(true≡p)→E[z:=true] by true>
+		true
+3.78 Prove Replace by false (3.86a), E[z:=p] → p ≡ E[z:=false] → p.
+	 Answer:
+	 E[z:=p] → p ≡ E[z:=false] → p
+	 =   <Contrapositive(3.61), with p,q:=E[z:=p],p —replace E[z:=p]→p
+		  by ¬p→¬E[z:=p]>
+		¬p → ¬E[z:=p] ≡ E[z:=false] → p
+	 =   <Contrapositive(3.61), with p,q:=E[z:=false],p —replace E[z:=false]→p
+		  by ¬p→¬E[z:=false]>
+		¬p → ¬E[z:=p] ≡ ¬p → ¬E[z:=false]
+	 =   <Double negation(3.12) —replace p by ¬¬p>
+		¬p → ¬E[z:=¬¬p] ≡ ¬p → ¬E[z:=false]
+	 =   <Def. of false(3.8) —replace false by ¬true>
+		¬p → ¬E[z:=¬¬p] ≡ ¬p → ¬E[z:=¬true]
+	 =   <Let F=¬E[z:=¬z] —replace ¬p→¬E[z:=¬¬p]≡¬p→¬E[z:=¬true]
+		  by ¬p→F[z:=¬p]≡¬p→F[z:=true]>
+		¬p → F[z:=¬p] ≡ ¬p → F[z:=true]
+	 =   <Metatheorem(3.7), Substitution(3.85a), with p,E:=¬p,F and True(3.4) —replace
+		  ¬p→F[z:=¬p]≡¬p→F[z:=true] by true>
+		true
+3.79 Prove Replace by false(3.86b), E[z:=p] → p ∨ q ≡ E[z:=false] → p ∨ q.
+	 Answer:
+	 E[z:=p] → p ∨ q ≡ E[z:=false] → p ∨ q
+	 =   <Contrapositive(3.61), with p,q:=E[z:=p],p∨q —replace E[z:=p]→p∨q by ¬(p∨q)→E[z:=p]>
+		¬(p ∨ q) → ¬E[z:=p] ≡ E[z:=false] → p ∨ q
+	 =   <Contrapositive(3.61), with p,q:=E[z:=false],p∨q —replace E[z:=false]→p∨q by ¬(p∨q)→¬E[z:=false]>
+		¬(p ∨ q) → ¬E[z:=p] ≡ ¬(p ∨ q) → ¬E[z:=false]
+	 =   <De Morgan(3.47b) —replace ¬(p∨q) by ¬p∧¬q twice>
+		¬p ∧ ¬q → ¬E[z:=p] ≡ ¬p ∧ ¬q → ¬E[z:=false]
+	 =   <Symmetry of ∧(3.36), with p,q:=¬p,¬q —replace ¬p∧¬q by ¬q∧¬p twice>
+		¬q ∧ ¬p → ¬E[z:=p] ≡ ¬q ∧ ¬p → ¬E[z:=false]
+	 =   <Double negation(3.12) —replace p by ¬¬p>
+		¬q ∧ ¬p → ¬E[z:=¬¬p] ≡ ¬q ∧ ¬p → ¬E[z:=false]
+	 =   <Def. of false(3.8) —replace false by ¬true>
+		¬q ∧ ¬p → ¬E[z:=¬¬p] ≡ ¬q ∧ ¬p → ¬E[z:=¬true]
+	 =   <Let F=¬E[z:=¬z] —replace ¬q∧¬p→¬E[z:=¬¬p]≡¬q∧¬p→¬E[z:=¬true]
+		  by ¬q∧¬p→F[z:=¬p]≡¬q∧¬p→F[z:=true]>
+		¬q ∧ ¬p → F[z:=¬p] ≡ ¬q ∧ ¬p → F[z:=true]
+	 =   <Metatheorem(3.7), Substitution(3.85b), with p,q,E:=¬q,¬p,F and True(3.4) —replace
+		  ¬q∧¬p→F[z:=¬p]≡¬q∧¬p→F[z:=true] by true>
+		true
+3.80 Prove Replace by true(3.87), p ∧ E[z:=p] ≡ p ∧ E[z:=true]
+	 Answer:
+	 p ∧ E[z:=p] ≡ p ∧ E[z:=true]
+	 =   <Identity of ≡(3.3) —replace p by true≡p twice>
+		(true ≡ p) ∧ E[z:=p] ≡ (true ≡ p) ∧ E[z:=true]
+	 =   <Symmetry of ≡(3.2), with p,q:=true,p —replace true≡p by p≡true twice>
+		(p ≡ true) ∧ E[z:=p] ≡ (p ≡ true) ∧ E[z:=true]
+	 =   <Metatheorem(3.7), Substitution(3.85a), with e,f:=p,true and True(3.4) —replace
+		  (p≡true)∧E[z:=p]≡(p≡true)∧E[z:=true] by true>
+		true
+3.81 Prove Replace by false(3.88), p ∨ E[z:=p] ≡ p ∨ E[z:=false].
+	 Answer:
+	 p ∨ E[z:=p] ≡ p ∨ E[z:=false]
+	 =   <Double negation(3.12), with p:=p∨E[z:=p] —replace p∨E[z:=p] by ¬¬(p∨E[z:=p])>
+		¬¬(p ∨ E[z:=p]) ≡ p ∨ E[z:=false]
+	 =   <Double negation(3.12), with p:=p∨E[z:=false] —replace p∨E[z:=false] by ¬¬(p∨E[z:=false])>
+		¬¬(p ∨ E[z:=p]) ≡ ¬¬(p ∨ E[z:=false])
+	 =   <De Morgan(3.47b), with p,q:=p,E[z:=p] —replace ¬(p∨E[z:=p]) by (¬p ∧ ¬E[z:=p])>
+		¬(¬p ∧ ¬E[z:=p]) ≡ ¬¬(p ∨ E[z:=false])
+	 =   <De Morgan(3.47b), with p,q:=p,E[z:=false] —replace ¬(p∨E[z:=false]) by (¬p∧¬E[z:=false])>
+		¬(¬p ∧ ¬E[z:=p]) ≡ ¬(¬p ∧ ¬E[z:=false])
+	 =   <Distributivity of ¬ over ≡(3.9), with p,q:=¬(¬p∧¬E[z:=p]),¬(¬p∧¬E[z:=false])
+		  —replace ¬(¬p∧¬E[z:=p])≡¬(¬p∧¬E[z:=false]) by ¬(¬p ∧ ¬E[z:=p] ≡ ¬(¬p ∧ ¬E[z:=false]))>
+		¬(¬p ∧ ¬E[z:=p] ≡ ¬(¬p ∧ ¬E[z:=false]))
+	 =   <Symmetry of ≡(3.2), with p,q:=¬p∧¬E[z:=p],¬(¬p∧¬E[z:=false]) —replace
+		  ¬p∧¬E[z:=p]≡¬(¬p∧¬E[z:=false]) by ¬(¬p∧¬E[z:=false])≡¬p∧¬E[z:=p]>
+		¬(¬(¬p ∧ ¬E[z:=false]) ≡ ¬p ∧ ¬E[z:=p])
+	 =   <Distributivity of ¬ over ≡(3.9), with p,q:=¬(¬p∧¬E[z:=false])≡¬p∧¬E[z:=p] —replace
+		  ¬(¬p∧¬E[z:=false])≡¬p∧¬E[z:=p] by ¬(¬p∧¬E[z:=false]≡¬p∧¬E[z:=p])>
+		¬¬(¬p ∧ ¬E[z:=false] ≡ ¬p ∧ ¬E[z:=p])
+	 =   <Double negation(3.12), with p:=¬p∧¬E[z:=false]≡¬p ∧¬E[z:=p] —replace
+		  ¬¬(¬p∧¬E[z:=false]≡¬p∧¬E[z:=p]) by ¬p ∧ ¬E[z:=false] ≡ ¬p ∧ ¬E[z:=p]>
+		¬p ∧ ¬E[z:=false] ≡ ¬p ∧ ¬E[z:=p]
+	 =   <Symmetry of ≡(3.2), with p,q:=¬p∧¬E[z:=false],¬p∧¬E[z:=p] —replace
+		  ¬p∧¬E[z:=false]≡¬p∧¬E[z:=p] by ¬p∧¬E[z:=p]≡¬p∧¬E[z:=false]>
+		¬p ∧ ¬E[z:=p] ≡ ¬p ∧ ¬E[z:=false]
+	 =   <Double negation(3.12) —replace p by ¬¬p>
+		¬p ∧ ¬E[z:=¬¬p] ≡ ¬p ∧ ¬E[z:=false]
+	 =   <Def. of false(3.8) —replace false by ¬true>
+		¬p ∧ ¬E[z:=¬¬p] ≡ ¬p ∧ ¬E[z:=¬true]
+	 =   <Let f=¬E[z:=¬z] —replace ¬p∧¬E[z:=¬¬p]≡¬p∧¬E[z:=¬true] by ¬p[F:=z¬p]≡¬p∧F[z:=true]>
+		¬p ∧ F[z:=¬p] ≡ ¬p ∧ F[z:=true]
+	 =   <Metatheorem(3.7), Replace by true(3.87), with p,E:=¬p,F and True(3.4) —replace
+		  ¬p∧F[z:=¬p] ≡ ¬p∧F[z:=true] by true>
+		true
+3.82 Prove p → (q → p) using theorem (3.85a) in the first step.
+	 Answer:
+	 p → (q → p)
+	 =   <Replace by true(3.85a) —replace q→p by q→true>
+		p → (q → true)
+	 =   <Right zero of →(3.72), with p:=q —replace q→true by true>
+		p → true
+	 =   <Right zero of →(3.72) —replace p→true by true>
+		true —theorem(3.4)
+3.83 Prove Shannon(3.89),E[z:=p] ≡ (p ∧ E[z:=true]) ∨ (¬p ∧ E[z:=false]).
+	 Answer:
+	 Case analysis:
+	 Let R = (E[z:=p] ≡ ((p ∧ E[z:=true]) ∨ (¬p ∧ E[z:=false])))
+	 p → R
+	 =   <(3.3)>
+		(p ≡ true) → (R ≡ true)
+	 =   <(3.3)>
+		(p ≡ true) → (R ≡ (E[z:=true]≡E[z:=true]))
+	 =   <(3.30), (3.39), (3.40)>
+		(p ≡ true) → (R ≡ (E[z:=true] ≡ ((true ∧ E[z:=true]) ∨ (¬true ∧ E[z:=false]))))
+	 =
+		(p ≡ true) → (R ≡ (E[z:=p] ≡ ((p ∧ E[z:=p]) ∨ (¬p ∧ E[z:=false])))[p:=true])
+	 =
+		(p ≡ true) → (R ≡ R[p:=true])
+	 =
+		true (Lemma01)
+	 ¬p → R
+	 =   <(3.3)>
+		(p ≡ false) → (R ≡ true)
+	 =   <(3.3)>
+		(p ≡ false) → (R ≡ (E[z:=false]≡E[z:=false]))
+	 =   <(3.30), (3.39), (3.40)>
+		(p ≡ false) → (R ≡ (E[z:=false] ≡ ((false ∧ E[z:=false]) ∨ (¬false ∧ E[z:=false]))))
+	 =
+		(p ≡ false) → (R ≡ (E[z:=p] ≡ ((p ∧ E[z:=p]) ∨ (¬p ∧ E[z:=false])))[p:=false])
+	 =
+		(p ≡ false) → (R ≡ R[p:=false])
+	 =
+		true (Lemma02)
+	 R
+	 =   <(3.79)>
+		(p → R) ∧ (¬p → R)
+	 =   <Lemma01 —replace (p→R) by true, Lemma02 —replace (¬p→R) by true>
+		true ∧ true
+	 =   <Identity of ∧(3.39), with p:=true —replace true∧true by true>
+		true
+3.84 Prove Weakening/strengthening (3.76e), p ∧ q → p ∧ (q ∨ r), using Replace by true(3.85b).
+q ∧ p → E[z:=p] ≡ q ∧ p → E[z:=true]
+	 Answer:
+	 p ∧ q → p ∧ (q ∨ r)
+	 =   <Replace by true(3.85b), with p,q:=q,p —replace p∧(q∨r) by true∧(q∨r)>
+		p ∧ q → p ∧ (true ∨ r)
+	 =   <Symmetry of ∨(3.24), with p,q:=true,r>
+		p ∧ q → p ∧ (r ∨ true)
+	 =   <Zero of ∨(3.29), with p:=r —replace r∨true by true>
+		p ∧ q → p ∧ true
+	 =   <Identity of ∧(3.39), —replace p∧true by p>
+		p ∧ q → p —Weakening/strengthening(3.76b)
+3.85 Consider any expression P of the form true, q ∧ r, q ≡ r, or q → r, and consider
+	 its dual PD (see Def. (2.2) on page 31). Prove that P ≡ ¬PD for expressions
+	 of the form given above, provided it holds for their subexpressions.
+	 Hint: By the definition of the dual, for an operation like ∧, (q ∧ r)D ≡ qD ∨ rD.
+	 Answer:
+	 Let P=q ∧ r
+	 ¬PD
+	 =   <Def. of  (2.2) —replace q∧r by qD ∨ rD>
+		¬(qD ∨ rD)
+	 =   <Inductive assumption (provided it holds for their subexpressions)>
+		¬(¬q ∨ ¬r)
+	 =   <De Morgan(3.47a), with p,q:=q,r —replace ¬q ∨ ¬r by ¬(q ∧ r)>
+		¬¬(q ∧ r)
+	 =   <Double negation(3.12), with p:=(q∧r) —replace ¬¬(q∧r) by q∧r>
+		P
+	Let P=q ∨ r
+	 ¬PD
+	 =   <Def. of Duality(2.2) —replace q∨r by qD ∧ rD>
+		¬(qD ∧ rD)
+	 =   <Inductive assumption (provided it holds for their subexpressions)>
+		¬(¬q ∧ ¬r)
+	 =   <De Morgan(3.47b), with p,q:=q,r —replace ¬q ∧ ¬r by ¬(q ∨ r)>
+		¬¬(q ∨ r)
+	 =   <Double negation(3.12), with p:=(q∨r) —replace ¬¬(q∨r) by q∨r>
+		P
+	Let P=q → r
+	 ¬PD
+	 =   <Def. of Duality(2.2) —replace q→r by q⇍r>
+		¬(qD ⇍ rD)
+	 =   <Inductive assumption (provided it holds for their subexpressions)>
+		¬(¬q ⇐ ¬r)
+	 =
+		¬q ⇐ ¬r
+	 =
+		P
+	Let P=q ≡ r
+	 ¬PD
+	 =   <Def. of Duality(2.2) —replace q≡r by q≢r>
+		¬(qD ≢ rD)
+	 =   <Inductive assumption (provided it holds for their subexpressions)>
+		¬(¬q ≡ ¬r)
+	 =
+		q ≡ r
+	 =
+		P
+3.88
+Conjunctive normal form
+	E0 ∧ … En-1
+	Each Ei is a disjunction of variables and negations of variables.
+		(a ∨ ¬b) ∧ (a ∨ b ∨ c) ∧ (¬a)
+Disjunctive normal form
+	E0 ∨ … En-1
+	Each Ei is a conjunction of variables and negations of variables.
+		(a ∧ ¬b) ∨ (a ∧ b ∧ c) ∨ (¬a)
+false < true
+	minterm: v0 ∧ … ∧ vn
+	maxterm: v0 ∨ … ∨ vn
+∧ conjunction(and) multiplies, minterm
+∨ disjunction(inclusive or) maxterm
+≢ xor(exclusive or) addition
+The following truth table defines a set of states of variables a,b,c,d.
+Give a boolean expression in disjunctive normal form that is true in exactly
+the states defined by the truth table. Based on this example, outline a
+procedure that translates any such truth table into an equivalent boolean
+expression in disjunctive normal form.
+a  b  c  d
+t  t  t  f
+t  f  t  f
+f  t  t  f
+(a∧b∧c∧¬d)∨(a∧¬b∧c∧¬d)∨(¬a∧b∧c∧¬d)
+In accordance with the topic at hand, we meticulously transform each 'false'
+state into 'true' within the states that are stipulated to yield 'true' outputs.
+Utilizing the Disjunctive Normal Form, an output of 'true' is generated provided
+any condition is satisfied.
+Thus, we construct a satisfying condition for each individual state.
+3.89
+The following truth table defines a set of states of variables a,b,c,d.
+Give a boolean expression in conjunctive normal form that is true in exactly
+the states defined by the truth table. Based on this example, outline a
+procedure that translates any such truth table into an equivalent boolean
+expression in conjunctive normal form.
+Since every boolean expression can be described by such a truth table, every
+boolean expression can be transformed to conjunctive normal form.
+a  b  c  d
+t  t  t  f 1110
+t  t  t  t 1111
+t  f  t  f 1010
+f  t  t  f 0110
+ a b c d
+|1|1|0|1|¬a∨¬b∨c∨¬d
+|1|1|0|0|¬a∨¬b∨c∨d
+|1|0|1|1|¬a∨b∨¬c∨¬d
+|1|0|0|1|¬a∨b∨c∨¬d
+|1|0|0|0|¬a∨b∨c∨d
+|0|1|1|1|a∨¬b∨¬c∨¬d
+|0|1|0|1|a∨¬b∨c∨¬d
+|0|1|0|0|a∨¬b∨c∨d
+|0|0|1|1|a∨b∨¬c∨¬d
+|0|0|1|0|a∨b∨¬c∨d
+|0|0|0|1|a∨b∨c∨¬d
+|0|0|0|0|a∨b∨c∨d
+
+|a|b|c|d|
+|1|1|1|1| X
+|1|1|1|0| X
+|1|1|0|1|
+|1|1|0|0|
+|1|0|1|1|
+|1|0|1|0| X
+|1|0|0|1|
+|1|0|0|0|
+|0|1|1|1|
+|0|1|1|0| X
+|0|1|0|1|
+|0|1|0|0|
+|0|0|1|1|
+|0|0|1|0|
+|0|0|0|1|
+|0|0|0|0|
+(¬a∨¬b∨c∨¬d)∧(¬a∨¬b∨c∨d)∧(¬a∨b∨¬c∨¬d)∧(¬a∨b∨c∨¬d)∧(¬a∨b∨c∨d)∧(a∨¬b∨¬c∨¬d)∧(a∨¬b∨c∨¬d)∧(a∨¬b∨c∨d)∧(a∨b∨¬c∨¬d)∧(a∨b∨¬c∨d)∧(a∨b∨c∨¬d)∧(a∨b∨c∨d)
+In accordance with the topic at hand, we meticulously enumerate those states
+that should yield a false output, derived inversely from the states that are
+stipulated to produce a true output. We then proceed to methodically transform
+each instance of truth within these states into falsehoods.
+By harnessing the inherent properties of the conjunctive normal form,
+which dictates that the output will be false should any single condition
+remain unfulfilled, we generate a unique unsatisfied condition for each individual state.
+4.1 p → (q → p)
+4.2 Monotonicity of ∨: (p → q) → (p ∨ r → q ∨ r)
+	p ∨ r → q ∨ r
+	 =   <Def. of →(3.57), with p,q:=p∨r,q∨r —replace p∨r→q∨r
+		  by p∨r∨q∨r≡q∨r>
+		p ∨ r ∨ q ∨ r ≡ q ∨ r
+	 =   <Symmetry of ∨(3.24), with p,q:=q,r —replace q∨r by r∨r>
+		p ∨ r ∨ r ∨ q ≡ q ∨ r
+	 =   <Idempotency of ∨(3.26), with p:=r —replace r∨r by r>
+		p ∨ r ∨ q ≡ q ∨ r
+	 =   <Symmetry of ∨(3.24), with p,q:=q,r —replace q∨r by r∨q>
+		p ∨ r ∨ q ≡ r ∨ q
+	 =   <Symmetry of ∨(3.24), with p,q:=p,r —replace p∨r by r∨p>
+		r ∨ p ∨ q ≡ r ∨ q
+	 =   <Distributivity of ∨ over ≡(3.27), with p,q,r:=r,p∨q,q —replace
+		  r∨p∨q≡r∨q by r∨(p∨q≡q)>
+		r ∨ (p ∨ q ≡ q)
+	 =   <Symmetry of ∨(3.24), with p,q:=r∨(p∨q≡q) —replace
+		  r∨(p∨q≡q) by (p∨q≡q)∨r>
+		(p ∨ q ≡ q) ∨ r
+	 ⇐   <Weakening(3.76a), with p,q:=(p∨q≡q),r —replace (p∨q≡q)∨r by p∨q≡q>
+		p ∨ q ≡ q
+	 =   <Def. of →(3.57) —replace p∨q≡q by p→q>
+		p → q
+	p → q
+	 =   <Def. of →(3.57) —replace p→q by p∨q≡q>
+		p ∨ q ≡ q
+	 →   <Weakening(3.76a), with q:=r —replace (p∨q≡q)∨r>
+		(p ∨ q ≡ q) ∨ r
+	 =   <Symmetry of ∨(3.24), with p,q:=(p∨q≡q),r —replace
+		  (p∨q≡q)∨r by r∨(p∨q≡q)>
+		r ∨ (p ∨ q ≡ q)
+	 =   <Distributivity of ∨ over ≡(3.27), with p,q,r:=r,p∨q,q —replace
+		  r∨(p∨q≡q) by r∨p∨q≡r∨q>
+		r ∨ p ∨ q ≡ r ∨ q
+	 =   <Symmetry of ∨(3.24), with p:=r —replace r∨q by q∨r>
+		r ∨ p ∨ q ≡ q ∨ r
+	 =   <Symmetry of ∨(3.24), with p,q:=r,p∨q —replace r∨p∨q by p∨q∨r>
+		p ∨ q ∨ r ≡ q ∨ r
+	 =   <Idempotency of ∨(3.26), with p:=r —replace r by r∨r>
+		p ∨ q ∨ r ∨ r ≡ q ∨ r
+	 =   <Symmetry of ∨(3.24), with p,q:=q,r —replace q∨r by r∨q>
+		p ∨ r ∨ q ∨ r ≡ q ∨ r
+	 =   <Def. of →(3.57) —replace p∨r∨q∨r≡q∨r by p∨r→q∨r>
+		p ∨ r → q ∨ r
+4.3 Monotonicity of ∧: (p → q) → (p ∧ r → q ∧ r)
+4.4 (Extended) Deduction Theorem
+	Suppose adding P1, …, Pn as axioms to propositional logic E, with the variables
+	-of the Pi considered to be constants, allows Q to be proved.
+	All the proofs in practical math rely solely on the deduction theorem.
+	Proving p->q involves treating p as an additional axiom and then proving q.
+	Then P1 ∧ … ∧ Pn → Q is a theorem.
+	Proof.
+		To prove p ∧ q → (p ≡ q), we assume the conjuncts of its antecedent and
+		prove its consequent:
+		Assume p, q
+			p
+		 =   <Assumption p>
+			true
+		 =   <Assumption q>
+			q
+	Proof.
+		(p → p') → ((q → q') → (p ∧ q → p' ∧ q'))
+		Assume p → p' (which is equivalent to p ∧ p' ≡ p)
+		  Assume q → q' (which is equivalent to q ∧ q' ≡ q)
+			p ∧ q
+		  =   <Assumption p ∧ p' ≡ p>
+			p ∧ p' ∧ q
+		  =   <Assumption q ∧ q' ≡ q>
+			p ∧ p' ∧ q ∧ q'
+		  →   <Weakening(3.76b)>
+			p' ∧ q'
+Proof by case analysis:
+	((a ∨ b ∨ c) ∧ (a → d) ∧ (b → d) ∧ (c → d)) → d
+4.5 Metatheorem Case Analysis. If E[z:=true] and E[z:=false] are theorems, then so
+	is E[z:=p].
+	 E[z:=p]
+	 =   <Shannon(3.89)>
+		(p ∧ E[z:=true]) ∨ (¬p ∧ E[z:=false])
+	 =   <Hypotheses of (4.5) together with Exercise 3.4>
+		(p ∧ true) ∨ (¬p ∧ true)
+	 =   <Identity of ∧(3.39), twice>
+		p ∨ ¬p —Excluded Middle(3.28)
+	We illustrate with two proofs of contradiction(3.42), p ∧ ¬p ≡ false;
+	Proof. 
+		If p is true, then the LHS of the formula is true ∧ ¬true, which,
+		by Identity of ∧(3.39) and the Definition of false(3.8) is equivalent to false.
+		If p is false, then the LHS of the formula is false ∧ ¬false, which by
+		Zero of ∧(3.40) is equivalent to false. Hence, in both cases, the LHS is equivalent
+		to false and the formula is true.
+		Therefore, by metatheorem(4.5), the formula is true.
+	Proof.
+		Prove: p ∧ ¬p ≡ false
+		 By Shannon
+		 Case (p ∧ ¬p ≡ false)[p:=true]
+		  =   <Textual substitution>
+			true ∧ ¬true ≡ false
+		  =   <Identity of ∧(3.39); Def. of false(3.8)>
+			false ≡ false
+		 Case (p ∧ ¬p ≡ false)[p:=false]
+		  =   <Textual substitution>
+			false ∧ ¬false ≡ false
+		  =   <Zero of ∧(3.40)>
+			false ≡ false —Reflexivity of ≡(3.5)
+4.6 (p ∨ q ∨ r) ∧ (p → s) ∧ (q → s) ∧ (r → s) → s
+	Fibonacci numbers f.i for i a nature number by
+	f.i = { 0: if i = 0
+			1: if i = 1
+			f(i-1) + f(i-2): if i > 1 }
+	Prove: S
+	 By caseS: P,Q,R
+		(proof of P ∨ Q ∨ R —omitted if obvious)
+	 Case P: (proof of P → S)
+	 Case Q: (proof of Q → S)
+	 Case R: (proof of R → S)
+Proof by mutual implication:
+4.7 Proof method. To prove P ≡ Q, prove P → Q and Q → P.
+4.8 Theorem. For any natural number i, even.i ≡ even(i²)
+	even.i
+	 =   <Def. of even>
+		i = 2•k (for some natural number k)
+	 =   <x = y ≡ x² = y²> (for nature numbers x,y)
+		i² = (2•k)² (for some natural number k)
+	 =   <Arithmetic>
+		i² = 2•(2•k²) (for some natural number k)
+	 =   <Definition of even>
+		even(i²)
+Proof by contradiction:
+4.9 Proof by contradiction(3.74,3.12): ¬p → false ≡ p
+4.10 Theorem. Let u be a left identity and v be a right identity of operator ∘,
+	 i.e. u∘x=x and x∘v=x for all x. Then u=v.
+	 Proof. We assume u ≠ v and prove a contradiction. Consider the expression
+	 u ∘ v. Since u is a left identity, this expression equals v;
+	 since v is a right identity, this expression equals u; hence, u=v,
+	 but this contradicts the assumption u ≠ v. Hence the assumption is false,
+	 and u = v.
+	 u
+	 =   <v is a right identity>
+	 u ∘ v
+	 =   <u is a left identity>
+	 v
+4.11 Theorem. Function Halt does not exist.
+	 {Halt(P) ≡ P halts}
+	 function Halt(P:string):bool;
+	 begin … end
+	 Proof. Assume Halt exists and consider the following procedure.
+		procedure B;
+		begin while Halt("call B") do skip end
+	 We observe the following.
+		"call B" halts
+	 =   <Inspection of B's procedure body>
+		¬Halt("call B")
+	 =   <Definition of Halt —see comment on function Halt>
+		¬("call B" halts)
+	 We have derived a contradiction, so we have disproved the assumption that
+	 Halt exists.
+	 Assuming the existence of "duck," the duck function returns false if it
+	 encounters code that causes it to hang, and true if it halts without issues.
+	 The check function is designed to test "duck."
+	 It establishes a while loop that continually prompts "duck" to inspect
+	 the check function (leading to a hang).
+	 We can observe that based on common knowledge, a while loop halts only when
+	 the condition is false – that is, when "duck" returns false (encountering
+	 code that causes it to hang). When "duck" reads the code, it recognizes
+	 that the sole purpose of the check function is to call "duck."
+	 Therefore, "duck" inspects its own code, and by definition, it doesn't hang.
+	 As a result, "duck" concludes that "check" doesn't hang either,
+	 given that "check" solely invokes "duck." This perpetual true evaluation
+	 leads to an infinite loop within "check," causing it to hang indefinitely.
+Proof by contrapositive
+4.12 Proof method: Prove P → Q by proving its contrapositive ¬Q → ¬P (see (3.61)).
+	 x + y ≥ 2 → x ≥ 1 ∨ y ≥ 1
+	 By Contrapositive(3.61), De Morgan, and arithmetic, this formula is equivalent
+	 to x < 1 ∧ y < 1 → x + y < 2
+		x + y
+	 <   <Assumptions x<1 and y<1>
+		1+1
+	 =   <Arithmetic>
+		2
+4.1 Prove theorem(4.1), p → (q → p), using the method of Sec 4.1.
+	Answer:
+	 q → p
+	 =   <Def. of →(3.59), with p,q:=q,p —replace q→p by ¬q∨p>
+		¬q ∨ p
+	 =   <Symmetry of ∨(3.24), with p,q:=¬q,p —replace ¬q∨p by p∨¬q>
+		p ∨ ¬q
+	 ⇐   <Weakening(3.76a), with p,q:=p,¬q —replace p∨¬q by p>
+		p
+4.2 Prove Monotonicity of ∧(4.3), (p → q) → (p ∧ r → q ∧ r),
+	using the method of sec 4.1. Start with the consequent,
+	since it has more structure.
+	Answer:
+	 (p → q) → (p ∧ r → q ∧ r)
+	 =   <Currying(3.65), with p,q,r:=(p→q),p∧r,q∧r —replace
+		  (p→q)→(p∧r→q∧r) by (p→q)∧(p∧r)→q∧r>
+		(p → q) ∧ (p ∧ r) → q ∧ r
+	 (p → q) ∧ (p ∧ r)
+	 =   <Associativity of ∧(3.37), with p,q:=(p→q),p —replace 
+		(p→q)∧(p∧r) by ((p→q)∧p)∧r>
+		((p → q) ∧ p) ∧ r
+	 =   <Symmetry of ∧(3.36), with p,q:=(p→q),p —replace (p→q)∧p
+		  by p∧(p→q)>
+		(p ∧ (p → q)) ∧ r
+	 →   <Modus ponens(3.77) —replace p∧(p→q) by q>
+		q ∧ r
+4.3 Prove Weakening/strengthening(3.76d), p ∨ (q ∧ r) → p ∨ q, using the method of Sec 4.1. Start
+	with the antecedent, since it has more structure and distribute.
+	 Answer:
+	 true
+	 =   <Leibniz(3.83), with e,f:=r,true>
+		(r ≡ true) → ((p ∨ (q ∧ r)) → (p ∨ q) ≡ (p ∨ (q ∧ true)) → p ∨ q)
+	 =   <Identity of ∧(3.39), with p:=q —replace q∧true by q>
+		(r ≡ true) → ((p ∨ (q ∧ r)) → (p ∨ q) ≡ p ∨ q → p ∨ q)
+	 =   <Metatheorem(3.7), Reflexivity of →(3.71), with p:=p∨q and True(3.4)
+		  —replace p∨q→p∨q by true>
+		(r ≡ true) → ((p ∨ (q ∧ r)) → (p ∨ q) ≡ true)
+	 =   <Symmetry of ≡(3.2), with p,q:=(p∨(q∧r))→(p∨q),true —replace
+		  (p∨(q∧r))→(p∨q)≡true by true≡(p∨(q∧r))→(p∨q)>
+		(r ≡ true) → (true ≡ (p ∨ (q ∧ r)) → (p ∨ q))
+	 =   <Identity of ≡(3.3), with q:=(p∨(q∧r))→(p∨q) —replace
+		  true≡(p∨(q∧r))→(p∨q) by (p∨(q∧r))→(p∨q)>
+		(r ≡ true) → (p ∨ (q ∧ r)) → (p ∨ q) —Lemma01
+	 true
+	 =   <Leibniz(3.83), with e,f:=r,false>
+		(r ≡ false) → ((p ∨ (q ∧ r)) → (p ∨ q) ≡ (p ∨ (q ∧ false)) → p ∨ q)
+	 =   <Zero of ∧(3.39), with p:=q —replace q∧false by false>
+		(r ≡ false) → ((p ∨ (q ∧ r)) → (p ∨ q) ≡ p ∨ false → p ∨ q)
+	 =   <Identity of ∨(3.30) —replace p∨false by p>
+		(r ≡ false) → ((p ∨ (q ∧ r)) → (p ∨ q) ≡ p → p ∨ q)
+	 =   <Metatheorem(3.7), Weakening→(3.76a) and True(3.4) —replace p→p∨q by true>
+		(r ≡ false) → ((p ∨ (q ∧ r)) → (p ∨ q) ≡ true)
+	 =   <Symmetry of ≡(3.2), with p,q:=(p∨(q∧r))→(p∨q),true —replace
+		  (p∨(q∧r))→(p∨q)≡true by true≡(p∨(q∧r))→(p∨q)>
+		(r ≡ false) → (true ≡ (p ∨ (q ∧ r)) → (p ∨ q))
+	 =   <Identity of ≡(3.3), with q:=(p∨(q∧r))→(p∨q) —replace
+		  true≡(p∨(q∧r))→(p∨q) by (p∨(q∧r))→(p∨q)>
+		(r ≡ false) → (p ∨ (q ∧ r)) → (p ∨ q) —Lemma02
+	 If Lemma01 and Lemma02 are theorems, then so is (3.76d).
+4.4 Prove (p → q) ∧ (r → s) → (p ∨ r → q ∨ s), using the proof format of Sec. 4.1.
+	You may first want to remove the implications in the antecedent, distribute
+	as much as possible, and then use theorem(3.76d) and an absorption theorem.
+	Answer:
+	 (p → q) ∧ (r → s)
+	 =   <Identity of ∧(3.39), with p:=(p→q) —replace (p→q) by (p→q)∧true>
+		(p → q) ∧ true ∧ (r → s)
+	 =   <Identity of ∧(3.39), with p:=(r→s) —replace (r→s) by (r→s)∧true>
+		(p → q) ∧ true ∧ (r → s) ∧ true
+	 =   <Metatheorem(3.7), True(3.4) and Weakening(3.76a) —replace true
+		  by (q→q∨s)>
+		(p → q) ∧ (q → q ∨ s) ∧ (r → s) ∧ true
+	 =   <Metatheorem(3.7), True(3.4) and Weakening(3.76a) —replace true
+		  by (s→q∨s)>
+		(p → q) ∧ (q → q ∨ s) ∧ (r → s) ∧ (s → q ∨ s)
+	 →   <Transitivity(3.82a), with r:=q∨s and Monotonicity of ∧(4.3),
+		  with p,q,r:=(p→q),(q→q∨s),(r→s)∧(s→q∨s) —replace (p→q)∧(q→q∨s)
+		  by (p→q∨s)>
+		(p → q ∨ s) ∧ (r → s) ∧ (s → q ∨ s)
+	 =   <Symmetry of ∧(3.36), with p,q:=(p→q∨s),(r→s)∧(s→q∨s) —replace
+		  (p→q∨s)∧(r→s)∧(s→q∨s) by (r→s)∧(s→q∨s)∧(p→q∨s)>
+		(r → s) ∧ (s → q ∨ s) ∧ (p → q ∨ s)
+	 →   <Transitivity(3.82a), with p,q,r:=r,s,q∨s and Monotonicity of ∧(4.3),
+		  with p,q,r:=(r→s),(s→q∨s),(p→q∨s) —replace (r→s)∧(s→q∨s)
+		  by (r→q∨s)>
+		(r → q ∨ s) ∧ (p → q ∨ s)
+	 =   <Symmetry of ∧(3.36), with p,q:=(r→q∨s),(p→q∨s) —replace (r→q∨s)∧(p→q∨s)
+		  by (p→q∨s)∧(r→q∨s)>
+		(p → q ∨ s) ∧ (r → q ∨ s)
+	 =   <(3.78), with q,r:=r,q∨s —replace (p→q∨s)∧(r→q∨s) by p∨r→q∨s>
+		p ∨ r → q ∨ s
+4.5 Prove (p → q) ∧ (r → s) → (p ∧ r → q ∧ s), using the proof format of Sec. 4.1.
+	Before using the proof format, you may first want to using Currying(3.65)
+	to move p ∧ r into the antecedent.
+	Answer:
+	 (p → q) ∧ (r → s) → (p ∧ r → q ∧ s)
+	 =   <Currying(3.65), with p,q,r:=(p→q)∧(r→s),p∧r,q∧s —replace
+		  (p→q)∧(r→s)→(p∧r→q∧s) by (p→q)∧(r→s)∧p∧r→q∧s>
+		(p → q) ∧ (r → s) ∧ p ∧ r → q ∧ s
+	 (p → q) ∧ (r → s) ∧ p ∧ r
+	 =   <Symmetry of ∧(3.36), with p,q:=(p→q)∧(r→s),p —replace (p→q)∧(r→s)∧p
+		  by p∧(p→q)∧(r→s)>
+		p ∧ (p → q) ∧ (r → s) ∧ r
+	 =   <Symmetry of ∧(3.36), with p,q:=(r→s),r —replace (r→s)∧r by r∧(r→s)>
+		p ∧ (p → q) ∧ r ∧ (r → s)
+	 →   <Modus ponens(3.77) —replace p∧(p→q) by q>
+		q ∧ r ∧ (r → s)
+	 →   <Modus ponens(3.77), with p,q:=r,s —replace r∧(r→s) by s>
+		q ∧ s
+4.6 Prove p → (q → p) by the method of assuming the antecedent.
+	Answer:
+	Assume p
+	 q → p
+	 =   <Assumption>
+		q → true
+	 =   <Right zero of →(3.72), with p:=q —replace q→true by true>
+		true
+4.7 Prove (¬p → q) → ((p → q) → q) by the method of assuming the antecedent.
+	Answer:
+	Assume ¬p → q
+	  Assume p → q
+		q
+	  =   <(3.79), with r:=q —replace q by (p→q)∧(¬p→q)>
+		(p → q) ∧ (¬p → q)
+	  =   <Assumption>
+		true ∧ true
+4.8 Prove p ∧ q → (p ≡ q) by the method of assuming the antecedent.
+	Answer:
+	Assume p, q
+		p
+	 =   <Assumption p>
+		true
+	 =   <Assumption q>
+		q
+4.9 Prove (p → p') ∧ (q → q') → (p ∨ q → p' ∨ q') by the method of assuming the
+	antecedent.
+	Answer:
+	Assume (p → p')(which is equivalent to p ∧ p' ≡ p), 
+		   (q → q')(which is equivalent to q ∧ q' ≡ q)
+		p ∨ q
+	 =   <Assumption p ∧ p' ≡ p>
+		p ∧ p' ∨ q
+	 =   <Assumption q ∧ q' ≡ q>
+		p ∧ p' ∨ q ∧ q'
+	 =   <Symmetry of ∧(3.36), with p,q:=p,p' —replace p∧p' by p'∧p>
+		p' ∧ p ∨ q ∧ q'
+	 =   <Symmetry of ∧(3.36), with p,q:=q,q' —replace q∧q' by q'∧q>
+		p' ∧ p ∨ q' ∧ q
+	 →   <Weakening(3.76b), with p,q:=p',p —replace p'∧p by p'>
+		p' ∨ q' ∧ q
+	 →   <Weakening(3.76b), with p,q:=q',q —replace q'∧q by q'>
+		p' ∨ q'
+4.10 Prove Modus ponens(3.77), p ∧ (p → q) → q, by the method of assuming the antecedent.
+	Answer:
+	Assume p,(p → q) (which is equivalent to p ∨ q ≡ q)
+		q
+	 =   <Assumption p ∨ q ≡ q>
+		p ∨ q
+	 =   <Assumption p>
+		true ∨ q
+	 =   <Symmetry of ∨(3.24), with p,q:=true,q —replace true∨q
+		  by q∨true>
+		q ∨ true
+	Proof.
+		Prove: p ∧ ¬p ≡ false
+		 By Shannon
+		 Case (p ∧ ¬p ≡ false)[p:=true]
+		  =   <Textual substitution>
+			true ∧ ¬true ≡ false
+		  =   <Identity of ∧(3.39); Def. of false(3.8)>
+			false ≡ false
+		 Case (p ∧ ¬p ≡ false)[p:=false]
+		  =   <Textual substitution>
+			false ∧ ¬false ≡ false
+		  =   <Zero of ∧(3.40)>
+			false ≡ false —Reflexivity of ≡(3.5)
+4.11 Prove the following theorem using Metatheorem Case analysis(4.5):
+	(p ∨ q) ∧ r ≡ (p ∧ r) ∨ (q ∧ r)
+	Answer:
+	Prove: (p ∨ q) ∧ r ≡ (p ∧ r) ∨ (q ∧ r)
+	 By Shannon
+	 Case r=true:
+	 ((p ∨ q) ∧ r ≡ (p ∧ r) ∨ (q ∧ r))[r:=true]
+	 =   <Textual substitution>
+		(p ∨ q) ∧ true ≡ (p ∧ true) ∨ (q ∧ true)
+	 =   <Identity of ∧(3.39), with p:=(p∨q) —replace (p∨q)∧true
+		  by p∨q>
+		p ∨ q ≡ (p ∧ true) ∨ (q ∧ true)
+	 =   <Identity of ∧(3.39) —replace p∧true by p>
+		p ∨ q ≡ p ∨ (q ∧ true)
+	 =   <Identity of ∧(3.39), with p:=q —replace q∧true by q>
+		p ∨ q ≡ p ∨ q —Reflexivity of ≡(3.5)
+	 Case r=false:
+	 ((p ∨ q) ∧ r ≡ (p ∧ r) ∨ (q ∧ r))[r:=false]
+	 =   <Textual substitution>
+		(p ∨ q) ∧ false ≡ (p ∧ false) ∨ (q ∧ false)
+	 =   <Zero of ∧(3.40), with p:=(p∨q) —replace (p∨q)∧false by false>
+		false ≡ (p ∧ false) ∨ (q ∧ false)
+	 =   <Zero of ∧(3.40) —replace p∧false by false>
+		false ≡ false ∨ (q ∧ false)
+	 =   <Zero of ∧(3.40), with p:=q —replace q∧false by false>
+		false ≡ false ∨ false
+	 =   <Identity of ∨(3.30), with p:=false —replace false∨false by false>
+		false ≡ false —Reflexivity of ≡(3.5)
+4.12 Prove theorem(4.6), (p ∨ q ∨ r) ∧ (p → s) ∧ (q → s) ∧ (r → s) → s
+	 Answer:
+	 Prove: (p ∨ q ∨ r) ∧ (p → s) ∧ (q → s) ∧ (r → s) → s
+	 By Shannon
+	 Case s=true:
+	 ((p ∨ q ∨ r) ∧ (p → s) ∧ (q → s) ∧ (r → s) → s)[s:=true]
+	 =   <Textual substitution>
+		(p ∨ q ∨ r) ∧ (p → true) ∧ (q → true) ∧ (r → true) → true
+	 =   <Right zero of →(3.72), with p:=(p∨q∨r)∧(p→true)∧(q→true)∧(r→true) —replace
+		  (p∨q∨r)∧(p→true)∧(q→true)∧(r→true)→true by true>
+		true
+	 Case s=false:
+	 ((p ∨ q ∨ r) ∧ (p → s) ∧ (q → s) ∧ (r → s) → s)[s:=false]
+	 =   <Textual substitution>
+		(p ∨ q ∨ r) ∧ (p → false) ∧ (q → false) ∧ (r → false) → false
+	 =   <(3.74) four times>
+		¬((p ∨ q ∨ r) ∧ ¬p ∧ ¬q ∧ ¬r)
+	 =   <De Morgan(3.47b) twice>
+		¬((p ∨ q ∨ r) ∧ ¬(p ∨ q ∨ r))
+	 =   <Contradiction(3.42)>
+		¬false
+	 =   <Negation of false(3.13)>
+		true
+4.13 let x↓y be the minimum of integers x and y, defined by x↓y=(if x ≤ y then x
+	 else y). Prove that ↓ is symmetric, i.e. b↓c=c↓b. How many cases do you have
+	 to consider? You may use the necessary rules of integer arithmetic, for example,
+	 that b ≤ c ≡ b = c ∨ b < c and that b < c ≡ c > b.
+	 Answer:
+	 Three cases.
+		Note: 
+		b ≤ c ≡ (b = c) ∨ (b < c) and that b < c ≡ c > b
+	 x↓y = {x: if x = y,
+			x: if x < y,
+			y: if x > y,}
+	 if x=y then min(x,y)=(x<=y?x:y)=x=y=(y<=x?y:x)=min(y,x)
+	 if x<y then min(x,y)=(x<=y?x:y)=x=(y<=x?y:x)=min(y,x)
+	 if x>y then min(x,y)=(x<=y?x:y)=y=(y<=x?y:x)=min(y,x)
+4.14 Prove by case analysis that ↓ is associative, i.e. that b↓(c↓d)=((b↓c)↓d)
+	 (see the previous exercise). How many cases do you have to consider, based
+	 on the definition of ↓?
+	 Answer:
+	 3! (a,b,c permutation)
+		a__
+			ab_
+				abc
+			ac_
+				acb
+		b__
+			ba_
+				bac
+			bc_
+				bca
+		c__
+			ca_
+				cab
+			cb_
+				cba
+	 x↓(y↓z) = {(a: if a≤b≤c){
+					a: a<b<c,
+					a: a<b=c,
+					a: a=b<c,
+					a: a=b=c,
+					},
+				(a: if a≤c≤b){
+					a: a<c<b,
+					a: a<c=b,
+					a: a=c<b,
+					a: a=c=b,
+					},
+				(b: if b≤a≤c){
+					b: b<a<c,
+					b: b<a=c,
+					b: b=a<c,
+					b: b=a=c,
+					},
+				(b: if b≤c≤a){
+					b: b<c<a,
+					b: b<c=a,
+					b: b=c<a,
+					b: b=c=a,
+					},
+				(c: if c≤a≤b){
+					c: c<a<b,
+					c: c<a=b,
+					c: c=a<b,
+					c: c=a=b,
+					},
+				(c: if c≤b≤a){
+					c: c<b<a,
+					c: c<b=a,
+					c: c=b<a,
+					c: c=b=a,
+					},
+				}
+		Note: 
+		b ≤ c ≡ (b = c) ∨ (b < c) and that b < c ≡ c > b
+			Following the logic from the previous question, each possibility
+			can be divided into four categories:
+			b<c<d, b<=c<d, b<c<=d, and b=c=d.
+			In total, there are 6*4=24 different scenarios. However,
+			cases like b=c=d and c=b=d are equivalent, resulting in 19 cases.
+	 Having approached symmetry and associativity as distinct concepts,
+	 we've employed different methods for each, resulting in six distinct cases
+	 that have already been demonstrated.
+	 if a<=b<=c then min(a,min(b,c))=min(a,b)=a=min(a,c)=min(min(a,b),c)
+	 if a<=c<=b then min(a,min(c,b))=min(a,c)=a=min(a,b)=min(min(a,c),b)
+	 if b<=a<=c then min(b,min(a,c))=min(b,a)=b=min(b,c)=min(min(b,a),c)
+	 if b<=c<=a then min(b,min(c,a))=min(b,c)=b=min(b,a)=min(min(b,c),a)
+	 if c<=a<=b then min(c,min(a,b))=min(c,a)=c=min(c,b)=min(min(c,a),b)
+	 if c<=b<=a then min(c,min(b,a))=min(c,b)=c=min(c,a)=min(min(c,b),a)
+4.15 Consider the discussion on page 76 that shows how a proof of P≡Q with P∨Q as
+	 an intermediate step can be viewed as a proof by mutual implication.
+	 Write a similar discussion to show how a proof of P≡Q with P∧Q as an intermediate
+	 step can be viewed as a proof by mutual implication.
+	 Answer:
+	 P
+	 =   <Hint>
+		…
+	 =   <Hint>
+		P ∧ Q
+	 =   <Hint>
+		…
+	 =   <Hint>
+	 Q
+	 This proof establishes (P≡P∧Q) and (P∧Q≡Q). Since P≡P∧Q equivales P→Q
+	 and P∧Q≡Q equivales Q→P, the proof establishes (P→Q)∧(Q→P).
+	 But this formula is the LHS of (3.80). Hence, the proof is really just
+	 a proof by mutual implication of P→Q.
+5.1 If Joe failes to submit a project in course CS414, then he fails the course.
+	If Joe fails CS414, then he cannot graduate. Hence, if Joe graduates,
+	he must have submitted a project.
+		F0: If Joe failes to submit a project in course CS414,
+			then he fails the course.
+		F1: If Joe fails CS414, then he cannot graduate.
+		C: Hence, if Joe graduates, he must have submitted a project.
+	F0 ∧ F1 → C
+		s: Joe submits a project in CS414.
+		f: Joe fails CS414.
+		g: Joe graduates.
+	F0= ¬s→f
+	F1= f→¬g
+	C= g→s
+		(¬s → f) ∧ (f → ¬g) → (g → s)
+	Proof.
+		(¬s → f) ∧ (f → ¬g)
+	 →   <Transitivity(3.82a)>
+		¬s → ¬g
+	 =   <Contrapositive(3.61)>
+		g → s
+5.2 If X is greater than zero, then if Y is zero than Z is zero.
+	Variable Y is zero. Hence, either X is greater than zero or Z is zero.
+		x: X is greater than zero.
+		y: Y is zero.
+		z: Z is zero.
+5.3 (x → (y → z)) ∧ y → x ∨ z
+		(x → (y → z)) ∧ y
+	 =   <Currying(3.65) twice>
+		(y → (x → z)) ∧ y
+	 =   <(3.66)>
+		(x → z) ∧ y
+	strcmp("(x→z)∧y","x∨z")≠0
+	Variable y has nothing to do with the consequent, and x → z (i.e. (¬x ∨ z))
+	does not imply x ∨ z. Hence, we should suspect that (5.3) is not valid and
+	that argument (5.2) is not sound.
+	Counterexamples for Expressions
+	expression|counterexample 1|counterexample 2|
+		   p∧q|         p=false|         q=false|
+		   p∨q|       p=q=false|                |
+		   p≡q| p=true, q=false| p=false, q=true|
+		   p≢q|        p=q=true|       p=q=false|
+		   p→q|p=true, q =false|                |
+	Counterexample of 5.3:
+	x = z = false and y = true
+		X is not greater than zero
+		Z is not zero
+		and
+		Y is zero.
+Solving Puzzles:
+	Portia's suitor's dilemma
+	 Portia has a gold casket and a silver casket and has placed a picture of herself
+	 in one of them. On the caskets, she has written the following inscriptions:
+		Gold: The portrait is not in here.
+		Silver: Exactly one of these inscriptions is true.
+	 Portia explains to her suitor that each inscription may be true or false,
+	 but that she has placed her portrait in one of the caskets in a manner that is
+	 consistent with this truth or falsity of the inscriptions. If she can choose
+	 the casket with her portrait, she will marry her —in those days, that's what
+	 suitors wanted. The problem for the suitor is to use the inscriptions (although
+	 they could be true or false) to determine which casket contains her portrait.
+	 gc: The portrait is in the gold casket.
+	 sc: The portrait is in the silver casket.
+	 g: The portrait is not in the gold casket.
+	 s: Exactly one of g and s is true.
+	 F0: gc ≡ ¬sc
+	 F1: g ≡ ¬gc
+	 F2: s ≡ (s ≡ ¬g)
+	 Proof.
+		s ≡ (s ≡ ¬g)
+	 =   <Symmetry of ≡(3.2)>
+		¬g
+	 =   <F1; Double negation(3.12)>
+		gc
+	Hence, from F1 and F2 (F0 is not needed) we conclude gc. The portrait is in
+	the gold casket.
+Solving Puzzles:
+	Superman
+	 If Superman were able and willing to prevent evil, she would do so. If Superman
+	 were unable to prevent evil, she would be impotent; if she were unwilling to
+	 prevent evil, she would be malevolent. Superman does not prevent evil. If
+	 Superman exists, she is neither impotent nor malevolent. Therefore, Superman
+	 does not exist.
+		a: Superman is able to prevent evil.
+		w: Superman is willing to prevent evil.
+		i: Superman is impotent.
+		m: Superman is malevolent.
+		p: Superman prevents evil.
+		e: Superman exists.
+		F0: a ∧ w → p
+		F1: (¬a → i) ∧ (¬w → m)
+		F2: ¬p
+		F3: e → ¬i ∧ m
+5.4 F0 ∧ F1 ∧ F2 ∧ F3 → ¬e
+	Proof.
+	Assume F0, F1, F2, F3
+		¬e
+	 ⇐   <Contrapositive ¬(¬i ∧ ¬m) → ¬e of F3
+		  the only other place e appears>
+		¬(¬i ∧ ¬m)
+	 =   <De Morgan(3.47a); Double negation(3.12), twice>
+		i ∨ m
+	 ⇐   <First conjunct of F1 and Monotonicity(4.2)>
+		¬a ∨ m
+	 ⇐   <Second conjunct of F1 and Monotonicity(4.2)>
+		¬w ∨ ¬a
+	 =   <De Morgan(3.47a)>
+		¬(a ∧ w)
+	 ⇐   <Contrapositive ¬p → ¬(a ∧ w) of F0>
+		¬p —this is F2
+		Note:
+		(¬a → i) → (¬a ∨ m → i ∨ m)
+		(¬w → m) → (¬w ∨ ¬a → m ∨ ¬a)
+5.5 c = (a ∧ b) ∧
+	𝜙 = ¬b ∧ 𝜃 = (a ∧ 𝜙) ∧
+	𝜔 = ¬a ∧ 𝜋 = (b ∧ 𝜔) ∧
+	s = (𝜃 ∨ 𝜔)
+5.6 z1 = E1(x) ∧ z2 = E2(x) ∧ … ∧ zm = Em(x)
+5.7 NOT(a): ¬a
+	AND(a1,…,an): a1 ∧ … ∧ an (for n≥2)
+	OR(a1,…an): a1 ∨ … ∨ an (for n≥2)
+5.8 Definition. Circuit 
+5.1 Formalize the following arguments and either prove that they are valid or find
+	a counterexample.
+	 (a)
+		Either the program does not terminate or n eventually becomes 0.
+		If n becomes 0, m will eventually be 0.
+		The program terminates.
+		Therefore, m will eventually be 0.
+		Answer:
+			t: The program does not terminates.
+			n: n eventually becomes 0.
+			m: m will eventually be 0.
+			F0: t ≡ ¬n
+			F1: n → m
+			F2: ¬t
+			C: m
+			F0 ∧ F1 ∧ F2 → C
+			Proof.
+				Assume F0, F1, F2
+					m
+				 ⇐   <Assumption F1>
+					n
+				 =   <Assumption F0, Double negation(3.12)>
+					¬t —This is F2
+			Prove: (t ≡ ¬n) ∧ (n → m) ∧ ¬t → m
+			By Case
+			Case t=true:
+				Case n=true:
+					Case m=true:
+						((t ≡ ¬n) ∧ (n → m) ∧ ¬t → m)[t,n,m:=true,true,true]
+					 =   <Textual Evaluation>
+						((true ≡ ¬true) ∧ (true → true) ∧ ¬true → true)
+					 =   <Boolean Expression Evaluation>
+						true
+					Case m=false:
+						((t ≡ ¬n) ∧ (n → m) ∧ ¬t → m)[t,n,m:=true,true,false]
+					 =   <Textual Evaluation>
+						((true ≡ ¬true) ∧ (true → false) ∧ ¬true → false)
+					 =   <Boolean Expression Evaluation>
+						true
+				Case n=false:
+					Case m=true:
+						((t ≡ ¬n) ∧ (n → m) ∧ ¬t → m)[t,n,m:=true,false,true]
+					 =   <Textual Evaluation>
+						((true ≡ ¬false) ∧ (false → true) ∧ ¬true → true)
+					 =   <Boolean Expression Evaluation>
+						true
+					Case m=false:
+						((t ≡ ¬n) ∧ (n → m) ∧ ¬t → m)[t,n,m:=true,false,false]
+					 =   <Textual Evaluation>
+						((true ≡ ¬false) ∧ (false → false) ∧ ¬true → false)
+					 =   <Boolean Expression Evaluation>
+						true
+			Case t=false:
+				Case n=true:
+					Case m=true:
+						((t ≡ ¬n) ∧ (n → m) ∧ ¬t → m)[t,n,m:=false,true,true]
+					 =   <Textual Evaluation>
+						((false ≡ ¬true) ∧ (true → true) ∧ ¬false → true)
+					 =   <Boolean Expression Evaluation>
+						true
+					Case m=false:
+						((t ≡ ¬n) ∧ (n → m) ∧ ¬t → m)[t,n,m:=false,true,false]
+					 =   <Textual Evaluation>
+						((false ≡ ¬true) ∧ (true → false) ∧ ¬false → false)
+					 =   <Boolean Expression Evaluation>
+						true
+				Case n=false:
+					Case m=true:
+						((t ≡ ¬n) ∧ (n → m) ∧ ¬t → m)[t,n,m:=false,false,true]
+					 =   <Textual Evaluation>
+						((false ≡ ¬false) ∧ (false → true) ∧ ¬false → true)
+					 =   <Boolean Expression Evaluation>
+						true
+					Case m=false:
+						((t ≡ ¬n) ∧ (n → m) ∧ ¬t → m)[t,n,m:=false,false,false]
+					 =   <Textual Evaluation>
+						((false ≡ ¬false) ∧ (false → false) ∧ ¬false → false)
+					 =   <Boolean Expression Evaluation>
+						true
+	 (b)
+		If the initialization is correct and if the loop terminates, then P is true in the final state.
+		P is true in the final state.
+		Therefore, if the initialization is correct, the loop terminates.
+		Answer:
+			i: The initialization is correct.
+			l: The loop terminates.
+			p: P is true in the final state.
+			F0: i ∧ l → p
+			F1: p
+			C: i → l
+			F0 ∧ F1 → C
+			Counterexample:
+				(i,p,l:=true,true,false): F0,F1,C:=true,true,false
+	 (c)
+		If there is a man on the moon, the moon is made of cheese, and if the moon is made of cheese then I am a monkey.
+		Either no man is on the moon or the moon is not made of cheese.
+		Therefore either the moon is not made of cheese or I am a monkey.
+		Answer:
+			a: A man on the moon.
+			m: The moon is made of cheese.
+			i: I am a monkey.
+			F0: (a → m) ∧ (m → i)
+			F1: a ≡ ¬m
+			C:  m ≡ i
+			F0 ∧ F1 → C
+			Proof.
+				Assume F1
+					(a → m) ∧ (m → i)
+				 =   <Assumption>
+					(¬m → m) ∧ (m → i)
+				 =   <Def. of →(3.59)>
+					(m ∨ m) ∧ (m → i)
+				 =   <Idempotency of ∨(3.26)>
+					m ∧ (m → i)
+				 →   <Weakening(3.76a), Monotonicity of ∧(4.3)>
+					(i → m) ∧ (m → i)
+				 =   <Antisymmetry(3.81)>
+					i ≡ m
+				Note:
+					m → (m → i)
+					Weakening(3.76a), with p:=¬i
+					(m ∨ ¬i) ∧ (m → i)
+					= (i → m) ∧ (m → i)
+				Prove: ((a → m) ∧ (m → i)) ∧ (a ≡ ¬m) → (m ≡ i)
+				By Case
+				Case a=true:
+					Case m=true:
+						Case i=true:
+							(((a → m) ∧ (m → i)) ∧ (a ≡ ¬m) → (m ≡ i))[a,m,i:=true,true,true]
+						 =   <Textual Substitution>
+							(((true → true) ∧ (true → true)) ∧ (true ≡ ¬true) → (true ≡ true))
+						 =   <Boolean Expression Evaluation>
+							true
+						Case i=false:
+							(((a → m) ∧ (m → i)) ∧ (a ≡ ¬m) → (m ≡ i))[a,m,i:=true,true,false]
+						 =   <Textual Substitution>
+							(((true → true) ∧ (true → false)) ∧ (true ≡ ¬true) → (true ≡ false))
+						 =   <Boolean Expression Evaluation>
+							true
+					Case m=false:
+						Case i=true:
+							(((a → m) ∧ (m → i)) ∧ (a ≡ ¬m) → (m ≡ i))[a,m,i:=true,false,true]
+						 =   <Textual Substitution>
+							(((true → false) ∧ (false → true)) ∧ (true ≡ ¬false) → (false ≡ true))
+						 =   <Boolean Expression Evaluation>
+							true
+						Case i=false:
+							(((a → m) ∧ (m → i)) ∧ (a ≡ ¬m) → (m ≡ i))[a,m,i:=true,false,false]
+						 =   <Textual Substitution>
+							(((true → false) ∧ (false → false)) ∧ (true ≡ ¬false) → (false ≡ false))
+						 =   <Boolean Expression Evaluation>
+							true
+				Case a=false:
+					Case m=true:
+						Case i=true:
+							(((a → m) ∧ (m → i)) ∧ (a ≡ ¬m) → (m ≡ i))[a,m,i:=false,true,true]
+						 =   <Textual Substitution>
+							(((false → true) ∧ (true → true)) ∧ (false ≡ ¬true) → (true ≡ true))
+						 =   <Boolean Expression Evaluation>
+							true
+						Case i=false:
+							(((a → m) ∧ (m → i)) ∧ (a ≡ ¬m) → (m ≡ i))[a,m,i:=false,true,false]
+						 =   <Textual Substitution>
+							(((false → true) ∧ (true → false)) ∧ (false ≡ ¬true) → (true ≡ false))
+						 =   <Boolean Expression Evaluation>
+							true
+					Case m=false:
+						Case i=true:
+							(((a → m) ∧ (m → i)) ∧ (a ≡ ¬m) → (m ≡ i))[a,m,i:=false,false,true]
+						 =   <Textual Substitution>
+							(((false → false) ∧ (false → true)) ∧ (false ≡ ¬false) → (false ≡ true))
+						 =   <Boolean Expression Evaluation>
+							true
+						Case i=false:
+							(((a → m) ∧ (m → i)) ∧ (a ≡ ¬m) → (m ≡ i))[a,m,i:=false,false,false]
+						 =   <Textual Substitution>
+							(((false → false) ∧ (false → false)) ∧ (false ≡ ¬false) → (false ≡ false))
+						 =   <Boolean Expression Evaluation>
+							true
+	 (d)
+		If Joe loves Mary, then either mom is mad or father is sad.
+		Father is sad.
+		Therefore, if mom is mad then Joe doesn't love Mary.
+		Answer:
+			j: Joe loves Mary.
+			m: Mom is mad.
+			d: Dad is sad.
+			F0: j → (m ≡ ¬d)
+			F1: d
+			C: m → ¬j
+			F0 ∧ F1 → C
+			Proof.
+				Assume F1
+					(j → (m ≡ ¬d))
+				 =   <Assumption F1>
+					(j → (m ≡ ¬true))
+				 =   <Def. of false(3.8)>
+					(j → (m ≡ false))
+				 =   <(3.15)>
+					j → ¬m
+				 =   <Contrapositive(3.61), Double negation(3.12)>
+					m → ¬j
+			Prove: (j → (m ≡ ¬d)) ∧ d → (m → ¬j)
+			By Case
+			Case j=true:
+				Case m=true:
+					Case d=true:
+						((j → (m ≡ ¬d)) ∧ d → (m → ¬j))[j,m,d:=true,true,true]
+					 =   <Textual Substitution>
+						(true → (true ≡ ¬true)) ∧ true → (true → ¬true)
+					 =   <Boolean Expression Evaluation>
+						true
+					Case d=false:
+						((j → (m ≡ ¬d)) ∧ d → (m → ¬j))[j,m,d:=true,true,false]
+					 =   <Textual Substitution>
+						(true → (true ≡ ¬false)) ∧ false → (true → ¬true)
+					 =   <Boolean Expression Evaluation>
+						true
+				Case m=false:
+					Case d=true:
+						((j → (m ≡ ¬d)) ∧ d → (m → ¬j))[j,m,d:=true,false,true]
+					 =   <Textual Substitution>
+						(true → (false ≡ ¬true)) ∧ true → (false → ¬true)
+					 =   <Boolean Expression Evaluation>
+						true
+					Case d=false:
+						((j → (m ≡ ¬d)) ∧ d → (m → ¬j))[j,m,d:=true,false,false]
+					 =   <Textual Substitution>
+						(true → (false ≡ ¬false)) ∧ false → (false → ¬true)
+					 =   <Boolean Expression Evaluation>
+						true
+			Case j=false:
+				Case m=true:
+					Case d=true:
+						((j → (m ≡ ¬d)) ∧ d → (m → ¬j))[j,m,d:=false,true,true]
+					 =   <Textual Substitution>
+						(false → (true ≡ ¬true)) ∧ true → (true → ¬false)
+					 =   <Boolean Expression Evaluation>
+						true
+					Case d=false:
+						((j → (m ≡ ¬d)) ∧ d → (m → ¬j))[j,m,d:=false,true,false]
+					 =   <Textual Substitution>
+						(false → (true ≡ ¬false)) ∧ false → (true → ¬false)
+					 =   <Boolean Expression Evaluation>
+						true
+				Case m=false:
+					Case d=true:
+						((j → (m ≡ ¬d)) ∧ d → (m → ¬j))[j,m,d:=false,false,true]
+					 =   <Textual Substitution>
+						(false → (false ≡ ¬true)) ∧ true → (false → ¬false)
+					 =   <Boolean Expression Evaluation>
+						true
+					Case d=false:
+						((j → (m ≡ ¬d)) ∧ d → (m → ¬j))[j,m,d:=false,false,false]
+					 =   <Textual Substitution>
+						(false → (false ≡ ¬false)) ∧ false → (false → ¬false)
+					 =   <Boolean Expression Evaluation>
+						true
+5.2 Prove that the following argument is valid if the "or" in it is considered to
+	be inclusive and invalid if it is considered exclusive.
+	 If an algorithm is reliable, then it is okay. Therefore, either an algorithm
+	 is okay or it is unreliable.
+	Answer:
+		r: An algorithm is reliable.
+		o: An algorithm is okay.
+		F0: r → o
+		C0: r ≡ o
+		C1: ¬r ≡ o
+		Proof.
+			Assume F0
+				r ≡ o
+			 ⇐   <Assumption>
+				r ≡ r
+			 =   <Reflexivity of ≡(3.5)>
+				true
+		Prove: ¬r ≡ o
+		By case
+		Case r=true:
+			Case o=true:
+				(¬r ≡ o)[r,o:=true,true]
+			 =   <Textual Substitution>
+				(¬true ≡ true)
+			 =   <Boolean Expression Evaluation>
+				false
+			Case o=false:
+				(¬r ≡ o)[r,o:=true,false]
+			 =   <Textual Substitution>
+				(¬true ≡ false)
+			 =   <Boolean Expression Evaluation>
+				true
+		Case r=false:
+			Case o=true:
+				(¬r ≡ o)[r,o:=false,true]
+			 =   <Textual Substitution>
+				(¬false ≡ true)
+			 =   <Boolean Expression Evaluation>
+				true
+			Case o=false:
+				(¬r ≡ o)[r,o:=false,false]
+			 =   <Textual Substitution>
+				(¬false ≡ false)
+			 =   <Boolean Expression Evaluation>
+				false
+5.3 Suppose we have the following facts. Prove that if the maid told the truth,
+	the butler lied.
+	 The maid said she saw the butler in the living room.
+	 The living room adjoins kitchen.
+	 The shot was fired in the kitchen and could be heard in all adjoining rooms.
+	 The butler, who had good hearing, said he did not heard the shot.
+	 Answer:
+		m: The maid told the truth.
+		b: The butler told the truth.
+		l: The butler was in the living room.
+		k: The living room adjoins the kitchen.
+		h: The butler heard the shot.
+		F0: m → l
+		F1: k
+		F2: (k ∧ l) → h
+		F3: b → ¬h
+		C: m → ¬b
+		F0 ∧ F1 ∧ F2 ∧ F3 → C
+		Proof.
+			Assume F0, F1, F2, F3
+				m
+			 →   <Assumption F0>
+				l
+			 =   <Metatheorem(3.7), Identity of ∧(3.39) and Assumption F2, F2>
+				l ∧ k ∧ (k ∧ l → h)
+			 →   <Modus Ponens(3.77)>
+				h
+			 =   <Metatheorem(3.7), Identity of ∧(3.39), Assumption F3>
+				h ∧ (b → ¬h)
+			 =   <Contrapositive(3.61), Double negation(3.12)>
+				h ∧ (h → ¬b)
+			 →   <Modus Ponens(3.77)>
+				¬b
+6.1 Scope rule. For k an integer, line k of a proof may contain reference to lines
+	1 through k-1. A line numbered …j.k (say) can reference lines …j.1 through
+	j.(k-1) as well as whatever can be referenced by line …j.
+6.2 p → (q → r) ⊢ p ∧ q → r
+	1 p ∧ q ⊢ r
+	  1.1 p      ∧–E, pr 1.a
+	  1.2 q → r  →–E, 1.1, pr a
+	  1.3 q      ∧–E, pr 1.a
+	  1.4 r      →–E, 1.3, 1.2
+	2 p ∧ q → r  →–I, 1
+6.3 p ∧ q → r ⊢ p → (q → r)
+	1 p ⊢ q → r
+	  1.1 q ⊢ r
+		  1.1.1 p ∧ q  ∧–I, pr 1.a, pr1.1.a
+		  1.1.2 r      →–E, 1.1.1, pr a
+	  1.2 q → r        →–I, 1.1
+	2 p → (q → r)      →–I, 1
+6.4 ⊢ p ≡ ¬¬p
+	1 p ⊢ ¬¬p
+	  1.1 ¬p ⊢ p ∧ ¬p
+		  1.1.1 p ∧ ¬p   ∧–I, pr 1.a, pr 1.1.a
+	  1.2 ¬¬p			 ¬–I, 1.1
+	2 p → ¬¬p			 →–I, 1
+	3 ¬¬p ⊢ p
+	  3.1 ¬p ⊢ ¬p ∧ ¬¬p
+		  3.1.1 ¬p ∧ ¬¬p ∧–I, pr 3.1.a, pr 3.a
+	  3.2 p 		 	 ¬–E, 3.1
+	4 ¬¬p → p			 →–I, 3
+	5 p ≡ ¬¬p			 ≡–I, 2, 4
+6.4 ⊢ p ≡ ¬¬p
+	p ≡ ¬¬p by Mutual implication
+	1 p → ¬¬p by Deduction
+	  1.1 p Assumption
+	  1.2 ¬¬p by Contradiction
+		  1.2.1 ¬p Assumption
+		  1.2.2 p ∧ ¬p ∧–I, 1.1, 1.2.1
+	2 ¬¬p → p by Deduction
+	  2.1 ¬¬p Assumption
+	  2.2 p by Contradiction
+		  2.2.1 ¬p Assumption
+		  2.2.2 ¬p ∧ ¬¬p ∧–I, 2.2.1, 2.1
+6.1 Using the example on page 109 of an equational proof and its Hilbert-style
+	counterpart, give a procedure to transform any equational proof into a
+	Hilbert-style proof.
+	Equational:
+		¬false
+	 =   <Def. of false(3.8)>
+		¬¬true
+	 =   <Double negation(3.12)>
+		true
+	Hilbert-style:
+	¬false ≡ true
+	1 ¬false ≡ ¬¬true  Leibniz, (3.8)
+	2 ¬¬true ≡ true    Substitution, (3.12)
+	3 ¬false ≡ true    Transitivity (1.4), 1, 2
+	假如要從以等式為基礎的證明轉換至希爾伯特的證明方式
+	必須要進行以下步驟:
+	skip for now
+6.2 Prove p → (q → p)
+	p → (q → p) by Deduction
+	1 p Assumption
+	2 q → p by Deduction
+	  2.1 q Assumption 2
+	  2.2 p 1
+6.3 Prove p → (q → p ∧ q)
+	p → (q → p ∧ q) by Deduction
+	1 p Assumption
+	2 q → p ∧ q by Deduction
+	  2.1 q Assumption 2
+	  2.2 p ∧ q ∧–I, 1, 2.1
+6.4 Prove (p ∧ q) ∧ r → p ∧ (q ∧ r)
+	(p ∧ q) ∧ r → p ∧ (q ∧ r) by Deduction
+	1 p ∧ q ∧–E, Assumption
+	2 r ∧–E, Assumption
+	3 p ∧ (q ∧ r) by Deduction
+	  3.1 p ∧–E 1
+	  3.2 q ∧–E 1
+	  3.3 q ∧ r ∧–I, 3.2, 2
+6.5 Prove (p → q) → (p ∧ r → q ∧ r)
+	(p → q) → (p ∧ r → q ∧ r) by Deduction
+	1 p → q Assumption
+	2 p ∧ r → q ∧ r by Deduction
+	  2.1 p ∧–E, Assumption 2
+	  2.2 r ∧–E, Assumption 2
+	  2.3 q →–E, 2.1, 1
+	  2.4 q ∧ r ∧–I, 2.3, 2.2
+6.6 Prove (p → (q → r)) → (q → (p → r))
+	(p → (q → r)) → (q → (p → r)) by Deduction
+	1 p → (q → r) Assumption
+	2 q → (p → r) by Deduction
+	  2.1 q Assumption 2
+	  2.2 p → r By deduction
+		  2.2.1 p Assumption 2.2
+		  2.2.2 r →–E, 2.2, 2.2.1
+6.7 Prove (p → q) ∧ (p → r) → (p → q ∧ r)
+	(p → q) ∧ (p → r) → (p → q ∧ r) by Deduction
+	1 p → q ∧–E, Assumption
+	2 p → r ∧–E, Assumption
+	3 p → q ∧ r by Deduction
+	  3.1 p Assumption 3
+	  3.2 q →–E, 3.1, 1
+	  3.3 r →–E, 3.1, 2
+	  3.4 q ∧ r ∧–I, 3.2, 3.3
+6.8 Prove (p → q) ∧ (q → r) → (p → r)
+	(p → q) ∧ (q → r) → (p → r) by Deduction
+	1 p → q ∧–E, Assumption
+	2 q → r ∧–E, Assumption
+	3 p → r by Deduction
+	  3.1 p Assumption 3
+	  3.2 q →–E, 3.1, 1
+	  3.3 r →–E, 3.2, 2
+6.9 Prove (q → r) → ((p → q) → (p → r))
+	(q → r) → ((p → q) → (p → r)) by Deduction
+	1 q → r Assumption
+	2 (p → q) → (p → r) by Deduction
+	  2.1 p → q Assumption 2
+	  2.2 p → r by Deduction
+		  2.2.1 p Assumption 2.2
+		  2.2.2 q →–E, 2.2.1, 2.1
+		  2.2.3 r →–E, 2.2.2, 1
+6.10 Prove (p → (q → r)) → ((p → q) → (p → r))
+	(p → (q → r)) → ((p → q) → (p → r)) by Deduction
+	1 p → (q → r) Assumption
+	2 (p → q) → (p → r) by Deduction
+	  2.1 p → q Assumption 2
+	  2.2 p → r by Deduction
+		  2.2.1 p Assumption 2.2
+		  2.2.2 q → r →–E, 2.2.1, 1
+		  2.2.3 q →–E, 2.2.1, 2.1
+		  2.2.4 r →–E, 2.2.3, 2.2.2
+6.11 Prove (p → ¬p) → ¬p
+	 (p → ¬p) → ¬p by Deduction
+	 1 p → ¬p Assumption
+	 2 ¬p by Contradiction
+	   2.1 p Assumption
+	   2.2 ¬p →–E, 2.1, 1
+	   2.3 p ∧ ¬p ∧–I, 2.1, 2.2
+6.12 Prove (p ∧ ¬q) → ¬(p → q)
+	 (p ∧ ¬q) → ¬(p → q) by Deduction
+	 1 p ∧–E, Assumption
+	 2 ¬q ∧–E, Assumption
+	 3 ¬(p → q) by Contradiction
+	   3.1 p → q Assumption
+	   3.2 q →–E, 1, 3.1
+	   3.3 q ∧ ¬q ∧–I, 3.2, 2
+6.13 Prove (p → q) ∧ (p → ¬q) → ¬p
+	 (p → q) ∧ (p → ¬q) → ¬p by Deduction
+	 1 (p → q) ∧–E, Assumption
+	 2 (p → ¬q) ∧–E, Assumption
+	 3 ¬p by Contradiction
+	   3.1 p Assumption
+	   3.2 q →–E, 3.1, 1
+	   3.3 ¬q →–E, 3.1, 2
+	   3.4 q ∧ ¬q ∧–I, 3.2, 3.3
+6.14 Prove of p ∨ ¬p.
+	 p ∨ ¬p by Contradiction
+	 1 ¬(p ∨ ¬p) Assumption
+	 2 ¬p ∧ ¬¬p De Morgan
+6.15 Prove ¬(p ∧ ¬p).
+	 1 ¬p ∨ ¬¬p De Morgan
+	 2 ¬p ∨ ¬¬p Substitution, (6.14)
+6.16 Prove p → q ≡ ¬q → ¬p
+	 p → q ≡ ¬q → ¬p by Mutual implication
+	 1 (p → q) → (¬q → ¬p) by Deduction
+	   1.1 p → q Assumption 1
+	   1.2 ¬q → ¬p by Deduction
+		   1.2.1 ¬q Assumption 1.2
+		   1.2.4 ¬p by Contradiction
+				 1.2.4.1 p Assumption
+				 1.2.4.2 q →–E, 1.2.4.1, 1.1
+				 1.2.4.3 q ∧ ¬q, ∧–I, 1.2.4.2, 1.2.1
+	 2 (¬q → ¬p) → (p → q) by Deduction
+	   2.1 ¬q → ¬p Assumption 2
+	   2.2 p → q by Deduction
+		   2.2.1 p Assumption 2.2
+		   2.2.4 q by Contradiction
+				 2.2.4.1 ¬q Assumption
+				 2.2.4.2 ¬p →–E, 2.2.4.1, 2.1
+				 2.2.4.3 p ∧ ¬p, ∧–I, 2.2.1, 2.2.4.2
+6.17 Prove p → q ≡ ¬p ∨ q
+	 p → q ≡ ¬p ∨ q by Mutual implication
+	 1 (p → q) → (¬p ∨ q) by Deduction
+	   1.1 p → q Assumption 1
+	   1.2 ¬p ∨ q by Contradiction
+		   1.2.1 ¬(¬p ∨ q) Assumption
+		   1.2.2 p ∧ ¬q De Morgan 1.2.1
+		   1.2.3 p ∧–E, 1.2.2
+		   1.2.4 ¬q ∧–E, 1.2.2
+		   1.2.5 q →–E, 1.2.3, 1.1
+		   1.2.6 q ∧ ¬q ∧–I, 1.2.5, 1.2.4
+	 2 (¬p ∨ q) → (p → q) by Deduction
+	   2.1 ¬p ∨ q Assumption 2
+	   2.2 p → q by Deduction
+		   2.2.1 p Assumption 2.2
+		   2.2.2 q by Contradiction
+				 2.2.2.1 ¬q Assumption
+				 2.2.2.2 p ∧ ¬q ∧–I, 2.2.1, 2.2.2.1
+				 2.2.2.3 ¬(p ∧ ¬q) De Morgan 2.1
+				 2.2.2.4 (p ∧ ¬q) ∧ ¬(p ∧ ¬q) ∧–I, 2.2.2.2, 2.2.2.3
+7 Formal logical systems
+Proof theory'
+A formal logical system, or logic, is a set of rules defined in terms of
+1. a set of symbols,
+2. a set of formulas constructed from the symbols,
+3. a set of distinguished formulas called axioms, and
+4. a set of inference rules.
+7.1 Definition. A logic is consistent if at least one of its formulas is a theorem
+	and at least one is not; otherwise, the logic is inconsistent.
+PQ-L
+Symbols: P,Q,–
+Formulas: Sequences of the form a Pb Q c, where a, b, and c denote finite sequences
+of zero or more dashes –.
+Axioms: 0: ––P–Q––
+		1: ––P–q–––
+Inference Rule: a P b Q c, d P e Q f
+				————————————————————
+				   a d P b e Q c f
+7.2 Addition-equality Interpretation. A formula a P b Q c is mapped to #a + #b = #c,
+	where #x denotes the number of dashes in sequence x.
+7.3 Addition-inequality Interpretation. A formula a P b Q c is mapped to true iff
+	#a+#b≤#c, where #x denotes the number of dashes in sequence x.
+7.4 Standard interpretation of expressions of E. For an expression P without	
+	variables, let eval.'P' be the value of P, as explained in Sec 2.1. (Note that
+	eval gives "meaning" to the operators and constants of E.) Let Q be any
+	expression, and let s be a state that gives values to all the variables of Q.
+	Define s.'Q' to be a copy of Q in which all its variables are replaced by their
+	corresponding values in state s. Then function f given by f.'Q'=eval(s.'Q') is
+	an interpretation for Q. 
+7.5 Definition. Let S be a set of interpretations for a logic and F be a formula
+	of the logic. F is satisfiable (under S) iff at least one interpretation of S
+	maps F to true. F is valid (under S) iff every interpretation in S maps F to true.
+7.6 Definition. A logic is sound iff every theorem is valid. A logic is complete iff
+	every valid formula is a theorem.
+7.7 Decision Procedure for logic E. Compute the interpretation of a formula F in
+	every possible state of the state space defined by the boolean variable in F.
+	F is a theorem of E iff it is mapped to true in every state.
+7.8 Theorem. There exist two irrational numbers b and c such that bᶜ is rational.
+7.9 P ⊢ false
+	—————————
+	   ¬P
+7.10 ¬P ⊢ false
+	——————————
+		P
+7.11 ⊢ (p ∨ (p → false) → false) → false
+	 1 p ∨ (p → false) → false ⊢ false
+	   1.1 p ⊢ false
+		   1.1.1 p ∨ (p → false)         ∨–Il
+		   1.1.2 false                   →–E, 1.1.1, pr 1.a
+	   1.2 p → false                     →–I, 1.1
+	   1.3 p ∨ (p → false)               ∨–Ir, 1.2
+	   1.4 false                         →–E, 1.3, pr 1.a
+	 2 (p ∨ (p → false) → false) → false →–I, 1
+7.1 Give a finite set of axioms that can be added to PQ-L to make it sound and
+	complete under Addition-Equality Interpretation(7.2).
+	Answer:
+	PQ
+	–PQ–
+	P–Q–
+7.2 Consider the logic defined as follows, where a, b, and c denote finite
+	sequences of zero or more o's.
+	Symbols: M, I, o
+	Formulas: Sequences of the form a M b I c
+	Axiom: ooMooIoooo
+	Inference Rule R1:   a M b I c
+					   —————————————
+					   a a M b I c c
+	Inference Rule R2: a M b b I c c
+					   —————————————
+					   a a M b I c c
+	(a) Give 5 formulas of this logic.
+		Answer:
+		1. MI
+		2. oMI
+		3. MoI
+		4. MIo
+		5. oMoI
+	(b) State and prove five theorems of the logic.
+		Answer:
+		1. Prove: ooMooIoooo
+			1. ooMooIoooo Axiom
+		2. Prove: ooooMooIoooooooo
+			1. ooMooIoooo Axiom
+			2. ooooMooIoooooooo R1, 1
+		3. Prove: ooooMoIoooo
+			1. ooMooIoooo Axiom
+			2. ooooMoIoooo R2, 1
+		4. Prove: ooooooooMoIoooooooo
+			1. ooMooIoooo Axiom
+			2. ooooMooIoooooooo R1, 1
+			3. ooooooooMoIoooooooo R2, 2
+		5. Prove: ooooooooMoIoooooooo 
+			1. ooMooIoooo Axiom
+			2. ooooMoIoooo R2, 1
+			3. ooooooooMoIoooooooo R1, 2
+	(c) Give an interpretation of the logic that makes multiplication of
+		integers a model.
+		Answer:
+			Multiplication-equality Interpretation. A formula a M b I c is mapped
+			to true iff #a × #b = #c, where #x denotes the number of o in sequence x.
+	(d) Give a formula that is true according to your interpretation but is not
+		a theorem. Argue (informally) why it cannot be a theorem.
+		Answer:
+			MI, oMI, MoI
+			Above formulas are true to my interpretation(0 × 0 = 0, 1 × 0 = 0, 0 × 1 = 0),
+			but these are not theorems. Since theorems can be proved using R1 and R2 with Axiom.
+7.3 Two possible definitions for soundness of an inference rule are:
+	Theorem-Soundness.
+		An inference rule is considered sound if a formula derived using it is
+		valid whenever the premises used in the inference are theorems.
+	Model-Soundness.
+		An inference rule is considered sound if a formula derived using it is
+		valid whenever the premises used in the inference are valid.
+	What are the advantages/disadvantages of considering axiomatizations in which
+	all inference rules satisfy Theorem-Soundness versus Model-Soundness?
+	Answer:
+		Advantages:
+			Theorem-Soundness: It allows us axiomatizes arithmetic since it's
+							   sound and not complete.
+			Model-Soundness: Every valid formula can be proved and the theorems
+							 are true statements about the domain of discourse.
+		Disadvantages:
+			Theorem-Soundness: Not every valid formula can be proved.
+			Model-Soundness: Godel's incompleteness theorem, which states that
+							 no formal logical system that axiomatizes arithmetic
+							 can be both sound and complete.
+7.4 Recall from Exercise 3.88 (page 67) that a formula is in conjunctive normal
+	form if it is the conjunction of propositional logic formulas, each of which
+	is a disjunction of boolean variables. For such a formula P, denote by #P the
+	minimum number of boolean variables that, if all were false, would cause P to
+	be false. Describe a procedure to calculate #P for P a formula in conjunctive
+	normal form in which no variable is negated.
+	(Solving this problem turns out to be useful in determining the fault-tolerance
+	of a distributed system. Each variable denotes whether a give processor is
+	faulty, and the formula is true iff the system has sufficient resources to work.)
+	Answer:
+	A formula P is mapped to #P, where #P denotes the minimum number of boolean variables
+	in a single conjunct of P sequence.
+7.5 This exercise concerns a new calculus, the 01¤–calculus. The symbols of the
+	calculus are
+	• Variables x, y, z, ….
+	• The three constant symbols 0, 1, and ¤.
+	• The binary infix predicate symbol =.
+	• Parentheses.
+	Formulas of the calculus have the form 𝛼=𝛽, where 𝛼 and 𝛽 are sequences of one
+	or more constants, possibly with balanced parentheses as usual to indicate aggregation.
+	Example of expressions are
+		0¤=1 and (¤x)(¤¤)=10.
+	By definition, if parentheses are omitted, left association is assumed, so that 0100
+	is shorthand for ((01)0)0.
+	The 01¤–calculus has inference rules Leibniz, Substitution, and Transitivity
+	of equality =. Note that symmetry and reflexivity of = are not axioms, so be
+	extremely careful in applying inference rules.
+	There are four axioms:
+		Left zero: 0¤=1
+		Zero: x0¤=x1
+		Left one:1¤=10
+		One: x1¤=x¤0
+	A theorem of the calculus is either an axiom or an expression X=Y such that
+	X can be transformed into Y using the inference rules. As an example, we prove
+	that 011¤0=1000 is a theorem.
+		011¤0
+	 =   <Axiom One, with x:=01>
+		01¤00
+	 =   <Axiom One, with x:=0>
+		0¤000
+	 =   <Axiom Left zero>
+		1000
+	We now give meaning to the 01¤–calculus by defining interpretations for it.
+	A state assigns to each variable a natural number or ¤. For example, the state
+	{(x, 19), (y, ¤)} assigns 19 to x and ¤ to y. Expressions are evaluated in a
+	state by first replacing each variable by its value in the state and then applying
+	the following rules. (In the rules, x ≻ y means that x evaluates to y).
+		mn ≻ (2•m + n) (for integers m and n)
+		m¤ ≻ (m + 1)   (for integer m)
+		¤n ≻ (2 + n)    (for integer n)
+		¤¤ ≻ 2
+		(x = x) ≻ true  (for x an integer)
+		(x = y) ≻ false (for x and y different integers)
+	Perform the following exercises.
+	(a) Prove 0¤¤=10.
+		Answer:
+			0¤¤
+		 =   <Axiom Left zero>
+			1¤
+		 =   <Axiom Left one>
+			10
+	(b) Prove 0¤¤¤=11.
+			0¤¤¤
+		 =   <Axiom Left zero>
+			1¤¤
+		 =   <Axiom Left one>
+			10¤
+		 =   <Axiom Zero, with x:=1>
+			11
+	(c) Prove 0¤¤¤¤=100.
+			0¤¤¤¤
+		 =   <Axiom Left zero>
+			1¤¤¤
+		 =   <Axiom Left one>
+			10¤¤
+		 =   <Axiom Zero, with x:=1>
+			11¤
+		 =   <Axiom One, with x:=1>
+			1¤0
+		 =   <Axiom Left zero>
+			100
+	(d) Prove 0¤¤¤¤¤=101.
+			0¤¤¤¤¤
+		 =   <Axiom Left zero>
+			1¤¤¤¤
+		 =   <Axiom Left one>
+			10¤¤¤
+		 =   <Axiom Zero, with x:=1>
+			11¤¤
+		 =   <Axiom One, with x:=1>
+			1¤0¤
+		 =   <Axiom Zero, with x:=1¤>
+			1¤1
+		 =   <Axiom Left one>
+			101
+	(e) Why does the following metatheorem concerning the 01¤–calculus hold:
+		Every theorem of the 01¤calculus contains a ¤.
+		Answer:
+		A theorem of the calculus is either an axiom or an expression X=Y such that
+	X can be transformed into Y using the inference rules.
+	(f) Does it follow from the previous question that the 01¤–calculus is consistent?
+		Yes, because we can create a formula that has ¤ but not a theorem.
+	(g) Evaluate the expression 1011 in the state {(x, 19), (y, ¤)}. In doing these
+		and other evaluations, fully parenthesize the expression in order to be able
+		to distinguish characters 0 and 1 from integers. Thus, evaluate the expression
+		(((1)0)1)1.
+		Answer:
+			(((1)0)1)1
+		 =
+			((2•1 + 0)1)1
+		 =
+			((2)1)1
+		 =
+			((2•2 + 1)1
+		 =
+			(5)1
+		 =
+			2•5 + 1
+		 =
+			11
+	(h) Evaluate the expression 1011¤ in the state {(x, 19), (y, ¤)}.
+		Answer:
+			((((1)0)1)1)¤
+		 =
+			(((2•1 + 0)1)1)¤
+		 =
+			(((2)1)1)¤
+		 =
+			((2•2 + 1)1)¤
+		 =
+			((5)1)¤
+		 =
+			(2•5 + 1)¤
+		 =
+			(11)¤
+		 =
+			11 + 1
+		 =
+			12
+	(i) Evaluate the expression 1011¤¤ in the state {(x, 19), (y, ¤)}.
+		Answer:
+			(((((1)0)1)1)¤)¤
+		 =
+			((((2•1 + 0)1)1)¤)¤
+		 =
+			((((2)1)1)¤)¤
+		 =
+			(((2•2 + 1)1)¤)¤
+		 =
+			(((5)1)¤)¤
+		 =
+			((2•5 + 1)¤)¤
+		 =
+			((11)¤)¤
+		 =
+			(11 + 1)¤
+		 =
+			(12)¤
+		 =
+			12 + 1
+		 =
+			13
+	(j) Evaluate the expression 1x0y¤ in the state {(x,19), (y, ¤)}.
+		Answer:
+			((((1)x)0)y)¤
+		 =
+			((((1)19)0)¤)¤
+		 =
+			((((1)19)0)¤)¤
+		 =
+			(((2•1 + 19)0)¤)¤
+		 =
+			(((21)0)¤)¤
+		 =
+			((2•21 + 0)¤)¤
+		 =
+			((42)¤)¤
+		 =
+			((42 + 1)¤
+		 =
+			(43)¤
+		 =
+			43 + 1
+		 =
+			44
+	(k) Evaluate the expression 0(¤y)=10 in the state {(x, 19), (y, ¤)}.
+		Answer:
+			0(¤y)=10
+		 =
+			0(¤¤)=10
+		 =
+			0(2)=10
+		 =
+			2•0 + 2 = 10
+		 =
+			2 = 10
+		 =
+			false
+	(l) Find a model and a counterexample for the expression x¤0=10.
+		Answer:
+		Model:
+			(x, 0)
+		Counterexample:
+			(x, 1)
+	(m) Show that the 01¤–calculus with the interpretation given above is sound
+		by checking that all four axioms are valid and that all three inference rules
+		preserve validity.
+		Answer:
+		Axiom Left zero:
+			(((0)¤)=1
+		 =
+			(0 + 1)=1
+		 =
+			1=1
+		 =
+			true
+		Axiom Zero:
+			(((x)0)¤)=(x)1
+		 =
+			((2•x + 0)¤)=(x)1
+		 =
+			((2•x)¤)=(x)1
+		 =
+			2•x + 1=(x)1
+		 =
+			2•x + 1 = 2•x + 1
+		Axiom Left one:
+			(1)¤=(1)0
+		 =
+			1 + 1 = (1)0
+		 =
+			2 = (1)0
+		 =
+			2 = 2•1 + 0
+		 =
+			2 = 2
+		 =
+			true
+		Axiom One:
+			((x)1)¤=((x)¤)0
+		 =
+			(2•x + 1)¤=((x)¤)0
+		 =
+			2•x + 1 + 1=((x)¤)0
+		 =
+			2•x + 2=((x)¤)0
+		 =
+			2•x + 2=(x + 1)0
+		 =
+			2•x + 2=2•(x + 1)+0
+		 =
+			2•x + 2=2•x + 2
+		 =
+			true
+		All four axioms evals to true in any interpretation, therefore they are valid.
+		Because all formulas in 01¤–calculus are in the form of A=B, 
+		based on the two rules in the interpretation:
+			(x = x) ≻ true  (for x an integer)
+			(x = y) ≻ false (for x and y different integers)
+		We can conclude that in 01¤–calculus, the interpretation of "=" is just
+		the equality in the metalanguage(the domain of integers). 
+		Therefore, all three inference rules are valid.
+	(n) Show that the 01¤–calculus is incomplete by finding a valid expression that
+		is not a theorem.
+		Answer:
+		0=0
+		Because the conclusions of these three inference rules, have LHS and
+		RHS lengths that are not less than the premise's LHS and RHS, it implies
+		that the LHS and RHS lengths of any theorem will definitely not be less
+		than the LHS and RHS of the axioms(premise).
+		Therefore, 0=0 is not a theorem.
+	(o) Show that the expression x1=¤¤ is unsatisfiable.
+		Answer:
+			x1=¤¤
+		 =
+			2•x + 1 = 2
+		Since 2•x+1=2 has no integer solution and ¤1=¤¤=3, x1=¤¤ is unsatisfiable.
+8 On types
+Some basic types
+Name Symbol Type(set of values)
+integer ℤ integers: …, -3, -2, -1, 0, 1, 2, 3, …
+nat ℕ integers: 0, 1, 2, …
+positive ℤ⁺ positive integers: 1, 2, 3, …
+negative ℤ⁻ negative integers: -1, -2, -3, …
+rational ℚ rational numbers i/j for i,j integers, j ≠ 0
+reals ℝ⁺ positive real numbers
+bool 𝔹 booleans: true, false
+8.1 f:t1×…×tn → r
+8.2 i ∈ E → -i ≤ 0
+If E has type t, i.e. E:t, then E ∈ t evaluates to true in all states in which
+E is well defined.
+8.3 In a textual substitution E[x:=F], x and F must have the same type.
+8.4 Equality b=c is defined on ly if b and c have the same types. That is,
+	equality = has type t × t → 𝔹, for any type t.
+8.5 ∑[i=1…n]e
+	Formula above stands for e[i:=1] + e[i:=2] +…+ e[i:=n] —in words, for the
+	sum of the values e[i:=v] for integers v in the range i…n. Here is an example
+	∑[i=1…3]i² = 1² + 2² + 3²
+	(∑i ∣ 1 ≤ i ≤ n:e) or (+i ∣ 1 ≤ i ≤ n:e)
+8.6 (★x:t1, y:t2 ∣ R:P)
+8.7 (∧i ∣ : x•i=0)
+8.8 i > 0 ∨ (∧i ∣ 0≤i : x•i=0)
+8.9 Definition. The occurrence of i in the expression i is free.
+	Suppose an occurrence of i in expression E is free. Then that
+	same occurrence of i is free in (E), in function application f(…,E,…),
+	and in (★x ∣ E:F) and (★x ∣ F:E) provided i is not one of the dummies in list x.
+	Define occurs('v', 'e') to mean that at least one variable in the list v of
+	variables occurs free in at least one expression in expression list e.
+8.10 Definition. Let an occurrence of i be free in an expression E. That occurrence
+	of i is bound (to dummy i) in the expression (★x ∣ E:F) or (★x ∣ F:E) if i is
+	one of the dummies in list x.
+	Suppose an occurrence of i is bound in expression E. Then it is also bound
+	(to the same dummy) in (E), f(…,E,…), (★x ∣ E:F) and (★x ∣ F:E).
+	Example: i + j + (∑i ∣ 1≤i≤10 : b[i]ʲ) +
+			 (∑i ∣ 1≤i≤10 : (∑j ∣ 1≤j≤10 : c[i,j]))
+	1. The leftmost occurrence of i is free in this expression.
+	2. The leftmost occurrence of j and the occurrence of j as an exponent
+	   in the first summation are both free.
+	3. All other occurrences of i and j are bound. There are two different
+	   dummies i.
+8.11 Provided ¬occurs('y', 'x, F'),
+		(★y ∣ R:P)[x:=F] = (★y ∣ R[x:=F] : P[x:=F])
+		Examples:
+		(+x ∣ 1≤x≤2 : y)[y:=y+z]
+			= (+x ∣ 1≤x≤2 : y+z)
+		(+i ∣ 0≤i<n : b[i]=n)[n:=m]
+			= (+i ∣ 0≤i<m : b[i]=m)
+		(+y ∣ 0≤y<n : b[y]=n)[n:=y]
+			= (+j ∣ 0≤j<y : b[j]=y)
+		(+y ∣ 0≤y<n : b[y]=n)[y:=m]
+			= (+j ∣ 0≤j<n : b[j]=n)
+8.12 Leibniz:
+		P = Q
+	———————————————————————————————————————
+	(★x ∣ E[z:=P] : S) = (★x ∣ E[z:=Q] : S)
+		   R → P = Q
+	———————————————————————————————————————
+	(★x ∣ R : E[z:=P]) = (★x ∣ R : E[z:=Q])
+8.13 Axiom, Empty range: (★x ∣ false : P) = u (the identity of ★)
+8.14 Axiom, One-point rule:
+	 Provided ¬occurs('x', 'E'),
+	 (★x ∣ x=E : P) = P[x:=E]
+		Example:
+		(+x ∣ x=3 : x²) = 3²
+8.15 Axiom, Distributivity: Provided each quantification is defined,
+	 (★x ∣ R : P) ★ (★x ∣ R : Q) = (★x ∣ R : P★Q)
+8.16 Axiom, Range split: Provided R ∧ S ≡ false and each quantification is defined,
+	 (★x ∣ R∨S : P) = (★x ∣ R : P) ★ (★x ∣ S : P)
+	 Example:
+		 (+x ∣ R∨S : P) = (+x ∣ R : P) + (+x ∣ S : P)
+		 R = 1,2,3,4
+		 S = 8,9
+		 R∨S=1,2,3,4,8,9
+		 (+i ∣ R∨S : i*2) = 1*2 + 2*2 + 3*2 + 4*2 + 8*2 + 9*2
+					 = (1 + 2 + 3 + 4 + 8 + 9) * 2
+					 = 27 * 2
+					 = 54
+		 (+i ∣ R : i*2) = 1*2 + 2*2 + 3*2 + 4*2
+				   = (1 + 2 + 3 + 4) * 2
+				   = ((1+4) * 4) / 2 * 2
+				   = 20
+		 (+i ∣ S : i*2) = 8*2 + 9*2
+				   = 17 * 2
+				   = 34
+		 (+i ∣ R : i*2) + (+i ∣ S : i*2) = 20 + 34
+								= 54
+8.17 Axiom, Range split: Provided each quantification is defined,
+	 (★x ∣ R∨S : P) ★ (★x ∣ R∧S : P) = (★x ∣ R : P) ★ (★x ∣ S : P)
+	 Example:
+		 (+x ∣ R∨S : P) + (+x ∣ R∧S : P) = (+x ∣ R : P) + (+x ∣ S : P)
+		 R = 1,2,3,4
+		 S = 4,5
+		 R∨S=1,2,3,4,5
+		 R∧S=4
+		 (+x ∣ R∨S : P) = 1 + 2 + 3 + 4 + 5
+						= 15
+		 (+x ∣ R∧S : P) = 4
+		 (+x ∣ R : P) = 1 + 2 + 3 + 4
+					  = 10
+		 (+x ∣ S : P) = 4 + 5
+					  = 9
+		 (+x ∣ R∨S : P) + (+x ∣ R∧S : P) = 19
+			 (+x ∣ R : P) + (+x ∣ S : P) = 19
+8.18 Axiom, Range split for idempotent ★: Provided each quantification is defined,
+	 (★x ∣ R∨S : P) = (★x ∣ R : P) ★ (★x ∣ S : P)
+	 Example:
+		 (∧x ∣ R∨S : P) = (∧x ∣ R : P) ∧ (∧x ∣ S : P)
+		 R = true,false
+		 S = true
+		 R∨S = true,false
+		 (∧x ∣ R∨S : P) = true ∧ false
+						= false
+		 (∧x ∣ R : P) = true ∧ false
+					  = false
+		 (∧x ∣ S : P) = true
+		 (∧x ∣ R : P) ∧ (∧x ∣ S : P) = false ∧ true
+									 = false
+8.19 Axiom, Interchange of dummies: Provided each quantification is defined,
+	 ¬occurs('y', 'R') and ¬occurs('x', 'Q')
+		(★x ∣ R : (★y ∣ Q : P)) = (★y ∣ Q :(★x ∣ R : P))
+	 Example:
+		 (+x ∣ R : (+y ∣ Q : P)) = (+y ∣ Q :(★x ∣ R : P))
+		 R = 1,2,3,4
+		 Q = 4,5
+		 (+x ∣ R : (+y ∣ Q : P)) = ((1 + 4) + (1 + 5)) +
+								   ((2 + 4) + (2 + 5)) +
+								   ((3 + 4) + (3 + 5)) +
+								   ((4 + 4) + (4 + 5))
+								 = (((1 + 4) × 4) ÷ 2) × 2 + (4 + 5) × 4
+								 = 20 + 36
+								 = 56
+		 (+y ∣ Q :(★x ∣ R : P)) = ((4 + 1) + (4 + 2) + (4 + 3) + (4 + 4)) +
+								  ((5 + 1) + (5 + 2) + (5 + 3) + (5 + 4))
+								= ((4 + 5) × 4) + (((1 + 4) × 4) ÷ 2) × 2
+								= 36 + 20
+								= 56
+8.20 Axiom, Nesting: Provided ¬occurs('y', 'R'),
+	 (★x,y ∣ R∧Q : P) = (★x ∣ R : (★y ∣ Q : P))
+	 Example:
+		 (+x,y ∣ R∧Q : P) = (+x ∣ R : (+y ∣ Q : P))
+		 R = 1,2,3,4
+		 Q = 4,5
+		 (+x,y ∣ R∧Q : P) = ((1 + 4) + (1 + 5)) + ((2 + 4) + (2 + 5)) +
+							((3 + 4) + (3 + 5)) + ((4 + 4) + (4 + 5))
+						  = (1 + 2 + 3 + 4) × 2 + (4 + 5) × 4
+						  = 20 + 36
+						  = 56
+		 (+x ∣ R : (+y ∣ Q : P)) = ((1 + 4) + (1 + 5)) +
+								   ((2 + 4) + (2 + 5)) +
+								   ((3 + 4) + (3 + 5)) +
+								   ((4 + 4) + (4 + 5))
+								 = (((1 + 4) × 4) ÷ 2) × 2 + (4 + 5) × 4
+								 = 20 + 36
+								 = 56
+	 Note:
+		¬occurs('y', 'R')
+		In the case of occurrence:
+			Since it occurs and is not free, it must be bound.
+			Therefore, it can be renamed(8.21). (This is used to prevent
+			quantification within boolean expressions.
+			Usually, R is a simple boolean expression with no quantification.)
+			Assume that the quantification range for x is R, and the
+			quantification range for y is Y.
+		In the case of non-occurrence:
+			Assume that the quantification range for x is R, and
+			the quantification range for y is Y.
+8.21 Axiom, Dummy renaming: Provided ¬occurs('y', 'R,P')
+	 (★x ∣ R : P) = (★y ∣ R[x:=y] : P[x:=y])
+	 Example:
+	 (+x ∣ R : P) = (+y ∣ R[x:=y] : P[x:=y])
+	 R = 1,2,3,4
+	 (+x ∣ R : P) = 1 + 2 + 3 + 4
+	 (+y ∣ R[x:=y] : P[x:=y]) = 1 + 2 + 3 + 4
+8.22 Change of dummy: Provided ¬occurs('y', 'R,P') and f has an inverse,
+	 (★x ∣ R : P) = (★y ∣ R[x:=f.y] : P[x:=f.y])
+		(★y ∣ R[x:=f.y] : P[x:=f.y])
+	 =   <One-point rule(8.14)
+		  —Quantification over x has to be introduced. The One-point rule is the
+		  only rule that can be applied at first.>
+		(★y ∣ R[x:=f.y] : (★x ∣ x=f.y : P))
+	 =   <Nesting(8.20) —Moving dummy x to the outside gets us closer to the final
+		  form.>
+		(★x,y ∣ R[x:=f.y]∧x=f.y : P)
+	 =   <Substitution(3.84a) —R[x:=f.y] must be removed at some point.
+		  This substitution makes it possible.>
+		(★x,y ∣ R[x:=x]∧x=f.y : P)
+	 =   <R[x:=x]≡R; Nesting(8.20), ¬occurs('y', 'R')
+		  —Now we can get a quantification in x alone.>
+		(★x ∣ R : (★y ∣ x=f.y : P))
+	 =   <x = f.y ≡ y = f^-1.x —This step prepares for the elimination of y using
+		  the One-point rule.>
+		(★x ∣ R : (★y ∣ y=f^-1.x : P))
+	 =   <One-point rule(8.14)>
+		(★x ∣ R : P[y:=f^-1.x])
+	 =   <Textual substitution —¬occurs('y', 'P')>
+		(★X ∣ R : P)
+8.23 Theorem Split off term. For n:ℕ and dummies i:ℕ,
+	 (★i ∣ 0≤i<n+1 : P) = (★i ∣ 0≤i<n : P) ★ P[i:=n]
+	 (★i ∣ 0≤i<n+1 : P) = P[i:=n] ★ (★i ∣ 0<i<n+1 : P)
+	 Proof.
+		(★i ∣ 0≤i<n+1 : P)
+	 =   <0≤i<n+1 ≡ 0≤i<n∨i=n>
+		(★i ∣ 0≤i<n∨i=n : P)
+	 =   <Range split(8.16) —0≤i<n ∧ i=n ≡ false>
+		(★i ∣ 0≤i<n : P) ★ (★i ∣ i=n : P)
+	 =   <One-point rule(8.14)>
+		(★i ∣ 0≤i<n : P) ★ P[i:=n]
+8.24 b≤c≤d → (b≤i<d ≡ b≤i<c ∨ c≤i<d)
+8.25 (∑i,j ∣ 0≤i≤j<n+1 : c[i,j])
+Proof.
+	0≤i≤j<n+1
+ =   <Remove abbreviation>
+	0≤i≤j ∧ j<n+1
+ =   <j<n+1 ≡ j<n∨j=n>
+	0≤i≤j ∧ (j<n∨j=n)
+ =   <Distributivity of ∧ over ∨>
+	(0≤i≤j ∧ j<n) ∨ (0≤i≤j ∧ j=n)
+ =   <Reintroduce abbreviation>
+	(0≤i≤j<n) ∨ (0≤i≤j ∧ j=n)
+	(∑i,j ∣ 0≤i≤j<n+1 : c[i,j])
+ =   <Above proof>
+	(∑i,j ∣ (0≤i≤j<n)∨(0≤i≤j ∧ j=n) : c[i,j])
+ =   <Range split(8.16) —0≤i≤j<n ∧ 0≤i≤j∧j=n ≡ false>
+	(∑i,j ∣ (0≤i≤j<n) : c[i,j]) + (∑i,j ∣ (0≤i≤j∧j=n) : c[i,j])
+ =   <Nesting(8.20), with x,y,R,Q,P:=j,i,j=n,0≤i≤j,c[i,j]>
+	(∑i,j ∣ (0≤i≤j<n) : c[i,j]) + (∑j ∣ j=n : (∑i ∣ 0≤i≤j : c[i,j]))
+ =   <One-point rule(8.14), with x,E,P:=j,n,(∑i∣0≤i≤j:c[i,j])>
+	(∑i,j ∣ (0≤i≤j<n) : c[i,j]) + (∑i ∣ 0≤i≤n : c[i,n])
+8.1 Given are functions a, b, c, d, and e with types as follows.
+	 a : A → B
+	 b : B → C
+	 c : C → A
+	 d : A × C → D
+	 e : B × B → E
+	 State whether each expression below is type correct. If not, explain why.
+	 Assume u:A, w:B, x:C, y:D, and z:E.
+		(a) e(a.u, w)
+			Answer:
+				It is type correct.
+		(b) b.x
+			Answer:
+				It is not type correct because the actual argument x of 
+				function b has type C. This does not match with b's accepted 
+				formal parameter type B.
+		(c) e(a(c.x), a.u)
+			Answer:
+				It is type correct.
+		(d) a(c(b(a.y)))
+			Answer:
+				It is not type correct because the actual argument y of 
+				function a has type D. This does not match with a's accepted 
+				formal parameter 		type A.
+		(e) d(c.x, c.x)
+			Answer:
+				It is not type correct because the second actual argument c.x of 
+				function d has type A. This does not match with d's second accepted 
+				formal parameter type C
+8.2 Consider the expression e ∈ t where t has type set(ℤ), i.e. set of integers.
+	Give a reasonable type for function ∈ and for function application e ∈ t.
+	 Answer:
+		∈ : set × set → 𝔹
+		e ∈ t : 𝔹
+8.3 Expand the following textual substitutions. If necessary, change the dummy,
+	according to Dummy Renaming(8.21).
+		(a) (★x ∣ 0≤x+r<n : x+v)[v:=3]
+			Answer:
+				(★x ∣ 0≤x+r<n : x+3) 
+		(b) (★x ∣ 0≤x+r<n : x+v)[x:=3]
+			Answer:
+				(★y ∣ 0≤y+r<n : y+v)
+		(c) (★x ∣ 0≤x+r<n : x+v)[n:=n+x]
+			Answer:
+				(★x ∣ 0≤x+r<n+x : x+v)
+		(d) (★x ∣ 0≤x<r : (★y ∣ 0≤y : x+y+n))[n:=x+y]
+			Answer:
+				(★x ∣ 0≤x<r : (★z ∣ 0≤z : x+z+x+y))
+		(e) (★x ∣ 0≤x<r : (★y ∣ 0≤y: x+y+n))[r:=y]
+			Answer:
+				(★x ∣ 0≤x<y : (★z ∣ 0≤z: x+z+n))
+8.4 Give a definition of E[x:=e] for all expressions E, including quantifications.
+	The definition should be in terms of the different kinds of expression E, just
+	as the notions of free and bound were defined. Treat expressions that are constants,
+	variables, parenthesized expressions, unary operations, binary operations,
+	function appilcations, and quantificiation.
+	Answer:
+		Definition.
+			constants:
+				Nil!
+			variables:
+				x[x:=e]=e
+				y[x:=e]=y
+			parenthesized expressions:
+				(P)[x:=e]=(P[x:=e])
+			unary operations:
+				★P[x:=e]=★(P[x:=e])
+			binary operations:
+				(P★Q)[x:=e]=P[x:=e]★Q[x:=e]
+			quantificiation:
+				(★x∣R:P)[x:=e]=Nil!
+				(★y∣R:P)[x:=e]
+				case occurs('y', 'e') of
+				true:
+					(★y∣R:P)[x:=e]=(★z|R[y:=z]:P[y:=z])[x:=e]
+				false:
+					(★y∣R:P)[x:=e]=(★y|R[x:=e]:P[x:=e])
+			function applications:
+				(P.Q)[x:=e]=P[x:=e].Q[x:=e]
+8.5 Prove the following theorems. Provided 0≤n,
+	 (a) (∑i ∣ 0≤i<n+1 : b[i]) = b[0] + (∑i ∣ 1≤i<n+1 : b[i])
+		 Answer:
+			Proof.
+				(∑i ∣ 0≤i<n+1 : b[i])
+			 =   <0≤i<n+1 ≡ i=0∨0<i<n+1>
+				(∑i ∣ i=0∨0<i<n+1 : b[i])
+			 =   <Range split(8.16)>
+				(∑i ∣ i=0 : b[i]) + (∑i ∣ 0<i<n+1 : b[i])
+			 =   <One-point rule(8.14)>
+				b[0] + (∑i ∣ 0<i<n+1 : b[i])
+	 (b) (∑i ∣ 0≤i≤n : b[i]) = (∑i ∣ 0≤i<n : b[i]) + b[n]
+		 Answer:
+			Proof.
+				(∑i ∣ 0≤i≤n : b[i])
+			 =   <0≤i≤n ≡ 0≤i<n∨i=n>
+				(∑i ∣ 0≤i<n∨i=n : b[i])
+			 =   <Range split(8.16)>
+				(∑i ∣ 0≤i<n : b[i]) + (∑i ∣ i=n : b[i])
+			 =   <One-point rule(8.14)>
+				(∑i ∣ 0≤i<n : b[i]) + b[n]
+	 (c) (∑i ∣ 0≤i≤n : b[i]) = b[0] + (∑i ∣ 1≤i≤n : b[i])
+		 Answer:
+			Proof.
+				(∑i ∣ 0≤i≤n : b[i])
+			 =   <0≤i≤n ≡ i=0∨1≤i≤n>
+				(∑i ∣ i=0∨1≤i≤n : b[i])
+			 =   <Range split(8.16)>
+				(∑i ∣ i=0 : b[i]) + (∑i ∣ 1≤i≤n : b[i])
+			 =   <One-point rule(8.14)>
+				b[0] + (∑i ∣ 1≤i≤n : b[i])
+8.6 Prove the following theorems. Provided 0≤n,
+	 (a) (∨i ∣ 0≤i<n+1 : b[i]=0) ≡ (∨i ∣ 0≤i<n : b[i]=0) ∨ b[n]=0
+		Answer:
+			Proof.
+				(∨i ∣ 0≤i<n+1 : b[i]=0)
+			 =   <0≤i<n+1 ≡ 0≤i<n∨i=n>
+				(∨i ∣ 0≤i<n∨i=n : b[i]=0)
+			 =   <Range split(8.16)>
+				(∨i ∣ 0≤i<n : b[i]=0) ∨ (∨i ∣ i=n : b[i]=0)
+			 =   <One-point rule(8.14)>
+				(∨i ∣ 0≤i<n : b[i]=0) ∨ b[n]=0
+	 (b) (∧i ∣ 0≤i<n+1 : b[i]=0) ≡ (∧i ∣ 0≤i<n : b[i]=0) ∧ b[n]=0
+		Answer:
+			Proof.
+				(∧i ∣ 0≤i<n+1 : b[i]=0)
+			 =   <0≤i<n+1 ≡ 0≤i<n∨i=n>
+				(∧i ∣ 0≤i<n∨i=n : b[i]=0)
+			 =   <Range split(8.16)>
+				(∧i ∣ 0≤i<n : b[i]=0) ∧ (∧i ∣ i=n : b[i]=0)
+			 =   <One-point rule(8.14)>
+				(∧i ∣ 0≤i<n : b[i]=0) ∧ b[n]=0
+	 (c) (∨i ∣ 0≤i<n+1 : b[i]=0) ≡ b[0]=0 ∨ (∨i ∣ 0<i<n+1 : b[i]=0)
+		Answer:
+			Proof.
+				(∨i ∣ 0≤i<n+1 : b[i]=0)
+			 =   <0≤i<n+1 ≡ i=0∨0<i<n+1>
+				(∨i ∣ i=0∨0<i<n+1 : b[i]=0)
+			 =   <Range split(8.16)>
+				(∨i ∣ i=0 : b[i]=0) ∨ (∨i ∣ 0<i<n+1 : b[i]=0)
+			 =   <One-point rule(8.14)>
+				b[0]=0 ∨ (∨i ∣ 0<i<n+1 : b[i]=0)
+	 (d) (∧i ∣ 0≤i<n+1 : b[i]=0) ≡ b[0]=0 ∧ (∧i ∣ 0<i<n+1 : b[i]=0)
+		Answer:
+			Proof.
+				(∧i ∣ 0≤i<n+1 : b[i]=0)
+			 =   <0≤i<n+1 ≡ i=0∨0<i<n+1>
+				(∧i ∣ i=0∨0<i<n+1 : b[i]=0)
+			 =   <Range split(8.16)>
+				(∧i ∣ i=0 : b[i]=0) ∧ (∧i ∣ 0<i<n+1 : b[i]=0)
+			 =   <One-point rule(8.14)>
+				b[0]=0 ∧ (∨i ∣ 0<i<n+1 : b[i]=0)
+8.7 Prove the following theorems:
+	 (a) (+i ∣ 0≤i≤n : i) = (+i ∣ 0≤i≤n∧even.i : i) + (+i ∣ 0≤i≤n∧odd.i : i)
+		Answer:
+			Proof.
+				(+i ∣ 0≤i≤n : i)
+			 =   <0≤i≤n ≡ 0≤i≤n∧even.i∨0≤i≤n∧odd.i>
+				(+i ∣ 0≤i≤n∧even.i∨0≤i≤n∧odd.i : i)
+			 =   <Range split(8.16)>
+				(+i ∣ 0≤i≤n∧even.i : i) + (+i ∣ 0≤i≤n∧odd.i : i)
+	 (b) (+i ∣ 0≤i≤10 : 0) = 0
+		Answer:
+			Proof.
+				(+i ∣ 0≤i≤10 : 0)
+			 =   <i=0∨i=1∨i=2∨i=3∨i=4∨i=5∨i=6∨i=7∨i=8∨i=9∨i=10>
+				(+i ∣ i=0∨i=1∨i=2∨i=3∨i=4∨i=5∨i=6∨i=7∨i=8∨i=9∨i=10 : 0)
+			 =   <Range split(8.16)>
+				(+i ∣ i=0 : 0) + (+i ∣ i=1 : 0) + (+i ∣ i=2 : 0) +
+				(+i ∣ i=3 : 0) + (+i ∣ i=4 : 0) + (+i ∣ i=5 : 0) +
+				(+i ∣ i=6 : 0) + (+i ∣ i=7 : 0) + (+i ∣ i=8 : 0) +
+				(+i ∣ i=9 : 0) + (+i ∣ i=10 : 0)
+			 =   <One-point rule(8.14) eleven times>
+				0 + 0 + 0 + 0 + 0 + 0 + 0 + 0 + 0 + 0 + 0
+			 =
+				0
+Universal quantification
+9.1 (∀x ∣ R : P)
+	For all x such that R holds, P holds.
+9.2 Axiom, Trading: (∀x ∣ R : P) ≡ (∀x ∣ : R→P)
+9.3 Trading: (a) (∀x ∣ R : P) ≡ (∀x ∣ : ¬R∨P)
+			 (b) (∀x ∣ R : P) ≡ (∀x ∣ : R∧P≡R)
+			 (c) (∀x ∣ R : P) ≡ (∀x ∣ : R∨P≡P)
+9.4 Trading: (a) (∀x ∣ Q∧R : P) ≡ (∀x ∣ Q : R→P)
+			 Proof.
+				(∀x ∣ Q∧R : P)
+			 =   <Trading(9.2)>
+				(∀x ∣ : Q∧R→P)
+			 =   <Currying(3.65)>
+				(∀x ∣ : Q→(R→P))
+			 =   <Trading(9.2)>
+				(∀x ∣ Q : (R→P))
+			 (b) (∀x ∣ Q∧R : P) ≡ (∀x ∣ Q : ¬R∨P)
+			 (c) (∀x ∣ Q∧R : P) ≡ (∀x ∣ Q : R∧P≡R)
+			 (d) (∀x ∣ Q∧R : P) ≡ (∀x ∣ Q : R∨P≡P)
+9.5 Axiom, Distributivity of ∨ over ∀:
+	 Provided ¬occurs('x', 'P'),
+		P ∨ (∀x ∣ R : Q) ≡ (∀x ∣ R : P∨Q)
+9.6 Provided ¬occurs('x', 'P'),
+	(∀x ∣ R : P) ≡ P ∨ (∀x ∣ : ¬R)
+9.7 Distributivity of ∧ over ∀: Provided ¬occurs('x', 'P'),
+	¬(∀x ∣ : ¬R) → ((∀x ∣ R : P∧Q) ≡ P ∧ (∀x ∣ R : Q))
+	R → (P∧Q ≡ P∧Q)
+	 Proof.
+		(∀x ∣ R : P∧Q)
+	 =   <Distributivity of ∀ over ∧(8.15)>
+		(∀x ∣ R : P) ∧ (∀x ∣ R : Q)
+	 =   <(9.6) —since ¬occurs('x', 'P')>
+		(P ∨ (∀x ∣ : ¬R)) ∧ (∀x ∣ R : Q)
+	 =   <Assumption ¬(∀x ∣ : ¬R), i.e. (∀x ∣ : ¬R) ≡ false>
+		(P ∨ false) ∧ (∀x ∣ R : Q)
+	 =   <Identity of ∨(3.30)>
+		P ∧ (∀x ∣ R : Q)
+9.8 (∀x ∣ R : true) ≡ true
+9.9 (∀x ∣ R : P≡Q) → ((∀x ∣ R : P) ≡ (∀x ∣ R : Q))
+9.10 Range weakening/strengthening:
+	(∀x ∣ Q∨R : P) → (∀x ∣ Q : P)
+9.11 Body weakening/strengthening:
+	(∀x ∣ R : P∧Q) → (∀x ∣ R : P)
+9.12 Monotonicity of ∀:
+	(∀x ∣ : Q → P) → ((∀x ∣ : Q) → (∀x ∣ : P))
+	Proof.
+		(∀x ∣ : Q → P) → ((∀x ∣ : Q) → (∀x ∣ : P))
+	 =   <Currying(3.65)>
+		(∀x ∣ : Q → P) ∧ (∀x ∣ : Q) → (∀x ∣ : P)
+	(∀x ∣ : Q → P) ∧ (∀x ∣ : Q) → (∀x ∣ : P) by Deduction
+	1 (∀x ∣ : Q → P) Assumption
+	2 (∀x ∣ : Q) Assumption
+	3 P by Modus ponens
+	  3.1 Q by Instantiation, 2
+	  3.2 Q → P by Instantiation, 1
+	4 (∀x ∣ : P) by metatheorem, 3
+9.13 Instantiation: (∀x ∣ : P) → P[x:=E]
+9.14 (∀i:ℤ ∣ even.i ≡ even(i²))
+9.15 a+b=b+a (for all integers a,b)
+	 (∀a,b:ℤ ∣ : a+b=b+a)
+closed wff is also called sentence
+open wff is called sentential function
+9.16 Metatheorem. P is a theorem iff (∀x ∣ : P) is a theorem.
+	 Proof. The proof is by mutual implication.
+	 LHS → RHS. Assume P is a theorem. Then there is a proof of it that
+	 transforms P to true, using Leibniz, Transitivity of equals, and
+	 Substitution:
+		P
+	 =   <Hint 1>
+		…
+	…
+		…
+	 =   <Hint n>
+		true
+	 Leibniz(8.12) allows us to turn this proof into a proof of (∀x ∣ : P):
+		(∀x ∣ : P)
+	 =   <Hint 1>
+		…
+	…
+		…
+	 =   <Hint n>
+		(∀x ∣ : true)
+	 =   <(9.8), (∀x ∣ : true) ≡ true>
+		true
+	 RHS → LHS. Assume (∀x ∣ : P) is a theorem. Using Instantiation(9.13) with
+	 x for E, we conclude that P is a theorem.
+Existential quantification
+	(∃x ∣ R : P)
+	There exists an x in the range R such that P holds.
+		A value x̂ for which (R ∧ P)[x:=x̂] is valid is called a witness for x in
+		(∃x ∣ R : P).
+9.17 Axiom, Generalized De Morgan: (∃x ∣ R : P) ≡ ¬(∀x ∣ R : ¬P)
+		(∃x ∣ : P) ≡ ¬(∀x ∣ : ¬P)
+			There exists a witness for P.
+			P sometimes holds.
+	 Idea behind this generalization with an example:
+		(∨i ∣ 0≤i<4 : P)
+	 =   <Elimiiate quantification>
+		P^i_0 ∨ P^i_1 ∨ P^i_2 ∨ P^i_3
+	 =   <Double negation(.12); De Morgan(3.47a)>
+		¬(¬P^i_0 ∧ ¬P^i_1 ∧ ¬P^i_2 ∧ ¬P^i_3)
+	 =   <Introduce quantification>
+		¬(∧i ∣ 0≤i<4 : ¬P)
+9.18 Generalized De Morgan: (a) ¬(∃x ∣ : ¬P) ≡ (∀x ∣ : P)
+			    (b) ¬(∃x ∣ : P) ≡ (∀x ∣ : ¬P)
+			    (c) (∃x ∣ : ¬P) ≡ ¬(∀x ∣ : P)
+	Note: (∃x ∣ : P) ≡ ¬(∀x ∣ : ¬P)
+			Disjunction of P in all states must be true.
+			∵ At least one P is true.
+				∴ There exists a witness for P.
+			Conjunction of ¬P in all states must be false.
+			∵ At least one ¬P is false.
+				∴ P sometimes holds.
+		¬(∃x ∣ : ¬P) ≡ (∀x ∣ : P)
+			Disjunction of ¬P in all states must be false.
+			∵ ¬P always false.
+				∴ No witness of ¬P.
+			Conjunctional of P in all states must be true.
+			∵ P always true.
+				∴ P always holds.
+		¬(∃x ∣ : P) ≡ (∀x ∣ : ¬P)
+			Disjunction of P in all states must be false.
+			∵ P always false.
+				∴ No witness of P.
+			Conjunction of ¬P in all states must be true.
+			∵ ¬P always true.
+				∴ P never holds.
+		(∃x ∣ : ¬P) ≡ ¬(∀x ∣ : P)
+			Disjunction of ¬P in all states must be true.
+			∵ At least one ¬P is true.
+				∴ There exists a witness of ¬P.
+			Conjunction of P in all states must be false.
+			∵ At least one P is false.
+				∴ P doesn't always hold.
+		∴ We can't replace "P sometimes holds." by "P doesn't always hold.".
+9.19 Trading: (∃x ∣ R : P) ≡ (∃x ∣ : R∧P)
+	 LHS: There exists a value x in the range R for which P is true.
+	 RHS: There is a value x for which both R and P is true.
+		  Disjunction of R∧P in all states must be true
+		  ∵ At least one R∧P is true
+			∴ There exists a witness of R∧P
+9.20 Trading: (∃x ∣ Q∧R : P) ≡ (∃x ∣ Q : R∧P)
+9.21 Distributivity of ∧ over ∃: Provided ¬occurs('x', 'P'),
+	 P ∧ (∃x ∣ R : Q) ≡ (∃x ∣ R : P∧Q)
+9.22 Provided ¬occurs('x', 'P'),
+	 (∃x ∣ R : P) ≡ P ∧ (∃x ∣ : R)
+	 Proof.
+		(∃x ∣ R : P)
+	 =   <Trading(9.19)>
+		(∃x ∣ : R∧P)
+	 =   <Distributivity of ∧ over ∃(9.21)>
+		P ∧ (∃x ∣ : R)
+9.23 Distributivity of ∨ over ∃: Provided ¬occurs('x', 'P'),
+	 (∃x ∣ : R) → ((∃x ∣ R : P∨Q) ≡ P ∨ (∃x ∣ R : Q))
+	 Proof.
+	 Assume (∃x ∣ : R)
+		(∃x ∣ R : P∨Q)
+	 =   <Distributivity(8.15)>
+		(∃x ∣ R : P) ∨ (∃x ∣ R : Q)
+	 =   <(9.22)>
+		P ∧ (∃x ∣ : R) ∨ (∃x ∣ R : Q)
+	 =   <Assumption>
+		P ∧ true ∨ (∃x ∣ R : Q)
+	 =   <Identity of ∧(3.39)>
+		P ∨ (∃x ∣ R : Q)
+9.24 (∃x ∣ R : false) ≡ false
+9.25 Range weakening/strengthening:
+	 (∃x ∣ R : P) → (∃x ∣ Q∨R : P)
+9.26 Body weakening/strengthening:
+	 (∃x ∣ R : P) → (∃x ∣ R : P∨Q)
+9.27 Monotonicity of ∃:
+	 (∀x ∣ R : Q→P) → ((∃x ∣ R : Q) → (∃x ∣ R : P))
+9.28 ∃–Introduction: P[x:=E] → (∃x ∣ : P)
+9.29 Interchange of quantifications
+	 Provided ¬occurs('y', 'R') and ¬occurs('x', 'Q'),
+	 (∃x ∣ R : (∀y ∣ Q : P)) → (∀y ∣ Q : (∃x ∣ R : P))
+	 Proof.
+		(∃x ∣ : (∀y ∣ : P)) → (∀y ∣ : (∃x ∣ : P))
+	 =   <Implication(3.57), p→q≡p∨q≡q, to eliminate the problematic →>
+		(∃x ∣ : (∀y ∣ : P)) ∨ (∀y ∣ : (∃x ∣ : P)) ≡ (∀y ∣ : (∃x ∣ : P))
+	 =   <Distributivity of ∨ over ∀(9.5) —so that the LHS and RHS have
+		  the same outer quantification.>
+		(∀y ∣ : (∃x ∣ : P) ∨ (∃x ∣ : (∀y ∣ : P))) ≡ (∀y ∣ : (∃x ∣ : P))
+	 =   <Distributivity(8.15) —so that LHS and RHS have the same two outer
+		  quantifications.>
+		(∀y ∣ : (∃x ∣ : (∀y ∣ : P)∨P)) ≡ (∀y ∣ : (∃x ∣ : P))
+	 =   <Instantiation(9.13) says (∀y ∣ : P)→P, which by (3.57) is equivalent
+		  to (∀y ∣ : P) ∨ P ≡ P>
+		(∀y ∣ : (∃x ∣ : P)) ≡ (∀y ∣ : (∃x ∣ : P)) —Reflexivity of equality
+9.30 Metatheorem Witness. Suppose ¬occurs('x̂', 'P, Q, R'). Then
+	 (∃x ∣ R : P) → Q is a theorem iff (R ∧ P)[x:=x̂] → Q is a theorem.
+	 Identifier x̂ is called a witness for the existential quantification.
+	 Proof.
+		(∃x ∣ R : P) → Q
+	 =   <Trading(9.19)>
+		(∃x ∣ : R∧P) → Q
+	 =   <Implication(3.59); De Morgan(9.18b)>
+		(∀x ∣ : ¬(R∧P)) ∨ Q
+	 =   <Dummy renaming(8.21), —¬occurs('x̂', 'P,R')>
+		(∀x̂ ∣ : ¬(R∧P)[x:=x̂]) ∨ Q
+	 =   <Distributivity of ∨ over ∀(9.5) —¬occurs('x̂', 'Q')>
+		(∀x̂ ∣ : ¬(R∧P)[x:=x̂] ∨ Q)
+	 =   <Implication(3.59)>
+		(∀x̂ ∣ : (R∧P)[x:=x̂] → Q)
+9.31 (∃x ∣ ℤ : x+a=0)
+	 Example:
+	 Prove a+b = a+c → b = c
+		b
+	 =   <Additive identity(15.3), 0+b=b>
+		0 + b
+	 =   <(9.31), with witness â>
+		â + a + b
+	 =   <Assumption a+b=a+c>
+		â + a + c
+	 =   <â + a = 0 —again>
+		0 + c
+	 =   <Additive identity(15.3) —again>
+		c
+9.1 Prove that Distributivity of ∨ over ∀(9.5), P ∨ (∀x ∣ R : Q) ≡ (∀x ∣ R : P∨Q)
+	(provided x does not occur free in P), follows from a similar expression with
+	all ranges true : P ∨ (∀x ∣ : Q) ≡ (∀x ∣ : P∨Q) (provided x does not occur
+	free in P). This means we could have used a simpler axiom.
+	 Answer:
+	 (P ∨ (∀x ∣ : Q) ≡ (∀x ∣ : P∨Q)) → (P ∨ (∀x ∣ R : Q) ≡ (∀x ∣ R : P∨Q))
+		Assume P ∨ (∀x ∣ : Q) ≡ (∀x ∣ : P∨Q)
+			(∀x ∣ R : P∨Q)
+		 =   <Trading(9.3a)>
+			(∀x ∣ : P∨(¬R∨Q))
+		 =   <Assumption>
+			P ∨ (∀x ∣ : ¬R∨Q)
+		 =   <Trading(9.3a)>
+			P ∨ (∀x ∣ R : Q)
+9.2 Prove that (∀x ∣ R : P) ∧ (∀x ∣ R : Q) ≡ (∀x ∣ R : P∧Q) follows from a similar
+	expression with all ranges true: (∀x ∣ : P) ∧ (∀x ∣ : Q) ≡ (∀x ∣ : P∧Q).
+	 Answer:
+	 ((∀x ∣ : P) ∧ (∀x ∣ : Q) ≡ (∀x ∣ : P∧Q)) → ((∀x ∣ R : P) ∧ (∀x ∣ R : Q) ≡ (∀x ∣ R : P∧Q))
+		Assume (∀x ∣ : P) ∧ (∀x ∣ : Q) ≡ (∀x ∣ : P∧Q)
+			(∀x ∣ R : P) ∧ (∀x ∣ R : Q)
+		 =   <Trading(9.3a) twice>
+			(∀x ∣ : ¬R∨P) ∧ (∀x ∣ : ¬R∨Q)
+		 =   <Assumption>
+			(∀x ∣ : (¬R∨P)∧(¬R∨Q))
+		 =   <Distributivity of ∨ over ∧(3.45)>
+			(∀x ∣ : ¬R∨(P∧Q))
+		 =   <Trading(9.3a)>
+			(∀x ∣ R : P∧Q)
+9.3 Prove theorem(9.6), (∀x ∣ R : P) ≡ P ∨ (∀x ∣ : ¬R) (provided x does not occur
+	free in P). Beginning with the LHS and trading seems appropriate, since the
+	RHS has true as a range.
+	 Answer:
+		(∀x ∣ R : P)
+	 =   <Trading(9.3a)>
+		(∀x ∣ : ¬R∨P)
+	 =   <Distributivity of ∨ over ∀(9.5)>
+		P ∨ (∀x ∣ : ¬R)
+9.4 Prove theorem(9.8), (∀x | R : true) ≡ true. Trading with the LHS will yield
+	a formula to which some form of distributivity may be applied. Or, use (9.6).
+	 Answer:
+		(∀x | R : true)
+	 =   <9.6>
+		true ∨ (∀x ∣ : ¬R)
+	 =   <Zero of ∨(3.29)>
+		true
+3.62 p → (q ≡ r) ≡ p ∧ q ≡ p ∧ r
+9.5 Prove theorem(9.9), (∀x ∣ R : P≡Q) → ((∀x ∣ R : P) ≡ (∀x ∣ R : Q)).
+	Our proof replaces the whole expression using theorem(3.62).
+	 Answer:
+	 (∀x ∣ R : P≡Q) ∧ (∀x ∣ R : P) ≡ (∀x ∣ R : P≡Q) ∧ (∀x ∣ R : Q) by Mutual Implication
+	 1 (∀x ∣ R : P≡Q) ∧ (∀x ∣ R : P) → (∀x ∣ R : P≡Q) ∧ (∀x ∣ R : Q) by Deduction
+	   1.1 (∀x ∣ R : P≡Q) Assumption
+	   1.2 (∀x ∣ R : P) Assumption
+	   1.3 (∀x ∣ : R→(P≡Q)) Leibniz(1.5), Trading(9.2), 1.1
+	   1.4 R → (P ≡ Q) Instantiation(9.13), 1.3
+	   1.5 R → P ≡ R → Q Leibniz(1.5), Distributivity of → over ≡(3.63), 1.4
+	   1.6 (R → P) → (R → Q) ≡–E, 1.5
+	   1.7 (∀x ∣ : R→P) Leibniz(1.5), Trading(9.2), 1.2
+	   1.8 R → P Instantiation(9.13), 1.7
+	   1.9 R → Q →–E, 1.8, 1.6
+	   1.10 (∀x ∣ : R→Q) Leibniz(1.5), Metatheorem(9.16), 1.9
+	   1.11 (∀x ∣ R : Q) Leibniz(1.5), Trading(9.2), 1.10
+	   1.12 (∀x ∣ R : P≡Q) ∧ (∀x ∣ R : Q) ∧–I, 1.1, 1.11
+	 2 (∀x ∣ R : P≡Q) ∧ (∀x ∣ R : Q) → ((∀x ∣ R : P≡Q) ∧ (∀x ∣ R : P)) by Deduction
+	   2.1 (∀x ∣ R : P≡Q) Assumption
+	   2.2 (∀x ∣ R : Q) Assumption
+	   2.3 (∀x ∣ : R→(P≡Q)) Leibniz(1.5), Trading(9.2), 2.1
+	   2.4 R → (P ≡ Q) Instantiation(9.13), 2.3
+	   2.5 R → P ≡ R → Q Leibniz(1.5), Distributivity of → over ≡(3.63), 2.4
+	   2.6 (R → P) → (R → Q) ≡–E, 2.5
+	   2.7 (∀x ∣ : R→Q) Leibniz(1.5), Trading(9.2), 2.2
+	   2.8 R → Q Instantiation(9.13), 2.7
+	   2.9 R → P →–E, 2.8, 2.6
+	   2.10 (∀x ∣ : R→P) Leibniz(1.5), Metatheorem(9.16), 2.9
+	   2.11 (∀x ∣ R : P) Leibniz(1.5), Trading(9.2), 2.10
+	   2.12 (∀x ∣ R : P≡Q) ∧ (∀x ∣ R : P) ∧–I, 2.1, 2.11
+9.6 Since ∧ is idempotent, Range split for idempotent ¤(8.18) specializes for ∧
+	 to (∀x ∣ R∨Q : P) ≡ (∀x ∣ R : P) ∧ (∀x ∣ Q : P)
+	 However, it is possible to prove this expression without relying on axiom(8.18).
+	 Develop such a proof. You may find it useful to trade R and Q into the body.
+	 Answer:
+		(∀x ∣ R : P) ∧ (∀x ∣ Q : P)
+	 =   <Trading(9.3a), twice>
+		(∀x ∣ : ¬R∨P) ∧ (∀x ∣ : ¬Q∨P)
+	 =   <Distributivity(8.15)>
+		(∀x ∣ : (¬R∨P)∧(¬Q∨P))
+	 =   <Distributivity of ∨ over ∧(3.45)>
+		(∀x ∣ : P∨(¬Q∧¬R))
+	 =   <De Morgan(3.47b)>
+		(∀x ∣ : ¬(Q∨R)∨P)
+	 =   <Trading(9.3a)>
+		(∀x ∣ R∨Q: P)
+9.7 Prove Range weakening/strengthening(9.10), (∀x ∣ Q∨R : P) → (∀x ∣ Q : P).
+	Range splitting may be helpful.
+		(∀x ∣ Q∨R : P) → (∀x ∣ Q : P)
+	 =   <Range split(8.16)>
+		(∀x ∣ R : P) ∧ (∀x ∣ Q : P) → (∀x ∣ Q : P)
+	 =   <Currying(3.65)>
+		(∀x ∣ R : P) → ((∀x ∣ Q : P) → (∀x ∣ Q : P))
+	 =   <Metatheorem(3.7) Reflexivity of →(3.71), True(3.4)>
+		(∀x ∣ R : P) → true
+	 =   <Right zero of ⇒(3.72))>
+		true
+9.8 Prove Body weakening/strengthening(9.10), (∀x ∣ R : P∧Q) → (∀x ∣ R : P).
+	Distributivity of ∀ over ∧ may be helpful.
+		(∀x ∣ R : P∧Q) → (∀x ∣ R : P)
+	 =   <Distributivity(8.15)>
+		(∀x ∣ R : Q) ∧ (∀x ∣ R : P) → (∀x ∣ R : P)
+	 =   <Currying(3.65)>
+		(∀x ∣ R : Q) → ((∀x ∣ R : P) → (∀x ∣ R : P))
+	 =   <Metatheorem(3.7) Reflexivity of →(3.71), True(3.4)>
+		(∀x ∣ R : Q) → true
+	 =   <Right zero of ⇒(3.72))>
+		true
+9.9 Prove Monotonicity of ∀(9.12), (∀x ∣ R : Q→P) → ((∀x ∣ R : Q) → (∀x ∣ R : P)).
+		(∀x ∣ R : Q→P) → ((∀x ∣ R : Q) → (∀x ∣ R : P))
+	 =   <Currying(3.65)>
+		(∀x ∣ R : Q→P) ∧ (∀x ∣ R : Q) → (∀x ∣ R : P)
+	 (∀x ∣ R : Q→P) ∧ (∀x ∣ R : Q) → (∀x ∣ R : P) by Deduction
+	 1 (∀x ∣ R : Q→P) Assumption
+	 2 (∀x ∣ R : Q) Assumption
+	 3 (∀x ∣ : R→(Q→P)) Leibniz(1.5), Trade(9.2), 1
+	 4 (∀x ∣ : R→Q) Leibniz(1.5), Trade(9.2), 2
+	 5 R → (Q → P) Instantiation(9.13), 3
+	 6 R ∧ Q → P Leibniz(1.5), Currying(3.65), 5
+	 7 R → P by Deduction
+	   7.1 R Assumption
+	   7.2 Q ∧–E, 6
+	   7.3 R ∧ Q ∧–I, 8, 9
+	   7.4 P →–E, 10, 6
+	 8 (∀x ∣ : R→P) Leibniz(1.5), Metatheorem(9.16), 7
+	 9 (∀x ∣ R : P) Leibniz(1.5), Trade(9.2), 8
+9.10 Suppose that instead of One-point rule(8.14) for ∀, (∀x ∣ x=E : P) ≡ P[x:=E]
+	 (provided x does not occur free in E), we choose the axiom
+	 (∀x ∣ x=e : false) ≡ false. Prove that the one-point rule for ∀ still holds
+	 (using this new axiom and theorems numbered less than(9.13))
+	 Answer:
+	 Assume ¬(∀x ∣ x=e : false)
+		(∀x ∣ x=E : P)
+	 =   <Leibniz(3.83)>
+		(∀x ∣ x=E : P[x:=E])
+	 =   <Identity of ∨(3.30)>
+		(∀x ∣ x=E : P[x:=E]) ∨ false
+	 =   <Distributivity of ∨ over ∀(9.5)>
+		(∀x ∣ x=E : P[x:=E]∨false)
+	 =   <Distributivity of ∨ over ∀(9.5)>
+		P[x:=E] ∨ (∀x ∣ x=E : false)
+	 =   <Assumption>
+		P[x:=E] ∨ false
+	 =   <Identity of ∨(3.30)>
+		P[x:=E]
+9.11 Prove Instantiation(9.13), (∀x ∣ : P) → P[x:=E]. The key is to replace
+	 the dummy using Dummy renaming(8.21) so that the dummy occurs neither in
+	 P nor in E.
+	 Answer:
+		(∀x ∣ : P) → P[x:=E]
+	 =   <One-point rule(8.14)>
+		(∀x ∣ : P) → (∀x ∣ x=E : P)
+	 =   <Def of Implication(3.59)>
+		(∀x ∣ : P) ∧ (∀x ∣ x=E : P) ≡ (∀x ∣ : P)
+	 =   <Trading(9.2)>
+		(∀x ∣ : P) ∧ (∀x ∣ : x=E→P) ≡ (∀x ∣ : P)
+	 =   <Distributivity(8.15)>
+		(∀x ∣ : P∧(x=E→P)) ≡ (∀x ∣ : P)
+	 =   <(3.67)>
+		(∀x ∣ : P) ≡ (∀x ∣ : P) —Reflexivity of ≡(3.5)
+9.12 Prove Generalized De Morgan(9.18a), ¬(∃x ∣ R : ¬P) ≡ (∀x ∣ R : P).
+	 Answer:
+		¬(∃x ∣ R : ¬P)
+	 =   <Generalized De Morgan(9.17)>
+		¬¬(∀x ∣ R : ¬¬P)
+	 =   <Double negation(3.12), twice>
+		(∀x ∣ R : P)
+9.13 Prove Generalized De Morgan(9.18b), ¬(∃x ∣ R : P) ≡ (∀x ∣ R : ¬P).
+	 Answer:
+		¬(∃x ∣ R : P)
+	 =   <Generalized De Morgan(9.17)>
+		¬¬(∀x ∣ R : ¬P)
+	 =   <Double negation(3.12)>
+		(∀x ∣ R : ¬P)
+9.14 Prove Generalized De Morgan(9.18c), (∃x ∣ R : ¬P) ≡ ¬(∀x ∣ R : P).
+		(∃x ∣ R : ¬P)
+	 =   <Generalized De Morgan(9.17)>
+		¬(∀x ∣ R : ¬¬P)
+	 =   <Double negation(3.12)>
+		¬(∀x ∣ R : P)
+9.15 Prove Trading(9.19), (∃x ∣ R : P) ≡ (∃x ∣ : R∧P)
+		(∃x ∣ R : P)
+	 =   <Generalized De Morgan(9.17)>
+		¬(∀x ∣ R : ¬P)
+	 =   <Trading(9.3a)>
+		¬(∀x ∣ : ¬R∨¬P)
+	 =   <De Morgan(3.47a)>
+		¬(∀x ∣ : ¬(R∧P))
+	 =   <Generalized De Morgan(9.18b)>
+		¬¬(∃x ∣ : R∧P)
+	 =   <Double negation(3.12)>
+		(∃x ∣ : R∧P)
+9.16 Prove Trading(9.20), (∃x ∣ Q∧R : P) ≡ (∃x ∣ Q : R∧P)
+	 Answer:
+		(∃x ∣ Q∧R : P)
+	 =   <Trading(9.19)>
+		(∃x ∣ : (Q∧R)∧P)
+	 =   <Associativity of ∧(3.37)>
+		(∃x ∣ : Q∧(R∧P))
+	 =   <Trading(9.19)>
+		(∃x ∣ Q : R∧P)
+9.17 Prove Distributivity of ∧ over ∃, (9.21), P ∧ (∃x ∣ R : Q) ≡ (∃x ∣ R : P∧Q)
+	 (provided x does not occure free in P).
+	 Answer:
+		Assume ¬occurs('x', 'P')
+			P ∧ (∃x ∣ R : Q)
+		 =   <Generalized De Morgan(9.17)>
+			P ∧ ¬(∀x ∣ R : ¬Q)
+		 =   <Trade(9.3a)>
+			P ∧ ¬(∀x ∣ R : ¬Q)
+		 =   <De Morgan(3.47b)>
+			¬(¬P ∨ (∀x ∣ R : ¬Q))
+		 =   <Distributivity of ∨ over ∀(9.5)>
+			¬(∀x ∣ R : ¬P∨¬Q)
+		 =   <De Morgan(3.47a)>
+			¬(∀x ∣ R : ¬(P∧Q))
+		 =   <Generalized De Morgan(9.17)>
+			(∃x ∣ R : P∧Q)
+9.18 Prove Distributivity of ∃ over ∨, (∃x ∣ R : P) ∨ (∃x ∣ R : Q) ≡ (∃x ∣ R : P∨Q).
+	 Answer:
+		(∃x ∣ R : P) ∨ (∃x ∣ R : Q)
+	 =   <Distributivity(8.15)>
+		(∃x ∣ R : P∨Q)
+9.19 Prove (9.22), (∃x ∣ R : P) ≡ P ∧ (∃x ∣ : R) (provided ¬occurs('x', 'P')).
+	 Answer:
+		(∃x ∣ R : P)
+	 =   <Trading(9.19)>
+		(∃x ∣ : R∧P)
+	 =   <Distributivity of ∧ over ∃(9.21)>
+		P ∧ (∃x ∣ : R)
+9.20 Prove Distributivity of ∨ over ∃(9.23),
+	 (∃x ∣ : R) → ((∃x ∣ R : P∨Q) ≡ P ∨ (∃x ∣ R : Q)) (provided x does not occur
+	 free in P).
+	 Answer:
+		Assume (∃x ∣ : R)
+			(∃x ∣ R : P∨Q) ≡ P ∨ (∃x ∣ R : Q)
+		 =   <Trade(9.19) twice>
+			(∃x ∣ : R∧(P∨Q)) ≡ P ∨ (∃x ∣ : R∧Q)
+		 =   <Distributivity of ∧ over ∃(9.21), with ¬occurs('x', 'P') twice>
+			(P ∨ Q) ∧ (∃x ∣ : R) ≡ P ∨ (Q ∧ (∃x ∣ : R))
+		 =   <Assumption>
+			(P ∨ Q) ∧ true ≡ P ∨ (Q ∧ true)
+		 =   <Identity of ∧(3.39) twice>
+			P ∨ Q ≡ P ∨ Q —Reflexivity of ≡(3.5)
+9.21 Prove (9.24), (∃x ∣ R : false) ≡ false.
+	 Answer:
+		(∃x ∣ R : false)
+	 =   <Trade(9.19)>
+		(∃x ∣ : R∧false)
+	 =   <Distributivity of ∧ over ∃(9.21)>
+		false ∧ (∃x ∣ : R)
+	 =   <Zero of ∧(3.40)>
+		false
+9.22 Since ∨ is idempotent, Range split for idempotent ¤(8.18) specializes for
+	 (★x ∣ R∨S : P) = (★x ∣ R : P) ★ (★x ∣ S : P)
+	 However, it is possible to prove this expression without relying on axiom(8.18).
+	 Develop such a proof.
+	 Answer:
+		(∃x ∣ R∨S : P)
+	 =   <Trading(9.19) twice>
+		(∃x ∣ P : R∨S)
+	 =   <Distributivity of ∨ over ∃(9.23)>
+		(∃x ∣ P : R) ∨ (∃x ∣ P : S)
+	 =   <Trading(9.19) four times>
+		(∃x ∣ R : P) ∨ (∃x ∣ S : P)
+9.23 Prove Range weakening/strengthening(9.25), (∃x ∣ R : P) → (∃x ∣ Q∨R : P).
+	 Answer:
+		Assume (∃x ∣ R : P)
+			(∃x ∣ Q∨R : P)
+		 =   <Range split(8.18)>
+			(∃x ∣ Q : P) ∨ (∃x ∣ R : P)
+		 =   <Assumption>
+			(∃x ∣ Q : P) ∨ true
+		 =   <Zero of ∨(3.29)>
+			true
+9.24 Prove Body weakening/strengthening(9.26), (∃x ∣ R : P) → (∃x ∣ R : P∨Q).
+	 Answer:
+		Assume (∃x ∣ R : P)
+			(∃x ∣ R : P∨Q)
+		 =   <Trading(9.19) twice>
+			(∃x ∣ P∨Q : R)
+		 =   <Range split(8.18)>
+			(∃x ∣ P : R) ∨ (∃x ∣ Q : R)
+		 =   <Trading(9.19) twice>
+			(∃x ∣ R : P) ∨ (∃x ∣ Q : R)
+		 =   <Assumption>
+			true ∨ (∃x ∣ Q : R)
+		 =   <Zero of ∨(3.29)>
+			true
+9.25 Prove Monotonicity of ∃(9.27), (∀x ∣ R : Q→P) → ((∃x ∣ R : Q) → (∃x ∣ R : P)).
+	 Answer:
+			(∀x ∣ R : Q→P) → ((∃x ∣ R : Q) → (∃x ∣ R : P))
+		 =   <Currying(3.65)>
+			(∀x ∣ R : Q→P) ∧ (∃x ∣ R : Q) → (∃x ∣ R : P)
+		(∀x ∣ R : Q→P) ∧ (R ∧ Q)[x:=x̂] → (∃x ∣ R : P) by Deduction
+		1 (∀x ∣ R : Q→P) Assumption
+		2 (R ∧ Q)[x:=x̂] Assumption
+		3 (∀x ∣ : R→(Q→P)) Leibniz(1.5), Trading(9.2), 1
+		4 (∀x ∣ : R∧Q→P) Leibniz(1.2), Currying(3.65), 3
+		5 (R ∧ Q → P)[x:=x̂] Instantiation(9.13), 4
+		6 R[x:=x̂] ∧ Q[x:=x̂] Textual Substitution, 2
+		7 R[x:=x̂] ∧ Q[x:=x̂] → P[x:=x̂] Textual Substitution, 5
+		8 P[x:=x̂] →–E, 6, 7
+		9 R[x:=x̂] ∧–E, 6
+		10 R[x:=x̂] ∧ P[x:=x̂] ∧–I, 9, 8
+		11 (R ∧ P)[x:=x̂] Textual Substitution, 10
+		12 (∃x ∣ R : P) ∃–I, 11
+		by 9.30
+		we have proved (∀x ∣ R : Q→P) ∧ (∃x ∣ R : Q) → (∃x ∣ R : P) is a theorem.
+		(∀x ∣ R : Q→P) ∧ (∃x ∣ R : Q) → (∃x ∣ R : P) is a theorem
+		iff 
+		(∀x ∣ R : Q→P) ∧ (R ∧ Q)[x:=x̂] → (∃x ∣ R : P) is a theorem.
+9.26 Prove ∃–introduction(9.28), P[x:=E] → (∃x ∣ : P).
+	 Answer:
+		P[x:=E] → (∃x ∣ : P)
+	 =   <Contrapositive(3.61)>
+		¬(∃x ∣ : P) → ¬P[x:=E]
+	 =   <Generalized De Morgan(9.18b)>
+		(∀x ∣ : ¬P) → ¬P[x:=E] —Instantiation(9.13)
+9.27 Prove (∃x ∣ R : P) → Q ≡ (∀x ∣ R : P → Q) (provided x does not occur free
+	 in Q).
+	 Answer:
+		(∃x ∣ R : P) → Q
+	 =   <Def. of →(3.59)>
+		¬(∃x ∣ R : P) ∨ Q
+	 =   <Generalized De Morgan(9.18b)>
+		(∀x ∣ R : ¬P) ∨ Q
+	 =   <Distributivity of ∨ over ∀(9.5), with ¬occurs('x', 'Q')>
+		(∀x ∣ R : ¬P∨Q)
+	 =   <Def. of →(3.59)>
+		(∀x ∣ R : P→Q)
+9.28 Prove (∃x ∣ : R) → ((∀x ∣ R : P) → Q ≡ (∃x ∣ R : P → Q)) (provided x does
+	 not occur free in P).
+	 Answer:
+		Assume (∃x ∣ : R)
+			(∀x ∣ R : P) → Q ≡ (∃x ∣ R : P → Q)
+		 =   <Generalized De Morgan(9.18a)>
+			¬(∃x ∣ R : ¬P) → Q ≡ (∃x ∣ R : P → Q)
+		 =   <Def. of →(3.59), Double negation(3.12)>
+			(∃x ∣ R : ¬P) ∨ Q  ≡ (∃x ∣ R : P → Q)
+		 =   <Trade(9.19) twice>
+			(∃x ∣ : R∧¬P) ∨ Q ≡ (∃x ∣ : R∧(P→Q))
+		 =   <Distributivity of ∧ over ∃(9.21), with ¬occurs('x', 'P')>
+			¬P ∧ (∃x ∣ : R) ∨ Q ≡ (P → Q) ∧ (∃x ∣ : R)
+		 =   <Assumption>
+			¬P ∧ true ∨ Q ≡ (P → Q) ∧ true
+		 =   <Identity of ∧(3.39) twice>
+			¬P ∨ Q ≡ (P → Q) —Def. of →(3.59)
+11.1 {x:t ∣ R : E}
+	 Evaluation of the above general form of set comprehension in a state
+	 yields the set of values that result from evaluating E[x:=v] in the state
+	 for each value v in t such that R[x:=v] holds in that state.
+	 In contexts where the type of the dummy is obvious, the type may be omitted.
+	 If E has type t1, then the set comprehension has type set(t1).
+11.2 {e_0, …, e_{n-1}} = {x ∣ x = e_0 ∨ … ∨ x = e_{n-1} : x}.
+	 We can define a set enumeration {e_0, …, e_{n-1}} to be an abbreviation of
+	 a set comprehension:
+	 Examples:
+	 {i ∣ 0<i<4 : i} The set {1, 2, 3}
+	 {i ∣ 0<i<50∧even.i : i} Even positive integers less than 50
+	 {i ∣ 0<2•i<50 : 2•i} Even positive integers less than 50
+	 {x,y ∣ 1≤x≤2≤y≤3 : xʸ} The set {1², 1³, 2², 2³}
+	 {x ∣ 0≤x<3 : x•y} The set {0•y, 1•y, 2•y}
+	 {x ∣ 0≤x<0 : x•y} The empty set {}
+Set comprehension is formalized by defining membership in the set it denotes.
+For expression F:t and set {x ∣ R : E:t}(for some type t), we define:
+11.3 Axiom, Set membership: Provided ¬occurs('x', 'F'),
+	 F ∈ {x ∣ R : E} ≡ (∃x ∣ R : E=F).
+11.4 Axiom, Extensionality: 𝘚=𝘚 ≡ (∀x ∣ : x∈𝘚≡x∈𝘚).
+Table 11.1 Types of set expressions in theory set(t)
+	Expression Example(with types) "Type of result"
+	"Empty set, universe, variable" "∅ or 𝐔 or 𝘚" set(t)
+	"Set enumeration" {e_1:t, …, e_n:t} set(t)
+	"Set comprehension" {x ∣ R:𝔹 : E:t}{x:t ∣ R:𝔹} set(t)
+	"Set membership" x:t∈𝘚:set(t) 𝔹
+	"Set equality" 𝘚:set(t) = 𝘚:set(t) 𝔹
+	"Set size' # 𝘚:set(t) ℕ
+	⊂, ⊃, ⊆, ⊇ 𝘚:set(t)⊆𝘚:set(t) 𝔹
+	Complement ~𝘚:set(t) set(t)
+	⋃, ⋂, ¬ 𝘚:set(t)⋃𝘚:set(t) set(t)
+	"Power set" (𝒫𝘚):set(t) set(set(t))
+11.5 𝘚 = {x ∣ x∈𝘚 : x}
+	 According to axiom Extensionality(11.4), it suffices to prove that
+	 v∈𝘚 ≡ v∈{x ∣ x∈𝘚: x}, for arbitrary v. We have,
+		v ∈ {x ∣ x∈𝘚: x}
+	 =   <Def. of membership(11.3)>
+		(∃x ∣ x∈𝘚 : v=x)
+	 =   <Trading(9.19) twice>
+		(∃x ∣ x=v : x∈𝘚)
+	 =   <One-point rule(8.14)>
+		v∈𝘚
+Traditional form of set comprehension
+{x ∣ R}
+(x is a single variable), which we view as an abbreviation of {x ∣ R : x}.
+Example:
+{x+y ∣ x=y+1}
+	If x is the dummy, then the set is {2•y+1};
+		{y+1+y}
+	If y is the dummy, then the set is
+		{x-1+x}
+	If x and y are the dummies, then it is the set of odd integers.
+		{x+y=y+1+y}
+			{y+1+y ∣ y:ℕ}
+11.6 Provided ¬occurs('y', 'R') and ¬occurs('y', 'E'),
+	 {x ∣ R : E} = {y ∣ (∃x ∣ R : E=y)}.
+Following theorem formalizes the connection between sets and predicates:
+a predicate is a representation for the set of argument-values for which it is true.
+11.7 x ∈ {x ∣ R} ≡ R
+	 Note thta x is used with two different meanings in the LHS of (11.7).
+	 The leftmost occurrence of x is free, as are free occurrences of x in the
+	 RHS. All occurrences of x in {x ∣ R} are bound. Since (11.7) is valid, by
+	 instantiating free variable x with any expression y we have
+	 y∈{x ∣ R} ≡ R[x:=y] for any expression y.
+11.8 Principle of comprehension. To each predicate R, there corresponds a set
+	 comprehension {x:t ∣ R}, which contains the objects in t that satisfy R;
+	 R is called a characteristic predicate of the set.
+	𝘚 = {3, 5}
+	𝘚 = {x ∣ x=3∨x=5}
+	x∈𝘚 ≡ x=3 ∨ x=5 (for all x).
+11.9 {x ∣ Q} = {x ∣ R} ≡ (∀x ∣ : Q≡R)
+11.10 Theorem. {x ∣ Q} = {x ∣ R} is valid iff Q≡R is valid.
+11.11 Methods for proving set equality 𝘚=𝘛:
+	  (a) Use Leibniz directly.
+	  (b) Use axiom Extensionality(11.4) and prove v∈𝘚 ≡ v∈𝘛
+		  for an arbitrary value v.
+	  (c) Prove Q ≡ R and conclude {x ∣ Q}={x ∣ R}.
+11.12 Axiom, Size: #𝘚 = (∑x ∣ x∈𝘚 : 1)
+	  Could be written as
+		(∀S:set(t) ∣ : #𝘚=(∑x ∣ x∈𝘚 : 1))
+		Metatheorem(9.16)
+11.13 Axiom, Subset: 𝘚⊆𝘛 ≡ (∀x ∣ x∈𝘚 : x∈𝘛)
+11.14 Axiom, Proper subset: 𝘚⊂𝘛 ≡ 𝘚⊆𝘛 ∧ 𝘚≠𝘛
+11.15 Axiom, Superset: 𝘚⊇𝘛 ≡ 𝘛⊆𝘚
+11.16 Axiom, Proper superset: 𝘚⊃𝘛 ≡ 𝘛⊂𝘚
+11.17 Axiom, Complement: v∈~𝘚 ≡ v∈𝐔 ∧ v∉𝘚
+	  Example:
+		𝐔 = {0, 1, 2, 3, 4, 5}, we have
+			~{3, 5} = {0, 1, 2, 4},
+			~𝐔 = ∅, ~∅ = 𝐔.
+11.18 v∈~𝘚 ≡ v∉𝘚 (for v in 𝐔)
+11.19 ~~𝘚 = 𝘚
+11.20 Axiom, Union: v∈𝘚∪𝘛 ≡ v∈𝘚 v v∈𝘛
+11.21 Axiom, Intersection: v∈𝘚∩𝘛 ≡ v∈𝘚 ∧ v∈𝘛
+11.22 Axiom, Difference: v∈𝘚-𝘛 ≡ v∈𝘚 ∧ v∉𝘛
+	  Example:
+		{3, 5, 6}∪{3, 2, 1}={3, 5, 6, 2, 1},
+		{3, 5, 6}∩{3, 2, 1}={3},
+		{3, 5, 6}-{3, 2, 1}={5, 6}.
+11.23 Axiom, Power set: v∈𝒫𝘚 ≡ v⊆𝘚
+	  Example:
+		𝒫{3, 5} ≡ {∅, {3}, {5}, {3,5}}
+11.24 Definition. Let Eₛ be a set expression constructed from set variables, ∅,
+	  𝐔(a universe for all set variables in question), ~, ∪ and ∩.
+	  Then Eₚ is the expression constructed from Eₛ by replacing
+		∅ with false, 𝐔 with true,
+		∪ with ∨, ∩ with ∧,
+		~ with ¬.
+		The construction is reversible: Eₛ can be constructed from Eₚ.
+11.25 Metatheorem. For any set expressions Eₛ and Fₛ:
+		(a) Eₛ=Fₛ is valid iff Eₚ ≡ Fₚ is valid,
+		(b) Eₛ⊆Fₛ is valid iff Eₚ → Fₚ is valid,
+		(c) Eₛ=𝐔 is valid iff Eₚ is valid.
+11.26 Symmetry of ∪: 𝘚∪𝘛=𝘛∪𝘚
+11.27 Associativity of ∪: (𝘚∪𝘛)∪𝑈=𝘚∪(𝘛∪𝑈)
+11.28 Idempotency of ∪: 𝘚∪𝘚=𝘚
+11.29 Zero of ∪: 𝘚∪𝐔=𝐔
+11.30 Identity of ∪: 𝘚∪∅=𝘚
+11.31 Weakening: 𝘚⊆𝘚∪𝘛
+11.32 Excluded middle: 𝘚∪~𝘚=𝐔
+11.33 Symmetry of ∩: S∩𝘛=𝘛∩S
+11.34 Associativity of ∩: (𝘚∩𝘛)∩𝑈=𝘚∩(𝘛∩𝑈)
+11.35 Idempotency of ∩: 𝘚∩𝘚=𝘚
+11.36 Zero of ∩: 𝘚∩∅=∅
+11.37 Identity of ∩: 𝘚∩𝐔=𝘚
+11.38 Strengthening: 𝘚∩𝘛⊆𝘚
+11.39 Contradiction: 𝘚∩~𝘚=∅
+11.40 Distributivity of ∪ over ∩:
+	  𝘚∪(𝘛∩𝑈)=(𝘚∪𝘛)∩(𝘚∪𝑈)
+11.41 Distributivity of ∩ over ∪:
+	  𝘚∩(𝘛∪𝑈)=(𝘚∩𝘛)∪(𝘚∩𝑈)
+11.42 De Morgan: (a) ~(𝘚∪𝘛)=~𝘚∩~𝘛
+				 (b) ~(𝘚∩𝘛)=~𝘚∪~𝘛
+11.43 𝘚⊆𝘛 ∧ 𝑈⊆𝑉 → (𝘚∪𝑈)⊆(𝘛∪𝑉)
+11.44 𝘚⊆𝘛 ∧ 𝑈⊆𝑉 → (𝘚∩𝑈)⊆(𝘛∩𝑉)
+11.45 𝘚⊆𝘛 ≡ 𝘚∪𝘛=𝘛
+11.46 𝘚⊆𝘛 ≡ 𝘚∩𝘛=𝘚
+11.47 𝘚∪𝘛=𝐔 ≡ (∀𝛘 ∣ 𝛘∈𝐔 : 𝛘∉𝘚→𝛘∈𝘛)
+11.48 𝘚∩𝘛=∅ ≡ (∀𝛘 ∣ : 𝛘∈𝘚→𝛘∉𝘛)
+11.49 𝘚-𝘛=𝘚∩~𝘛
+11.50 𝘚-𝘛⊆𝘚
+11.51 𝘚-∅=𝘚
+11.52 𝘚∩(𝘛-𝘚)=∅
+11.53 𝘚∪(𝘛-𝘚)=𝘚∪𝘛
+11.54 𝘚-(𝘛∪𝑈)=(𝘚-𝘛)∩(𝘚-𝑈)
+11.55 𝘚-(𝘛∩𝑈)=(𝘚-𝘛)∪(𝘚-𝑈)
+11.56 (∀x ∣ : P→Q) ≡ {x ∣ P}⊆{x ∣ Q}
+	  Proof:
+		{x ∣ P} ⊆ {x ∣ Q}
+	 =   <Subset ⊆(11.13), where ¬occurs('v', 'P, Q')>
+		(∀v ∣ v∈{x ∣ P} : v∈{x ∣ Q})
+	 =   <(11.7) twice>
+		(∀v ∣ P[x:=v] : Q[x:=v])
+	 =   <Trading(9.2); Dummy renaming(8.21)>
+		(∀v ∣ : P[x:=v][v:=x]→Q[x:=v][v:=x])
+	 =   <Property of textual substitution, ¬occurs('v', 'P, Q')>
+		(∀v ∣ : P→Q)
+11.13 Axiom, Subset: 𝘚⊆𝘛 ≡ (∀x ∣ x∈𝘚 : x ∈𝘛)
+11.7 x ∈ {x ∣ R} ≡ R
+9.2 Axiom, Trading: (∀x ∣ R : P) ≡ (∀x ∣ : R→P)
+8.21 Axiom, Dummy renaming: Provided ¬occurs('y', 'R,P')
+	 (★x ∣ R : P) = (★y ∣ R[x:=y] : P[x:=y])
