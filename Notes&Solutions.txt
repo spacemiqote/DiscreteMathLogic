@@ -4814,8 +4814,8 @@ a predicate is a representation for the set of argument-values for which it is t
 11.61 𝘚⊂𝘛 ≡ 𝘚⊆𝘛 ∧ ¬(𝘛⊆𝘚)
 11.62 𝘚⊂𝘛 ≡ 𝘚⊆𝘛 ∧ (∃x ∣ x∈𝘛 : x∉𝘚)
 	  ¬(𝘛⊆𝘚)
-	  (∀x ∣ x∈𝘛 : v∈𝘚)
-	  (∃x ∣ x∈𝘛 : ¬(v∈𝘚))
+	  (∀x ∣ x∈𝘛 : x∈𝘚)
+	  (∃x ∣ x∈𝘛 : ¬(x∈𝘚))
 11.63 𝘚⊆𝘛 ≡ 𝘚⊂𝘛 ∨ 𝘚=𝘛
 11.64 𝘚⊄𝘚
 11.65 𝘚⊂𝘛 → 𝘚⊆𝘛
@@ -4825,4 +4825,19 @@ a predicate is a representation for the set of argument-values for which it is t
 11.67 𝘚⊆𝘛 → 𝘛⊄𝘚
 	  S is a proper subset of T implies T is not a subset of S.
 	  S is a subset of T implies T is not a proper subset of S.
-11.68 S⊆𝘛 → 
+11.68 S⊆𝘛 ∧ ¬(𝑈⊆𝘛) → ¬(𝑈⊆𝘚)
+	  S is a subset of T and U is not a subset of T
+	  implies U is not a subset of S.
+	  Proof.
+		S⊆𝘛 ∧ ¬(𝑈⊆𝘛)
+	 =   <Subset ⊆(11.13); Generalized De Morgan(9.18c)>
+		S⊆𝘛 ∧ (∃x ∣ x∈𝑈 : x⊈𝘛)
+	 =   <>
+11.69 (∃x ∣ x∈𝘚 : x∉𝘛) → 𝘚≠𝘛
+11.70 Transitivity: (a) 𝘚⊆𝘛 ∧ 𝘛⊂𝑈 → 𝘚⊂𝑈
+					(b) 𝘚⊂𝘛 ∧ 𝘛⊆𝑈 → 𝘚⊂𝑈
+					(c) 𝘚⊂𝘛 ∧ 𝘛⊂𝑈 → 𝘚⊂𝑈
+3.82 Transitivity:
+	(a) (p → q) ∧ (q → r) → (p → r)
+	(b) (p ≡ q) ∧ (q → r) → (p → r)
+	(c) (p → q) ∧ (q ≡ r) → (p → r)
