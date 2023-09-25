@@ -4787,8 +4787,8 @@ a predicate is a representation for the set of argument-values for which it is t
 11.44 𝘚⊆𝘛 ∧ 𝑈⊆𝑉 → (𝘚∩𝑈)⊆(𝘛∩𝑉)
 11.45 𝘚⊆𝘛 ≡ 𝘚∪𝘛=𝘛
 11.46 𝘚⊆𝘛 ≡ 𝘚∩𝘛=𝘚
-11.47 𝘚∪𝘛=𝐔 ≡ (∀𝛘 ∣ 𝛘∈𝐔 : 𝛘∉𝘚→𝛘∈𝘛)
-11.48 𝘚∩𝘛=∅ ≡ (∀𝛘 ∣ : 𝛘∈𝘚→𝛘∉𝘛)
+11.47 𝘚∪𝘛=𝐔 ≡ (∀x ∣ x∈𝐔 : x∉𝘚→x∈𝘛)
+11.48 𝘚∩𝘛=∅ ≡ (∀x ∣ : x∈𝘚→x∉𝘛)
 11.49 𝘚-𝘛=𝘚∩~𝘛
 11.50 𝘚-𝘛⊆𝘚
 11.51 𝘚-∅=𝘚
@@ -4804,11 +4804,8 @@ a predicate is a representation for the set of argument-values for which it is t
 	 =   <(11.7) twice>
 		(∀v ∣ P[x:=v] : Q[x:=v])
 	 =   <Trading(9.2); Dummy renaming(8.21)>
-		(∀v ∣ : P[x:=v][v:=x]→Q[x:=v][v:=x])
+		(∀x ∣ : P[x:=v][v:=x]→Q[x:=v][v:=x])
 	 =   <Property of textual substitution, ¬occurs('v', 'P, Q')>
-		(∀v ∣ : P→Q)
-11.13 Axiom, Subset: 𝘚⊆𝘛 ≡ (∀x ∣ x∈𝘚 : x ∈𝘛)
-11.7 x ∈ {x ∣ R} ≡ R
-9.2 Axiom, Trading: (∀x ∣ R : P) ≡ (∀x ∣ : R→P)
-8.21 Axiom, Dummy renaming: Provided ¬occurs('y', 'R,P')
-	 (★x ∣ R : P) = (★y ∣ R[x:=y] : P[x:=y])
+		(∀x ∣ : P→Q)
+11.57 Antisymmetry: 𝘚⊆𝘛 ∧ 𝘛⊆𝘚 ≡ 𝘚=𝘛
+11.58 Reflexivity: 𝘚⊆𝘚
