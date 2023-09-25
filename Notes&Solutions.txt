@@ -4809,3 +4809,20 @@ a predicate is a representation for the set of argument-values for which it is t
 		(∀x ∣ : P→Q)
 11.57 Antisymmetry: 𝘚⊆𝘛 ∧ 𝘛⊆𝘚 ≡ 𝘚=𝘛
 11.58 Reflexivity: 𝘚⊆𝘚
+11.59 Transitivity: 𝘚⊆𝘛 ∧ 𝘛⊆𝑈 → 𝘚⊆𝑈
+11.60 ∅⊆𝘚
+11.61 𝘚⊂𝘛 ≡ 𝘚⊆𝘛 ∧ ¬(𝘛⊆𝘚)
+11.62 𝘚⊂𝘛 ≡ 𝘚⊆𝘛 ∧ (∃x ∣ x∈𝘛 : x∉𝘚)
+	  ¬(𝘛⊆𝘚)
+	  (∀x ∣ x∈𝘛 : v∈𝘚)
+	  (∃x ∣ x∈𝘛 : ¬(v∈𝘚))
+11.63 𝘚⊆𝘛 ≡ 𝘚⊂𝘛 ∨ 𝘚=𝘛
+11.64 𝘚⊄𝘚
+11.65 𝘚⊂𝘛 → 𝘚⊆𝘛
+	  S is a proper subset of T implies S is a subset of T.
+	  S is a subset of T does not implies S is a proper subset of T.
+11.66 𝘚⊂𝘛 → 𝘛⊈𝘚
+11.67 𝘚⊆𝘛 → 𝘛⊄𝘚
+	  S is a proper subset of T implies T is not a subset of S.
+	  S is a subset of T implies T is not a proper subset of S.
+11.68 S⊆𝘛 → 
