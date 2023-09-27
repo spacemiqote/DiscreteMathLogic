@@ -4264,7 +4264,7 @@ Existential quantification
 		  quantifications.>
 		(∀y ∣ : (∃x ∣ : (∀y ∣ : P)∨P)) ≡ (∀y ∣ : (∃x ∣ : P))
 	 =   <Instantiation(9.13) says (∀y ∣ : P)→P, which by (3.57) is equivalent
-		  to (∀y ∣ : P) ∨ P ≡ P>
+		  to (∀y∣:P)∨P≡P>
 		(∀y ∣ : (∃x ∣ : P)) ≡ (∀y ∣ : (∃x ∣ : P)) —Reflexivity of equality
 9.30 Metatheorem Witness. Suppose ¬occurs('x̂', 'P, Q, R'). Then
 	 (∃x ∣ R : P) → Q is a theorem iff (R ∧ P)[x:=x̂] → Q is a theorem.
@@ -4275,7 +4275,7 @@ Existential quantification
 		(∃x ∣ : R∧P) → Q
 	 =   <Implication(3.59); De Morgan(9.18b)>
 		(∀x ∣ : ¬(R∧P)) ∨ Q
-	 =   <Dummy renaming(8.21), —¬occurs('x̂', 'P,R')>
+	 =   <Dummy renaming(8.21), —¬occurs('x̂', 'P, R')>
 		(∀x̂ ∣ : ¬(R∧P)[x:=x̂]) ∨ Q
 	 =   <Distributivity of ∨ over ∀(9.5) —¬occurs('x̂', 'Q')>
 		(∀x̂ ∣ : ¬(R∧P)[x:=x̂] ∨ Q)
@@ -4599,7 +4599,7 @@ Existential quantification
 		1 (∀x ∣ R : Q→P) Assumption
 		2 (R ∧ Q)[x:=x̂] Assumption
 		3 (∀x ∣ : R→(Q→P)) Leibniz(1.5), Trading(9.2), 1
-		4 (∀x ∣ : R∧Q→P) Leibniz(1.2), Currying(3.65), 3
+		4 (∀x ∣ : R∧Q→P) Leibniz(1.5), Currying(3.65), 3
 		5 (R ∧ Q → P)[x:=x̂] Instantiation(9.13), 4
 		6 R[x:=x̂] ∧ Q[x:=x̂] Textual Substitution, 2
 		7 R[x:=x̂] ∧ Q[x:=x̂] → P[x:=x̂] Textual Substitution, 5
@@ -4620,8 +4620,8 @@ Existential quantification
 		¬(∃x ∣ : P) → ¬P[x:=E]
 	 =   <Generalized De Morgan(9.18b)>
 		(∀x ∣ : ¬P) → ¬P[x:=E] —Instantiation(9.13)
-9.27 Prove (∃x ∣ R : P) → Q ≡ (∀x ∣ R : P → Q) (provided x does not occur free
-	 in Q).
+9.27 Prove (∃x ∣ R : P) → Q ≡ (∀x ∣ R : P → Q)
+	 (provided x does not occur free in Q).
 	 Answer:
 		(∃x ∣ R : P) → Q
 	 =   <Def. of →(3.59)>
@@ -4825,14 +4825,21 @@ a predicate is a representation for the set of argument-values for which it is t
 11.67 𝘚⊆𝘛 → 𝘛⊄𝘚
 	  S is a proper subset of T implies T is not a subset of S.
 	  S is a subset of T implies T is not a proper subset of S.
-11.68 S⊆𝘛 ∧ ¬(𝑈⊆𝘛) → ¬(𝑈⊆𝘚)
+11.68 𝘚⊆𝘛 ∧ ¬(𝑈⊆𝘛) → ¬(𝑈⊆𝘚)
 	  S is a subset of T and U is not a subset of T
 	  implies U is not a subset of S.
 	  Proof.
-		S⊆𝘛 ∧ ¬(𝑈⊆𝘛)
+		𝘚⊆𝘛 ∧ ¬(𝑈⊆𝘛)
 	 =   <Subset ⊆(11.13); Generalized De Morgan(9.18c)>
-		S⊆𝘛 ∧ (∃x ∣ x∈𝑈 : x⊈𝘛)
+		𝘚⊆𝘛 ∧ (∃x ∣ x∈𝑈 : x∉𝘛)
+	 =   <Distributivity of ∧ over ∃(9.21)>
+		(∃x ∣ x∈𝑈 : x∉𝘛∧𝘚⊆𝘛)
+	 =   <Subset ⊆(11.13); Trading(9.2)>
+		(∃x ∣ x∈𝑈 : x∉𝘛∧(∀x ∣ : x∈𝘚→x∈𝘛))
+	 =   <Monotonicity of ∃(9.27), using Instantiation(9.13)>
+		()
 	 =   <>
+		
 11.69 (∃x ∣ x∈𝘚 : x∉𝘛) → 𝘚≠𝘛
 11.70 Transitivity: (a) 𝘚⊆𝘛 ∧ 𝘛⊂𝑈 → 𝘚⊂𝑈
 					(b) 𝘚⊂𝘛 ∧ 𝘛⊆𝑈 → 𝘚⊂𝑈
