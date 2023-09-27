@@ -4121,7 +4121,7 @@ Universal quantification
 9.11 Body weakening/strengthening:
 	(∀x ∣ R : P∧Q) → (∀x ∣ R : P)
 9.12 Monotonicity of ∀:
-	(∀x ∣ : Q → P) → ((∀x ∣ : Q) → (∀x ∣ : P))
+	(∀x ∣ : Q→P) → ((∀x ∣ : Q) → (∀x ∣ : P))
 	Proof.
 		(∀x ∣ : Q → P) → ((∀x ∣ : Q) → (∀x ∣ : P))
 	 =   <Currying(3.65)>
@@ -4355,7 +4355,7 @@ Existential quantification
 	   1.7 (∀x ∣ : R→P) Leibniz(1.5), Trading(9.2), 1.2
 	   1.8 R → P Instantiation(9.13), 1.7
 	   1.9 R → Q →–E, 1.8, 1.6
-	   1.10 (∀x ∣ : R→Q) Leibniz(1.5), Metatheorem(9.16), 1.9
+	   1.10 (∀x ∣ : R→Q) Metatheorem(9.16), 1.9
 	   1.11 (∀x ∣ R : Q) Leibniz(1.5), Trading(9.2), 1.10
 	   1.12 (∀x ∣ R : P≡Q) ∧ (∀x ∣ R : Q) ∧–I, 1.1, 1.11
 	 2 (∀x ∣ R : P≡Q) ∧ (∀x ∣ R : Q) → ((∀x ∣ R : P≡Q) ∧ (∀x ∣ R : P)) by Deduction
@@ -4368,7 +4368,7 @@ Existential quantification
 	   2.7 (∀x ∣ : R→Q) Leibniz(1.5), Trading(9.2), 2.2
 	   2.8 R → Q Instantiation(9.13), 2.7
 	   2.9 R → P →–E, 2.8, 2.6
-	   2.10 (∀x ∣ : R→P) Leibniz(1.5), Metatheorem(9.16), 2.9
+	   2.10 (∀x ∣ : R→P) Metatheorem(9.16), 2.9
 	   2.11 (∀x ∣ R : P) Leibniz(1.5), Trading(9.2), 2.10
 	   2.12 (∀x ∣ R : P≡Q) ∧ (∀x ∣ R : P) ∧–I, 2.1, 2.11
 9.6 Since ∧ is idempotent, Range split for idempotent ¤(8.18) specializes for ∧
@@ -4425,7 +4425,7 @@ Existential quantification
 	   7.2 Q ∧–E, 6
 	   7.3 R ∧ Q ∧–I, 8, 9
 	   7.4 P →–E, 10, 6
-	 8 (∀x ∣ : R→P) Leibniz(1.5), Metatheorem(9.16), 7
+	 8 (∀x ∣ : R→P) Metatheorem(9.16), 7
 	 9 (∀x ∣ R : P) Leibniz(1.5), Trade(9.2), 8
 9.10 Suppose that instead of One-point rule(8.14) for ∀, (∀x ∣ x=E : P) ≡ P[x:=E]
 	 (provided x does not occur free in E), we choose the axiom
@@ -4593,8 +4593,10 @@ Existential quantification
 9.25 Prove Monotonicity of ∃(9.27), (∀x ∣ R : Q→P) → ((∃x ∣ R : Q) → (∃x ∣ R : P)).
 	 Answer:
 			(∀x ∣ R : Q→P) → ((∃x ∣ R : Q) → (∃x ∣ R : P))
+		 =   <Metatheorem witness(9.30), –¬occurs('x̂', 'P, Q, R')>
+			(∀x ∣ R : Q→P) → ((R ∧ Q)[x:=x̂] → (∃x ∣ R : P))
 		 =   <Currying(3.65)>
-			(∀x ∣ R : Q→P) ∧ (∃x ∣ R : Q) → (∃x ∣ R : P)
+			(∀x ∣ R : Q→P) ∧ (R ∧ Q)[x:=x̂] → (∃x ∣ R : P)
 		(∀x ∣ R : Q→P) ∧ (R ∧ Q)[x:=x̂] → (∃x ∣ R : P) by Deduction
 		1 (∀x ∣ R : Q→P) Assumption
 		2 (R ∧ Q)[x:=x̂] Assumption
