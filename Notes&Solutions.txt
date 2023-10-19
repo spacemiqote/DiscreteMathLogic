@@ -4671,7 +4671,7 @@ Set comprehension is formalized by defining membership in the set it denotes.
 For expression F:t and set {x ∣ R : E:t}(for some type t), we define:
 11.3 Axiom, Set membership: Provided ¬occurs('x', 'F'),
 	 F ∈ {x ∣ R : E} ≡ (∃x ∣ R : E=F).
-11.4 Axiom, Extensionality: 𝘚=𝘚 ≡ (∀x ∣ : x∈𝘚≡x∈𝘚).
+11.4 Axiom, Extensionality: 𝘚=𝘛 ≡ (∀x ∣ : x∈𝘚≡x∈𝘛).
 Table 11.1 Types of set expressions in theory set(t)
 	Expression Example(with types) "Type of result"
 	"Empty set, universe, variable" "∅ or 𝐔 or 𝘚" set(t)
